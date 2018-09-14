@@ -1,0 +1,61 @@
+{
+  "name": "GTHC",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "ios": "react-native run-ios",
+    "android": "react-native run-android",
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "lint": "eslint ./",
+    "test:unit": "jest",
+    "test": "yarn lint && yarn flow && jest",
+    "precommit": "lint-staged && yarn test",
+    "pretty": "prettier --semi false --print-width 100 --single-quote --trailing-comma all --write \"src/**/*.js\""
+  },
+  "lint-staged": {
+    "*.js": [
+      "yarn pretty",
+      "git add"
+    ]
+  },
+  "jest": {
+    "preset": "react-native",
+    "testMatch": [
+      "**/?(*.)test.js?(x)"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "setupFiles": [
+      "<rootDir>/jest/setup.js"
+    ]
+  },
+  "dependencies": {
+    "react": "16.5.0",
+    "react-native": "0.57.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^9.0.0",
+    "babel-jest": "23.6.0",
+    "enzyme": "^3.6.0",
+    "enzyme-adapter-react-16": "^1.5.0",
+    "enzyme-to-json": "^3.3.4",
+    "eslint": "^5.5.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-flowtype": "^2.50.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.11.1",
+    "flow-bin": "0.78.0",
+    "husky": "^0.14.3",
+    "jest": "23.6.0",
+    "lint-staged": "^7.2.2",
+    "metro-react-native-babel-preset": "0.45.2",
+    "prettier": "^1.14.2",
+    "react-dom": "^16.5.1",
+    "react-test-renderer": "16.5.0"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}

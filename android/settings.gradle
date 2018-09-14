@@ -1,0 +1,3 @@
+rootProject.name = 'GTHC'
+
+include ':app'
