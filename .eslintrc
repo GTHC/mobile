@@ -8,6 +8,7 @@
     "import"
   ],
   "rules": {
+    "object-curly-newline": "off",
     "no-useless-concat": "off",
     "no-use-before-define": "off",
     "react/jsx-filename-extension": [
