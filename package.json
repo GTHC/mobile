@@ -8,9 +8,9 @@
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "lint": "eslint ./",
     "test:unit": "jest",
-    "test": "yarn lint && yarn flow && jest",
+    "test": "yarn lint && yarn flow",
     "precommit": "lint-staged && yarn test",
-    "pretty": "prettier --semi false --print-width 100 --single-quote --trailing-comma all --write \"src/**/*.js\""
+    "pretty": "prettier  --print-width 100 --single-quote --trailing-comma all --write \".//**/*.js\""
   },
   "lint-staged": {
     "*.js": [
@@ -19,20 +19,14 @@
     ]
   },
   "jest": {
-    "preset": "react-native",
-    "testMatch": [
-      "**/?(*.)test.js?(x)"
-    ],
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ],
-    "setupFiles": [
-      "<rootDir>/jest/setup.js"
-    ]
+    "preset": "react-native"
   },
   "dependencies": {
+    "native-base": "^2.8.0",
     "react": "16.5.0",
-    "react-native": "0.57.0"
+    "react-native": "0.57.0",
+    "react-native-calendars": "^1.20.0",
+    "react-navigation": "^2.14.2"
   },
   "devDependencies": {
     "babel-eslint": "^9.0.0",
@@ -54,8 +48,5 @@
     "prettier": "^1.14.2",
     "react-dom": "^16.5.1",
     "react-test-renderer": "16.5.0"
-  },
-  "jest": {
-    "preset": "react-native"
   }
 }
