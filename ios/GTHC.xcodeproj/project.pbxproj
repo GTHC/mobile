@@ -38,6 +38,7 @@
 		F95AB0022174578A00EC1E91 /* GoogleSymbolUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F95AAFFC2174578A00EC1E91 /* GoogleSymbolUtilities.framework */; };
 		F95AB0032174578A00EC1E91 /* GoogleAppUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F95AAFFD2174578A00EC1E91 /* GoogleAppUtilities.framework */; };
 		F95AB0042174578A00EC1E91 /* GoogleSignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F95AAFFE2174578A00EC1E91 /* GoogleSignIn.framework */; };
+		F95AB08721746CDB00EC1E91 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F95AB06021746CDB00EC1E91 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -359,6 +360,7 @@
 		F95AAFFC2174578A00EC1E91 /* GoogleSymbolUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleSymbolUtilities.framework; path = "../node_modules/react-native-google-signin/ios/GoogleSdk/GoogleSymbolUtilities.framework"; sourceTree = "<group>"; };
 		F95AAFFD2174578A00EC1E91 /* GoogleAppUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleAppUtilities.framework; path = "../node_modules/react-native-google-signin/ios/GoogleSdk/GoogleAppUtilities.framework"; sourceTree = "<group>"; };
 		F95AAFFE2174578A00EC1E91 /* GoogleSignIn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleSignIn.framework; path = "../node_modules/react-native-google-signin/ios/GoogleSdk/GoogleSignIn.framework"; sourceTree = "<group>"; };
+		F95AB06021746CDB00EC1E91 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -487,6 +489,7 @@
 		13B07FAE1A68108700A75B9A /* GTHC */ = {
 			isa = PBXGroup;
 			children = (
+				F95AB06021746CDB00EC1E91 /* GoogleService-Info.plist */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -1062,6 +1065,7 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				F95AB08721746CDB00EC1E91 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
