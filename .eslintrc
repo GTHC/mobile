@@ -8,6 +8,7 @@
     "import"
   ],
   "rules": {
+    "arrow-parens": "off",
     "react/sort-comp": "off",
     "object-curly-newline": "off",
     "no-useless-concat": "off",

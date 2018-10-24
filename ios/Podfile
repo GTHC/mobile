@@ -8,7 +8,8 @@ target 'GTHC' do
   # Pods for GTHC
   pod 'GoogleSignIn'
   pod 'Firebase/Core'
-  
+  pod 'Firebase/Auth'
+
   target 'GTHCTests' do
     inherit! :search_paths
     # Pods for testing

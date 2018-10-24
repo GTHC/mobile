@@ -3,45 +3,79 @@
 import React from 'react';
 
 import { View, StyleSheet } from 'react-native';
-import { GoogleSignin, GoogleSigninButton, statusCodes } from 'react-native-google-signin';
+import { GoogleSigninButton } from 'react-native-google-signin';
+import { Spinner } from 'native-base';
+import { isSignedInWithGoogle, signInWithGoogle, signInWithFirebase } from './utils';
 
-type Props = {};
-type State = any;
+type Props = any;
+type State = {
+  isSignedIn: boolean,
+  userInfo: any,
+  loading: boolean,
+};
 
 export default class Login extends React.Component<Props, State> {
   state: State;
 
-  constructor(props: Props) {
-    super(props);
-    GoogleSignin.configure();
+  componentWillMount() {
+    this.setState({
+      loading: false,
+    });
   }
 
-  signIn = async () => {
-    try {
-      await GoogleSignin.hasPlayServices();
-      const userInfo = await GoogleSignin.signIn();
-      this.setState({ userInfo }); // eslint-disable-line react/no-unused-state
-    } catch (error) {
-      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
-        // user cancelled the login flow
-      } else if (error.code === statusCodes.IN_PROGRESS) {
-        // operation (f.e. sign in) is in progress already
-      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
-        // play services not available or outdated
+  firebaseLogin = (userInfoPromise: Promise<any>) => {
+    this.setState({ loading: true });
+
+    userInfoPromise.then(userInfo => {
+      const { idToken, accessToken } = userInfo;
+      signInWithFirebase(idToken, accessToken)
+        .then(user => {
+          this.setState({ loading: false });
+
+          const { navigation } = this.props;
+          const { navigate } = navigation;
+
+          if (user) {
+            navigate('Home');
+          }
+        })
+        .catch(() => {
+          this.setState({ loading: false });
+          // TODO(anesu): Add msg
+        });
+    });
+  };
+
+  onSignInClicked = () => {
+    let userInfoPromise = isSignedInWithGoogle();
+
+    if (userInfoPromise) {
+      this.firebaseLogin(userInfoPromise);
+    } else {
+      userInfoPromise = signInWithGoogle();
+
+      if (userInfoPromise) {
+        this.firebaseLogin(userInfoPromise);
       } else {
-        // some other error happened
+        // TODO(anesu): Add error message
       }
     }
   };
 
   render() {
+    const { loading } = this.state;
     return (
       <View style={{ flex: 1 }}>
+        {loading && (
+          <View>
+            <Spinner color="black" />
+          </View>
+        )}
         <GoogleSigninButton
           style={styles.google_sign_in}
           size={GoogleSigninButton.Size.Wide}
           color={GoogleSigninButton.Color.Dark}
-          onPress={this.signIn}
+          onPress={this.onSignInClicked}
         />
       </View>
     );
