@@ -22,11 +22,16 @@
     "preset": "react-native"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "native-base": "^2.8.0",
     "react": "16.5.0",
     "react-native": "0.57.0",
     "react-native-calendars": "^1.20.0",
-    "react-navigation": "^2.14.2"
+    "react-navigation": "^2.14.2",
+    "react-redux": "^6.0.1",
+    "redux": "^4.0.1",
+    "redux-promise": "^0.6.0",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "babel-eslint": "^9.0.0",

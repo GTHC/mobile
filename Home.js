@@ -1,12 +1,25 @@
 // @flow
 
-import { createBottomTabNavigator } from 'react-navigation';
-import { Personal, Group, Settings, Availability } from './HomeTabs';
+import React, { Component } from 'react';
 
-// TODO(anesu): Add icons for the tabs
-export default createBottomTabNavigator({
-  Personal,
-  Group,
-  Settings,
-  Availability,
-});
+// redux
+import { Provider } from 'react-redux';
+import { createStore, combineReducers } from 'redux';
+
+// reducers
+import * as allReducers from './app/redux/reducers';
+
+// ui
+import App from './App';
+
+const store = createStore(combineReducers(allReducers));
+
+export default class Home extends Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <App />
+      </Provider>
+    );
+  }
+}
