@@ -9,15 +9,15 @@ import LoginForm from '../components/Login/LoginForm';
 // images
 import * as logo from '../images/logo.png';
 
-// type Props = {
-//   // TODO(anesu): Add more accurate types
-//   login: any,
-//   user: any,
-//   loginUser: any,
-//   clearError: any,
-// };
+type Props = {
+  // TODO(anesu): Add more accurate types
+  login?: any,
+  user?: any,
+  loginUser?: any,
+  clearError?: any,
+};
 
-export default class Login extends Component /* <Props> */ {
+export default class Login extends Component<Props> {
   render() {
     // TODO: Use variables below
     // const { login, user, loginUser, clearError } = this.props;
@@ -33,7 +33,7 @@ export default class Login extends Component /* <Props> */ {
           />
         </View>
 
-        <View style={styles.formContainer}>
+        <View>
           <LoginForm />
         </View>
       </KeyboardAvoidingView>

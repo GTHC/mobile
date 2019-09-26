@@ -15,7 +15,9 @@ import Login from './Login';
 //   Availability,
 // });
 
-export default class App extends Component {
+type Props = {}; // TODO: Add props
+
+export default class App extends Component<Props> {
   render() {
     return <Login />;
   }

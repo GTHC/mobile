@@ -14,7 +14,9 @@ import App from './containers/App';
 
 const store = createStore(combineReducers(allReducers));
 
-export default class GTHC extends Component {
+type Props = {}; // TODO: Add props
+
+export default class GTHC extends Component<Props> {
   render() {
     return (
       <Provider store={store}>
