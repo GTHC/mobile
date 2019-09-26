@@ -1,5 +1,3 @@
-// @flow
-
 const initialState = {
   type: 'login', // login or signup
   signUpData: {

@@ -3,9 +3,8 @@
 import React, { Component } from 'react';
 import { TextInput, StyleSheet } from 'react-native';
 
-type Props = {
+type Props = TextInput.propTypes & {
   placeholder: string,
-  keyboardType?: boolean,
   secureTextEntry?: boolean,
 };
 
@@ -16,7 +15,7 @@ export default class EditText extends Component<Props> {
       <TextInput
         style={styles.input}
         autoCapitalize="none"
-        onSubmitEditing={() => this.passwordInput.focus()}
+        // onSubmitEditing={() => this.passwordInput.focus()}
         autoCorrect={false}
         keyboardType={keyboardType || 'default'}
         returnKeyType="next"

@@ -8,6 +8,9 @@
     "import"
   ],
   "rules": {
+    "arrow-parens": "off",
+    "implicit-arrow-linebreak": "off",
+    "react/no-unused-prop-types": "off",
     "import/prefer-default-export": "off",
     "react/require-default-props": "off",
     "object-curly-newline": "off",

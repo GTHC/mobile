@@ -3,9 +3,11 @@
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
 
-import { EditText, Button } from '../UI';
+import { EditText, Button } from '../general';
 
-export default class LoginForm extends Component {
+type Props = {}; // TODO: Add props
+
+export default class LoginForm extends Component<Props> {
   render() {
     return (
       <View style={styles.container}>

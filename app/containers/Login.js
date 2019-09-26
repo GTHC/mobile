@@ -3,20 +3,24 @@
 import React, { Component } from 'react';
 import { KeyboardAvoidingView, View, StyleSheet, Image } from 'react-native';
 
-// ui
-import LoginForm from './LoginForm';
+// components
+import LoginForm from '../components/Login/LoginForm';
+
+// images
+import * as logo from '../images/logo.png';
 
 type Props = {
   // TODO(anesu): Add more accurate types
-  login: any,
-  user: any,
-  loginUser: any,
-  clearError: any,
+  login?: any,
+  user?: any,
+  loginUser?: any,
+  clearError?: any,
 };
 
 export default class Login extends Component<Props> {
   render() {
-    const { login, user, loginUser, clearError } = this.props;
+    // TODO: Use variables below
+    // const { login, user, loginUser, clearError } = this.props;
 
     return (
       <KeyboardAvoidingView behavior="padding" style={styles.container}>
@@ -25,11 +29,11 @@ export default class Login extends Component<Props> {
             resizeMode="contain"
             style={styles.logo}
             // eslint-disable-next-line global-require
-            source={require('../assets/images/logo.png')}
+            source={logo}
           />
         </View>
 
-        <View style={styles.formContainer}>
+        <View>
           <LoginForm />
         </View>
       </KeyboardAvoidingView>

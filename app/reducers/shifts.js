@@ -1,5 +1,3 @@
-// @flow
-
 const initialState = {
   team_shifts: [],
   user_shifts: [],
