@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import { createBottomTabNavigator } from 'react-navigation';
 
 // ui
-import { Personal, Group, Settings, Availability } from './HomeTabs';
+import { Personal, Group, Settings, Availability } from './components/HomeTabs';
 import Login from './Login';
 
 const Home = createBottomTabNavigator({
