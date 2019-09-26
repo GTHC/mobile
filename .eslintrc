@@ -8,6 +8,7 @@
     "import"
   ],
   "rules": {
+    "arrow-parens": "off",
     "import/prefer-default-export": "off",
     "react/require-default-props": "off",
     "object-curly-newline": "off",
