@@ -8,6 +8,7 @@
     "import"
   ],
   "rules": {
+    "react/destructuring-assignment": "off",
     "import/prefer-default-export": "off",
     "react/require-default-props": "off",
     "object-curly-newline": "off",

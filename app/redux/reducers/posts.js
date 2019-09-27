@@ -1,12 +1,19 @@
 // @flow
 
+// Types
+type State = {
+  data: any,
+  isLoading: boolean,
+  error: boolean,
+};
+
 const initialState = {
   data: [],
   isLoading: false,
   error: false,
 };
 
-const posts = (state = initialState, action) => {
+const posts = (state: State = initialState, action: any) => {
   switch (action.type) {
     case 'BEGIN_GET_POSTS': {
       return {

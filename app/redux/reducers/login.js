@@ -1,6 +1,30 @@
 // @flow
 
-const initialState = {
+// Types
+type State = {
+  type: string, // login or signup
+  signUpData: {
+    name: string,
+    email: string,
+    phone: string,
+    team: string,
+    teamID: any,
+    tentType: string,
+    isCaptain: boolean,
+    password: string,
+    passwordConfirmation: string,
+    availabilities: [],
+  },
+  disableNext: boolean,
+  // API
+  isLoading: boolean,
+  teams: {},
+  teamDropDownOptions: [],
+  error: boolean,
+  errorMessage: string,
+};
+
+const initialState: State = {
   type: 'login', // login or signup
   signUpData: {
     name: '',
@@ -23,7 +47,7 @@ const initialState = {
   errorMessage: '',
 };
 
-const login = (state = initialState, action) => {
+const login = (state: State = initialState, action: any) => {
   switch (action.type) {
     // changing page type
     case 'START_LOGIN': {

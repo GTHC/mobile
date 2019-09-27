@@ -1,8 +1,8 @@
 // @flow
 
-import crud from './utils/crud';
+import crud from '../utils/crud';
 
-const updateUser = (id, data) =>
+const updateUser = (id: any, data: {}) =>
   crud({
     dispatch: {
       begin: 'BEGIN_UPDATE_USER',
@@ -25,7 +25,7 @@ const checkSession = () =>
     url: '/api/v1/user/session',
   });
 
-const initiatePasswordReset = data =>
+const initiatePasswordReset = (data: {}) =>
   crud({
     dispatch: {
       begin: 'BEGIN_PASSWORD_RESET',
@@ -37,7 +37,7 @@ const initiatePasswordReset = data =>
     data,
   });
 
-const changePasswordWithResetToken = data =>
+const changePasswordWithResetToken = (data: {}) =>
   crud({
     dispatch: {
       begin: 'BEGIN_PASSWORD_RESET',
@@ -56,7 +56,7 @@ const passwordTooShortError = () => ({ type: 'PASSWORD_SHORT' });
 
 const passwordMismatchError = () => ({ type: 'PASSWORD_MISMATCH' });
 
-const postAvatar = data =>
+const postAvatar = (data: {}) =>
   crud({
     headers: { 'Content-Type': 'form-data' },
     dispatch: {
@@ -73,7 +73,7 @@ const getResetPassword = () => ({ type: 'GET_RESET_PASSWORD' });
 
 /* Availability */
 
-const putAvail = (id, data) =>
+const putAvail = (id: any, data: {}) =>
   crud({
     dispatch: {
       begin: 'BEGIN_POST_AVAIL',
@@ -85,7 +85,7 @@ const putAvail = (id, data) =>
     data,
   });
 
-const postAvail = data =>
+const postAvail = (data: {}) =>
   crud({
     dispatch: {
       begin: 'BEGIN_POST_AVAIL',
@@ -97,7 +97,7 @@ const postAvail = data =>
     data,
   });
 
-const deleteAvail = id =>
+const deleteAvail = (id: any) =>
   crud({
     dispatch: {
       begin: 'BEGIN_DELETE_AVAIL',
@@ -108,7 +108,7 @@ const deleteAvail = id =>
     url: `/api/v1/user/availability/${id}`,
   });
 
-const dragDropUpdate = newAvailabilities => ({
+const dragDropUpdate = (newAvailabilities: any) => ({
   type: 'AVAIL_DRAG_DROP',
   payload: newAvailabilities,
 });

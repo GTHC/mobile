@@ -1,6 +1,6 @@
 // @flow
 
-import crud from './utils/crud';
+import crud from '../utils/crud';
 
 const getPosts = () =>
   crud({

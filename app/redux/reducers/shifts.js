@@ -1,5 +1,15 @@
 // @flow
 
+// Types
+type State = {
+  team_shifts: [],
+  user_shifts: [],
+  shift: {},
+  isLoading: boolean,
+  error: boolean,
+  errorMessage: string,
+};
+
 const initialState = {
   team_shifts: [],
   user_shifts: [],
@@ -9,7 +19,7 @@ const initialState = {
   errorMessage: '',
 };
 
-const shifts = (state = initialState, action) => {
+const shifts = (state: State = initialState, action: any) => {
   const failedState = {
     ...state,
     isLoading: false,

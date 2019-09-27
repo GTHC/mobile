@@ -1,6 +1,16 @@
 // @flow
 
-const initialState = {
+// Types
+type State = {
+  data: any,
+  isLoggedIn: boolean,
+  isLoading: boolean,
+  error: boolean,
+  errorMessage: string,
+  passwordResetSuccess: boolean,
+};
+
+const initialState: State = {
   data: {},
   isLoggedIn: false,
   isLoading: false,
@@ -9,7 +19,7 @@ const initialState = {
   passwordResetSuccess: false,
 };
 
-const user = (state = initialState, action) => {
+const user = (state: State = initialState, action: any) => {
   const beginState = {
     ...state,
     isLoading: true,

@@ -1,13 +1,21 @@
 // @flow
 
-const initialState = {
+// Types
+type State = {
+  data: {},
+  isLoading: boolean,
+  error: boolean,
+  errorMessage: string,
+};
+
+const initialState: State = {
   data: {},
   isLoading: false,
   error: false,
   errorMessage: '',
 };
 
-const team = (state = initialState, action) => {
+const team = (state: State = initialState, action: any) => {
   switch (action.type) {
     case 'BEGIN_GET_TEAM': {
       return {

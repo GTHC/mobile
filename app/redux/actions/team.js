@@ -1,8 +1,8 @@
 // @flow
 
-import crud from './utils/crud';
+import crud from '../utils/crud';
 
-const getTeam = id =>
+const getTeam = (id: any) =>
   crud({
     dispatch: {
       begin: 'BEGIN_GET_TEAM',
@@ -13,7 +13,7 @@ const getTeam = id =>
     url: `/api/v1/teams/${id}`,
   });
 
-const updateTeam = (id, data) =>
+const updateTeam = (id: any, data: any) =>
   crud({
     dispatch: {
       begin: 'BEGIN_UPDATE_TEAM',

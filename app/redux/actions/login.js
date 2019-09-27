@@ -1,8 +1,30 @@
 // @flow
 
-import crud from './utils/crud';
+import crud from '../utils/crud';
 
-const toggleLoginType = type => {
+// Types
+type UserData = {
+  name?: string,
+  email?: string,
+  password?: string,
+  password?: string,
+  password_confirmation?: string,
+  team_id?: number,
+  team_name?: string,
+  tent_type?: string,
+  passcode?: string,
+  phone?: string,
+};
+
+type TeamInfo = {
+  team: any,
+  teamID: any,
+  tentType: any,
+  isCaptain: any,
+  passcode: any,
+};
+
+const toggleLoginType = (type: string) => {
   switch (type) {
     case 'login': {
       return {
@@ -24,17 +46,17 @@ const toggleLoginType = type => {
   }
 };
 
-const toggleDisableNext = val => ({
+const toggleDisableNext = (val: string) => ({
   type: 'SU_NEXT',
   payload: val,
 });
 
-const updateUserInfo = userInfo => ({
+const updateUserInfo = (userInfo: string) => ({
   type: 'SU_USER_INFO',
   payload: userInfo,
 });
 
-const updateTeamInfo = teamInfo => ({
+const updateTeamInfo = (teamInfo: TeamInfo) => ({
   type: 'SU_TEAM_INFO',
   payload: {
     team: teamInfo.team,
@@ -45,7 +67,7 @@ const updateTeamInfo = teamInfo => ({
   },
 });
 
-const updateAvailInfo = availabilities => ({
+const updateAvailInfo = (availabilities: {}) => ({
   type: 'SU_AVAIL_INFO',
   payload: availabilities,
 });
@@ -71,7 +93,7 @@ const getAllTeams = () =>
  *  password: string
  * }
  */
-const login = userData =>
+const login = (userData: UserData) =>
   crud({
     dispatch: {
       begin: 'BEGIN_LOGIN',
@@ -107,7 +129,7 @@ const logout = () =>
  *  team_id: integer
  * }
  */
-const signup = userData =>
+const signup = (userData: UserData) =>
   crud({
     dispatch: {
       begin: 'BEGIN_SIGNUP',
@@ -134,7 +156,7 @@ const signup = userData =>
  *  phone: string,
  * }
  */
-const signupNewTeam = userData =>
+const signupNewTeam = (userData: UserData) =>
   crud({
     dispatch: {
       begin: 'BEGIN_SIGNUP',

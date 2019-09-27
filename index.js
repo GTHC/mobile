@@ -1,8 +1,8 @@
 /** @format */
 
 import { AppRegistry } from 'react-native';
-import Home from './Home';
-import Login from './Login';
+import App from './app/containers/App';
+import Login from './app/containers/Login';
 
-AppRegistry.registerComponent('GTHC', () => Home);
+AppRegistry.registerComponent('GTHC', () => App);
 AppRegistry.registerComponent('Login', () => Login);
