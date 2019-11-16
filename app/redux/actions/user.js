@@ -1,8 +1,19 @@
-// @flow
-
 import crud from '../utils/crud';
 
-const updateUser = (id: any, data: {}) =>
+const signupUser = (id, data) =>
+  crud({
+    dispatch: {
+      begin: 'BEGIN_UPDATE_USER',
+      end: 'END_UPDATE_USER_SIGNUP',
+      fail: 'FAILED_UPDATE_USER',
+    },
+    method: 'PUT',
+    push: '/app/',
+    url: `/api/v1/users/signup/${id}`,
+    data,
+  });
+
+const updateUser = (id, data) =>
   crud({
     dispatch: {
       begin: 'BEGIN_UPDATE_USER',
@@ -22,41 +33,10 @@ const checkSession = () =>
       end: 'END_SESS_CHECK',
     },
     method: 'GET',
-    url: '/api/v1/user/session',
+    url: '/api/v1/sessions',
   });
 
-const initiatePasswordReset = (data: {}) =>
-  crud({
-    dispatch: {
-      begin: 'BEGIN_PASSWORD_RESET',
-      fail: 'FAILED_PASSWORD_RESET',
-      end: 'END_PASSWORD_RESET',
-    },
-    method: 'POST',
-    url: '/api/v1/user/forgot_password',
-    data,
-  });
-
-const changePasswordWithResetToken = (data: {}) =>
-  crud({
-    dispatch: {
-      begin: 'BEGIN_PASSWORD_RESET',
-      fail: 'FAILED_PASSWORD_RESET',
-      end: 'END_PASSWORD_RESET',
-    },
-    method: 'POST',
-    url: '/api/v1/user/token_change_password',
-    push: '/login',
-    data,
-  });
-
-const invalidEmailError = () => ({ type: 'INVALID_EMAIL' });
-
-const passwordTooShortError = () => ({ type: 'PASSWORD_SHORT' });
-
-const passwordMismatchError = () => ({ type: 'PASSWORD_MISMATCH' });
-
-const postAvatar = (data: {}) =>
+const postAvatar = data =>
   crud({
     headers: { 'Content-Type': 'form-data' },
     dispatch: {
@@ -69,11 +49,9 @@ const postAvatar = (data: {}) =>
     data,
   });
 
-const getResetPassword = () => ({ type: 'GET_RESET_PASSWORD' });
-
 /* Availability */
 
-const putAvail = (id: any, data: {}) =>
+const putAvail = (id, data) =>
   crud({
     dispatch: {
       begin: 'BEGIN_POST_AVAIL',
@@ -85,7 +63,7 @@ const putAvail = (id: any, data: {}) =>
     data,
   });
 
-const postAvail = (data: {}) =>
+const postAvail = data =>
   crud({
     dispatch: {
       begin: 'BEGIN_POST_AVAIL',
@@ -97,7 +75,7 @@ const postAvail = (data: {}) =>
     data,
   });
 
-const deleteAvail = (id: any) =>
+const deleteAvail = id =>
   crud({
     dispatch: {
       begin: 'BEGIN_DELETE_AVAIL',
@@ -108,23 +86,31 @@ const deleteAvail = (id: any) =>
     url: `/api/v1/user/availability/${id}`,
   });
 
-const dragDropUpdate = (newAvailabilities: any) => ({
+const dragDropUpdate = newAvailabilities => ({
   type: 'AVAIL_DRAG_DROP',
   payload: newAvailabilities,
 });
 
+// POST /logout
+const logout = () =>
+  crud({
+    dispatch: {
+      begin: 'BEGIN_LOGOUT',
+      end: 'END_LOGOUT',
+      fail: 'FAILED_LOGOUT',
+    },
+    method: 'POST',
+    url: '/logout',
+  });
+
 export {
+  signupUser,
   updateUser,
   checkSession,
   postAvatar,
-  initiatePasswordReset,
-  getResetPassword,
-  changePasswordWithResetToken,
-  invalidEmailError,
-  passwordTooShortError,
-  passwordMismatchError,
   putAvail,
   postAvail,
   deleteAvail,
   dragDropUpdate,
+  logout,
 };

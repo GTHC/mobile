@@ -1,4 +1,5 @@
 apply plugin: "com.android.application"
+apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
 
 import com.android.build.OutputFile
 
@@ -106,6 +107,7 @@ android {
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
+        manifestPlaceholders = [appAuthRedirectScheme: "com.gthc"]
     }
     splits {
         abi {
@@ -137,7 +139,9 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-config')
     compile project(':@react-native-community_async-storage')
+    compile project(':react-native-app-auth')
     compile project(':react-native-vector-icons')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"

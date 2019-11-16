@@ -1,0 +1,38 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'GTHC' do
+  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
+  # use_frameworks!
+
+  # Pods for GTHC
+  pod 'AppAuth', '0.95.0'
+
+  target 'GTHC-tvOSTests' do
+    inherit! :search_paths
+    # Pods for testing
+    pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-community/async-storage'
+
+    pod 'react-native-config', :path => '../node_modules/react-native-config'
+
+  end
+
+  target 'GTHCTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
+
+target 'GTHC-tvOS' do
+  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
+  # use_frameworks!
+
+  # Pods for GTHC-tvOS
+
+  target 'GTHC-tvOSTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
