@@ -9,7 +9,6 @@
     "lint": "eslint ./",
     "test:unit": "jest",
     "test": "yarn lint && yarn flow",
-    "precommit": "lint-staged && yarn test",
     "pretty": "prettier  --print-width 100 --single-quote --trailing-comma all --write \".//**/*.js\""
   },
   "lint-staged": {
@@ -32,6 +31,7 @@
     "react-native-calendars": "^1.20.0",
     "react-navigation": "^2.14.2",
     "react-redux": "^6.0.1",
+    "react-router-native": "^5.1.2",
     "react-router-redux": "^4.0.8",
     "redux": "^4.0.4",
     "redux-devtools": "^3.5.0",

@@ -1,10 +1,18 @@
 // @flow
 
 import React, { Component } from 'react';
+import { Text, StyleSheet, View } from 'react-native';
 import { Provider } from 'react-redux';
 // import Login from './Login';
 import UpcomingShifts from './UpcomingShifts';
+import SettingsTabs from './SettingsTabs';
+import TeamSettings from './TeamSettings';
+import EditTeamSettings from './EditTeamSettings';
+import EditUserSettings from './EditUserSettings';
 import { configureStore } from '../redux/utils/store';
+
+import { NativeRouter, Route, Link } from 'react-router-native';
+// import Home from './UpcomingShifts';
 
 type Props = any;
 
@@ -14,7 +22,12 @@ export default class App extends Component<Props> {
 
     return (
       <Provider store={store}>
-        <UpcomingShifts />
+        <NativeRouter>
+          <Route exact path="/" component={SettingsTabs} />
+          <Route exact path={'/shifts'} component={UpcomingShifts} />
+          <Route exact path={'/editteam'} component={EditTeamSettings} />
+          <Route exact path={'/edituser'} component={EditUserSettings} />
+        </NativeRouter>
       </Provider>
     );
   }

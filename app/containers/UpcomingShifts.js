@@ -1,6 +1,7 @@
 // @flow
 
 import React, { Component } from 'react';
+import { Text, StyleSheet } from 'react-native';
 import { Agenda } from 'react-native-calendars';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -8,6 +9,8 @@ import moment from 'moment';
 
 import { getAllShifts } from '../redux/actions/shifts';
 import { renderItem, renderEmptyDate, rowHasChanged } from '../components/AgendaItems';
+
+import { Link } from 'react-router-native';
 
 type Props = {
   getAllShifts: () => void,
@@ -27,9 +30,9 @@ class UpcomingShifts extends Component<Props> {
     return (
       <Agenda
         items={{
-          '2019-10-13': [{ text: 'Anesu, Aman', time: '3 - 5PM' }],
-          '2019-10-12': [{ text: 'Anesu, Rikki', time: '11AM - 2PM' }],
-          '2019-10-10': [
+          '2019-11-13': [{ text: 'Anesu, Aman', time: '3 - 5PM' }],
+          '2019-11-13': [{ text: 'Anesu, Rikki', time: '11AM - 2PM' }],
+          '2019-11-13': [
             { text: 'Anesu, Vinit', time: '12 - 5PM' },
             { text: 'Anesu, Gouttham', time: '1AM - 8AM' },
           ],
