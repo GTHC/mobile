@@ -60,7 +60,7 @@ class TeamSettings extends Component<Props> {
             </CardItem>
           </Card>
           <Button block style={{ marginTop: 40 }}>
-            <Link to={'/editteam'}>
+            <Link to={'/editteamsettings'}>
               <Text> Edit Team Settings </Text>
             </Link>
           </Button>

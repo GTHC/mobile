@@ -47,12 +47,14 @@ class UserSettings extends Component<Props> {
         </CardItem>
         </Card>
         <Button block style= {{marginTop: 40}}>
-        <Link to={'/edituser'}>
+        <Link to={'/editusersettings'}>
         <Text> Edit User Information </Text>
         </Link>
         </Button>
         <Button block style= {{marginTop: 40}}>
+        <Link to={'/editpassword'}>
         <Text> Edit Password </Text>
+        </Link>
         </Button>
         <Button block style= {{marginTop: 40}}>
         <Text> Edit Avatar </Text>

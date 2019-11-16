@@ -35,7 +35,7 @@ class EditTeamSettings extends Component<Props> {
           </Button>
           <Left />
           <Button iconLeft primary>
-          <Title>Team Settings</Title>
+          <Title>Edit Password</Title>
           <Icon name='cog' />
           </Button>
           <Right />
@@ -43,16 +43,20 @@ class EditTeamSettings extends Component<Props> {
             <Content>
               <Form>
                 <Item floatingLabel>
-                  <Label>Team Name</Label>
+                  <Label>Current Password</Label>
                   <Input />
                 </Item>
                 <Item floatingLabel last>
-                  <Label>Tent Type</Label>
+                  <Label>New Password</Label>
+                  <Input />
+                </Item>
+                <Item floatingLabel last>
+                  <Label>Password Confirmation</Label>
                   <Input />
                 </Item>
               </Form>
               <Button primary block style= {{marginTop: 40}}>
-              <Text> Change Team Settings </Text>
+              <Text> Save </Text>
               </Button>
             </Content>
           </Container>
