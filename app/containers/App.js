@@ -9,7 +9,7 @@ import SettingsTabs from './SettingsTabs';
 import TeamSettings from './TeamSettings';
 import EditTeamSettings from './EditTeamSettings';
 import EditUserSettings from './EditUserSettings';
-import EditPassword from './EditPassword';
+import Footer from './Footer';
 import { configureStore } from '../redux/utils/store';
 
 import { NativeRouter, Route, Link } from 'react-router-native';
@@ -28,7 +28,6 @@ export default class App extends Component<Props> {
           <Route exact path={'/shifts'} component={UpcomingShifts} />
           <Route exact path={'/editteamsettings'} component={EditTeamSettings} />
           <Route exact path={'/editusersettings'} component={EditUserSettings} />
-          <Route exact path={'/editpassword'} component={EditPassword} />
         </NativeRouter>
       </Provider>
     );

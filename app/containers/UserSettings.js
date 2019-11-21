@@ -51,17 +51,6 @@ class UserSettings extends Component<Props> {
         <Text> Edit User Information </Text>
         </Link>
         </Button>
-        <Button block style= {{marginTop: 40}}>
-        <Link to={'/editpassword'}>
-        <Text> Edit Password </Text>
-        </Link>
-        </Button>
-        <Button block style= {{marginTop: 40}}>
-        <Text> Edit Avatar </Text>
-        </Button>
-        <Button block style= {{marginTop: 40}}>
-        <Text> Edit Availability </Text>
-        </Button>
         </Content>
         </Container>
     );

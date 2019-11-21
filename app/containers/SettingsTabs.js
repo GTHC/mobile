@@ -3,6 +3,7 @@ import { Button, Icon, Title, Right, Left, Container, Header, Content, Tab, Tabs
 import TeamSettings from './TeamSettings';
 import UserSettings from './UserSettings';
 import EditUserSettings from './EditUserSettings';
+import Footer from './Footer';
 
 import { Link } from 'react-router-native';
 
@@ -23,6 +24,7 @@ export default class SettingsTabs extends Component {
       </Button>
       <Right />
       </Header>
+      <Content>
         <Tabs>
           <Tab heading="User">
             <UserSettings />
@@ -31,6 +33,8 @@ export default class SettingsTabs extends Component {
             <TeamSettings />
           </Tab>
         </Tabs>
+        </Content>
+        <Footer />
       </Container>
     );
   }

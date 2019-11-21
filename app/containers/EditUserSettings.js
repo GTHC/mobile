@@ -2,6 +2,7 @@
 
 import React, { Component } from 'react';
 import { Agenda } from 'react-native-calendars';
+import { StyleSheet, View } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import moment from 'moment';
@@ -17,6 +18,19 @@ import { Link } from 'react-router-native';
 type Props = {
   getAllShifts: () => void,
 };
+
+const styles = StyleSheet.create({
+  container: {},
+    content: {
+      alignItems: 'center',
+      flex: 1,
+      justifyContent: 'center'
+      },
+      form: {
+        width: '100%'
+        },
+        item: {}
+});
 
 class EditUserSettings extends Component<Props> {
   componentWillMount() {
@@ -51,9 +65,11 @@ class EditUserSettings extends Component<Props> {
                   <Input />
                 </Item>
               </Form>
-              <Button primary block style= {{marginTop: 40}}>
+              <View style={styles.content}>
+              <Button primary block style= {{marginTop: 40, width: '80%',}}>
               <Text> Change User Settings </Text>
               </Button>
+              </View>
             </Content>
           </Container>
     );
