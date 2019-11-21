@@ -26,9 +26,7 @@ class UserSettings extends Component<Props> {
 
     return (
       <Container>
-      <Content contentContainerStyle ={{
-        justifyContent: 'center', alignItems: 'center',
-        paddingTop: 40, paddingHorizontal: 5}}>
+      <Content contentContainerStyle ={{margin: 25}}>
         <Card>
         <CardItem>
         <Text>
@@ -46,7 +44,7 @@ class UserSettings extends Component<Props> {
         </Text>
         </CardItem>
         </Card>
-        <Button block style= {{marginTop: 40}}>
+        <Button block style= {{marginTop: 40, margin: 50}}>
         <Link to={'/editusersettings'}>
         <Text> Edit User Information </Text>
         </Link>

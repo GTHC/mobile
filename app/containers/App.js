@@ -10,6 +10,7 @@ import TeamSettings from './TeamSettings';
 import EditTeamSettings from './EditTeamSettings';
 import EditUserSettings from './EditUserSettings';
 import Footer from './Footer';
+import Dashboard from './Dashboard';
 import { configureStore } from '../redux/utils/store';
 
 import { NativeRouter, Route, Link } from 'react-router-native';
@@ -24,7 +25,8 @@ export default class App extends Component<Props> {
     return (
       <Provider store={store}>
         <NativeRouter>
-          <Route exact path="/" component={SettingsTabs} />
+          <Route exact path="/" component={Dashboard} />
+          <Route exact path={'/settings'} component={SettingsTabs} />
           <Route exact path={'/shifts'} component={UpcomingShifts} />
           <Route exact path={'/editteamsettings'} component={EditTeamSettings} />
           <Route exact path={'/editusersettings'} component={EditUserSettings} />

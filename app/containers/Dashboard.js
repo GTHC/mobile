@@ -9,7 +9,7 @@ import { View, Dimensions, Text } from 'react-native';
 
 import { Link } from 'react-router-native';
 
-export default class SettingsTabs extends Component {
+export default class Dashboard extends Component {
   render() {
     return (
       <Container>
@@ -35,6 +35,7 @@ export default class SettingsTabs extends Component {
           </Tab>
         </Tabs>
         </Content>
+        <Footer />
       </Container>
     );
   }

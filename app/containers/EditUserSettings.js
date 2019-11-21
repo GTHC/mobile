@@ -20,16 +20,7 @@ type Props = {
 };
 
 const styles = StyleSheet.create({
-  container: {},
-    content: {
-      alignItems: 'center',
-      flex: 1,
-      justifyContent: 'center'
-      },
-      form: {
-        width: '100%'
-        },
-        item: {}
+
 });
 
 class EditUserSettings extends Component<Props> {
@@ -55,7 +46,7 @@ class EditUserSettings extends Component<Props> {
           <Right />
           </Header>
             <Content>
-              <Form>
+              <Form style={{margin: 25}}>
                 <Item floatingLabel>
                   <Label>Name</Label>
                   <Input />
@@ -66,7 +57,7 @@ class EditUserSettings extends Component<Props> {
                 </Item>
               </Form>
               <View style={styles.content}>
-              <Button primary block style= {{marginTop: 40, width: '80%',}}>
+              <Button primary block style= {{marginTop: 40, margin: 75}}>
               <Text> Change User Settings </Text>
               </Button>
               </View>

@@ -42,10 +42,7 @@ class TeamSettings extends Component<Props> {
       <Container>
         <Content
           contentContainerStyle={{
-            justifyContent: 'center',
-            alignItems: 'center',
-            paddingTop: 10,
-            paddingHorizontal: 5,
+            margin: 25
           }}
         >
           <Card>
@@ -59,12 +56,12 @@ class TeamSettings extends Component<Props> {
               <Text>Passcode: ADC9L</Text>
             </CardItem>
           </Card>
-          <Button block style={{ marginTop: 40 }}>
+          <Button block style={{ marginTop: 40, margin: 50 }}>
             <Link to={'/editteamsettings'}>
               <Text> Edit Team Settings </Text>
             </Link>
           </Button>
-          <Button block style={{ marginTop: 40 }}>
+          <Button block style={{ marginTop: 40, margin: 50 }}>
             <Text> Team Table </Text>
           </Button>
         </Content>
