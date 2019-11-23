@@ -21,8 +21,7 @@ export default class Dashboard extends Component {
         </Button>
         <Left />
         <Body style={{flexDirection: 'row'}}>
-        <Icon name='cog' style={{color: 'white', padding: 10}} />
-        <Title>Settings</Title>
+        <Title>Dashboard</Title>
         </Body>
       </Header>
       <Content>

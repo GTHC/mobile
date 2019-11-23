@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Header, Content, Footer, FooterTab, Button, Icon, Text } from 'native-base';
+import { NativeRouter, Route, Link } from 'react-router-native';
 export default class FooterTabsIconTextExample extends Component {
   render() {
     return (
@@ -14,11 +15,15 @@ export default class FooterTabsIconTextExample extends Component {
               <Text uppercase={false}>Notifications</Text>
             </Button>
             <Button vertical>
+              <Link to={'/shifts'}>
               <Icon name="calendar" />
+              </Link>
               <Text uppercase={false}>Calendar</Text>
             </Button>
             <Button vertical>
+              <Link to={'/settings'}>
               <Icon name="cog" />
+              </Link>
               <Text uppercase={false}>Settings</Text>
             </Button>
           </FooterTab>
