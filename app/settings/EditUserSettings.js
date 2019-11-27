@@ -9,7 +9,7 @@ import moment from 'moment';
 
 import { getAllShifts } from '../redux/actions/shifts';
 import { renderItem, renderEmptyDate, rowHasChanged } from '../components/AgendaItems';
-import Footer from './Footer';
+import AppFooter from '../containers/AppFooter';
 
 import { Toast, Button, Icon, Body, Left, Right, Title, Text, Container, Header, Content, Form, Item, Input, Label } from 'native-base';
 
@@ -34,16 +34,14 @@ class EditUserSettings extends Component<Props> {
           <Container>
           <Header>
           <Button iconleft primary>
-          <Link to={'/'}>
+          <Link to={'/settings'}>
           <Icon name='arrow-back' />
           </Link>
           </Button>
           <Left />
-          <Button iconLeft primary>
+          <Body style={{flexDirection: 'row'}}>
           <Title>User Settings</Title>
-          <Icon name='cog' />
-          </Button>
-          <Right />
+          </Body>
           </Header>
             <Content>
               <Form style={{margin: 25}}>
@@ -62,6 +60,7 @@ class EditUserSettings extends Component<Props> {
               </Button>
               </View>
             </Content>
+            <AppFooter />
           </Container>
     );
   }

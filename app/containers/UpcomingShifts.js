@@ -6,9 +6,11 @@ import { Agenda } from 'react-native-calendars';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import moment from 'moment';
+import AppFooter from './AppFooter';
 
 import { getAllShifts } from '../redux/actions/shifts';
 import { renderItem, renderEmptyDate, rowHasChanged } from '../components/AgendaItems';
+import { Container } from 'native-base';
 
 import { Link } from 'react-router-native';
 
@@ -28,6 +30,7 @@ class UpcomingShifts extends Component<Props> {
       .format('YYYY-MM-DD');
 
     return (
+      <Container>
       <Agenda
         items={{
           '2019-11-13': [{ text: 'Anesu, Aman', time: '3 - 5PM' }],
@@ -46,6 +49,8 @@ class UpcomingShifts extends Component<Props> {
         pastScrollRange={3}
         futureScrollRange={3}
       />
+      <AppFooter />
+      </Container>
     );
   }
 }

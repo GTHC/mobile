@@ -6,7 +6,7 @@ import { View, Dimensions, Text } from 'react-native';
 
 import { Link } from 'react-router-native';
 
-export default class Dashboard extends Component {
+export default class Notifications extends Component {
   render() {
     return (
       <Container>
@@ -18,7 +18,7 @@ export default class Dashboard extends Component {
           </Button>
           <Left />
           <Body style={{flexDirection: 'row'}}>
-          <Title>Dashboard</Title>
+          <Title>Notifications</Title>
           </Body>
         </Header>
         <Content>

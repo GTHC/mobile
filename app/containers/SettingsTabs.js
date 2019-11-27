@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { Button, Icon, Title, Right, Left, Container, Header, Content, Tab, Tabs, Body } from 'native-base';
-import TeamSettings from './TeamSettings';
-import UserSettings from './UserSettings';
-import EditUserSettings from './EditUserSettings';
-import Footer from './Footer';
+import TeamSettings from '../settings/TeamSettings';
+import UserSettings from '../settings/UserSettings';
+import AppFooter from './AppFooter';
 
 import { View, Dimensions, Text } from 'react-native';
 
@@ -15,13 +14,12 @@ export default class SettingsTabs extends Component {
       <Container>
       <Header>
         <Button iconleft primary>
-          <Link to={'/shifts'}>
+          <Link to={'/'}>
             <Icon name='arrow-back' />
           </Link>
         </Button>
         <Left />
         <Body style={{flexDirection: 'row'}}>
-        <Icon name='cog' style={{color: 'white', padding: 10}} />
         <Title>Settings</Title>
         </Body>
       </Header>
@@ -35,6 +33,7 @@ export default class SettingsTabs extends Component {
           </Tab>
         </Tabs>
         </Content>
+        <AppFooter />
       </Container>
     );
   }

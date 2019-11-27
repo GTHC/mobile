@@ -3,12 +3,13 @@
 import React, { Component } from 'react';
 import { Agenda } from 'react-native-calendars';
 import { connect } from 'react-redux';
+import { StyleSheet, View } from 'react-native';
 import { bindActionCreators } from 'redux';
 import moment from 'moment';
 
 import { getAllShifts } from '../redux/actions/shifts';
 import { renderItem, renderEmptyDate, rowHasChanged } from '../components/AgendaItems';
-import Footer from './Footer';
+import AppFooter from '../containers/AppFooter';
 
 import { Toast, Button, Icon, Body, Left, Right, Title, Text, Container, Header, Content, Form, Item, Input, Label } from 'native-base';
 
@@ -17,6 +18,11 @@ import { Link } from 'react-router-native';
 type Props = {
   getAllShifts: () => void,
 };
+
+const styles = StyleSheet.create({
+
+});
+
 
 class EditTeamSettings extends Component<Props> {
   componentWillMount() {
@@ -29,19 +35,17 @@ class EditTeamSettings extends Component<Props> {
           <Container>
           <Header>
           <Button iconleft primary>
-          <Link to={'/'}>
+          <Link to={'/settings'}>
           <Icon name='arrow-back' />
           </Link>
           </Button>
           <Left />
-          <Button iconLeft primary>
+          <Body style={{flexDirection: 'row'}}>
           <Title>Team Settings</Title>
-          <Icon name='cog' />
-          </Button>
-          <Right />
+          </Body>
           </Header>
             <Content>
-              <Form>
+              <Form style={{margin: 25}}>
                 <Item floatingLabel>
                   <Label>Team Name</Label>
                   <Input />
@@ -51,10 +55,13 @@ class EditTeamSettings extends Component<Props> {
                   <Input />
                 </Item>
               </Form>
-              <Button primary block style= {{marginTop: 40}}>
+              <View style={styles.content}>
+              <Button primary block style= {{marginTop: 40, margin: 75}}>
               <Text> Change Team Settings </Text>
               </Button>
+              </View>
             </Content>
+            <AppFooter />
           </Container>
     );
   }

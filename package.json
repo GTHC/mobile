@@ -33,6 +33,7 @@
     "react-navigation": "^2.14.2",
     "react-redux": "^6.0.1",
     "react-router-native": "^5.1.2",
+    "react-router-native-button": "^1.2.0",
     "react-router-redux": "^4.0.8",
     "redux": "^4.0.4",
     "redux-devtools": "^3.5.0",
