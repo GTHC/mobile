@@ -1,16 +1,4 @@
-// @flow
-
-// Types
-type State = {
-  data: any,
-  isLoggedIn: boolean,
-  isLoading: boolean,
-  error: boolean,
-  errorMessage: string,
-  passwordResetSuccess: boolean,
-};
-
-const initialState: State = {
+const initialState = {
   data: {},
   isLoggedIn: false,
   isLoading: false,
@@ -19,7 +7,7 @@ const initialState: State = {
   passwordResetSuccess: false,
 };
 
-const user = (state: State = initialState, action: any) => {
+const user = (state = initialState, action) => {
   const beginState = {
     ...state,
     isLoading: true,
@@ -38,7 +26,7 @@ const user = (state: State = initialState, action: any) => {
         ...initialState,
         isLoading: false,
         error: true,
-        errorMessage: action.payload.response.data.message,
+        errorMessage: action.payload.response,
         errorObject: action.payload,
       };
     }
@@ -143,16 +131,22 @@ const user = (state: State = initialState, action: any) => {
     }
 
     case 'END_UPDATE_USER': {
-      const { data } = state;
-      data.user = action.payload.data.data;
       return {
         ...state,
-        data,
+        data: action.payload.data.data,
         isLoading: false,
       };
     }
 
-    // GET /api/v1/user/session
+    case 'END_UPDATE_USER_SIGNUP': {
+      return {
+        ...state,
+        data: action.payload.data.data.user,
+        isLoading: false,
+      };
+    }
+
+    // GET /api/v1/session
     case 'BEGIN_SESS_CHECK': {
       return beginState;
     }
@@ -166,10 +160,12 @@ const user = (state: State = initialState, action: any) => {
     }
 
     case 'END_SESS_CHECK': {
+      const response = action.payload.data;
       return {
         ...state,
         isLoading: false,
-        isLoggedIn: action.payload.data.status && state.data,
+        isLoggedIn: response.status,
+        data: response.data.user,
       };
     }
 
@@ -191,13 +187,6 @@ const user = (state: State = initialState, action: any) => {
         ...state,
         isLoading: false,
         passwordResetSuccess: true,
-      };
-    }
-
-    case 'GET_RESET_PASSWORD': {
-      return {
-        ...state,
-        passwordResetSuccess: false,
       };
     }
 
@@ -235,13 +224,13 @@ const user = (state: State = initialState, action: any) => {
         ...state,
         isLoading: false,
         error: true,
-        errorMessage: action.payload.response.data.message,
+        errorMessage: action.payload.message,
       };
     }
 
     case 'END_POST_AVATAR': {
-      const { data } = state;
-      data.user.avatarURL = action.payload.data.data;
+      const data = state.data;
+      data.avatarURL = action.payload.data.data;
       return {
         ...state,
         isLoading: false,
@@ -261,13 +250,13 @@ const user = (state: State = initialState, action: any) => {
         ...state,
         isLoading: false,
         error: true,
-        errorMessage: action.payload.response.data.message,
+        errorMessage: action.payload.message,
       };
     }
 
     case 'END_POST_AVAIL': {
-      const { data } = state;
-      data.user.availabilities = action.payload.data.data;
+      const data = state.data;
+      data.availabilities = action.payload.data.data;
       return {
         ...state,
         isLoading: false,
@@ -290,8 +279,8 @@ const user = (state: State = initialState, action: any) => {
     }
 
     case 'END_DELETE_AVAIL': {
-      const { data } = state;
-      data.user.availabilities = action.payload.data.data;
+      const data = state.data;
+      data.availabilities = action.payload.data.data;
       return {
         ...state,
         isLoading: false,
@@ -301,8 +290,8 @@ const user = (state: State = initialState, action: any) => {
 
     // remove dragdrop lag
     case 'AVAIL_DRAG_DROP': {
-      const { data } = state;
-      data.user.availabilities = action.payload;
+      const data = state.data;
+      data.availabilities = action.payload;
       return {
         ...state,
         data,

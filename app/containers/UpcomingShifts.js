@@ -11,12 +11,51 @@ import { renderItem, renderEmptyDate, rowHasChanged } from '../components/Agenda
 
 type Props = {
   getAllShifts: () => void,
+  shifts: any,
 };
 
 class UpcomingShifts extends Component<Props> {
   componentWillMount() {
     this.props.getAllShifts();
   }
+
+  groupShiftsByDate = (shifts: any) => {
+    const groups = {};
+    shifts.forEach(shift => {
+      const date = moment(shift.start).format('YYYY-MM-DD');
+      if (groups[date] === undefined) {
+        groups[date] = [shift];
+      } else {
+        groups[date].push(shift);
+      }
+    });
+
+    return groups;
+  };
+
+  formatShifts = () => {
+    const shifts = this.groupShiftsByDate(this.props.shifts.team_shifts);
+    const items = {};
+
+    Object.keys(shifts).forEach(date => {
+      const shiftsForDay = [];
+
+      shifts[date].forEach(shift => {
+        const start = moment(shift.start);
+        const end = moment(shift.end);
+
+        const description = {
+          text: shift.title,
+          time: `${start.format('hh:mm A')} - ${end.format('hh:mm A')}`,
+        };
+        shiftsForDay.push(description);
+      });
+
+      items[date] = shiftsForDay;
+    });
+
+    return items;
+  };
 
   render() {
     const today = moment(new Date()).format('YYYY-MM-DD');
@@ -26,21 +65,13 @@ class UpcomingShifts extends Component<Props> {
 
     return (
       <Agenda
-        items={{
-          '2019-10-13': [{ text: 'Anesu, Aman', time: '3 - 5PM' }],
-          '2019-10-12': [{ text: 'Anesu, Rikki', time: '11AM - 2PM' }],
-          '2019-10-10': [
-            { text: 'Anesu, Vinit', time: '12 - 5PM' },
-            { text: 'Anesu, Gouttham', time: '1AM - 8AM' },
-          ],
-        }}
+        items={this.formatShifts()}
+        refreshing={this.props.shifts.isLoading}
         rowHasChanged={rowHasChanged}
         renderItem={renderItem}
         renderEmptyDate={renderEmptyDate}
         selected={today}
-        minDate={today}
         maxDate={weekFromNow}
-        pastScrollRange={3}
         futureScrollRange={3}
       />
     );

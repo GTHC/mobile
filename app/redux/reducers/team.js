@@ -1,21 +1,11 @@
-// @flow
-
-// Types
-type State = {
-  data: {},
-  isLoading: boolean,
-  error: boolean,
-  errorMessage: string,
-};
-
-const initialState: State = {
+const initialState = {
   data: {},
   isLoading: false,
   error: false,
   errorMessage: '',
 };
 
-const team = (state: State = initialState, action: any) => {
+const team = (state = initialState, action) => {
   switch (action.type) {
     case 'BEGIN_GET_TEAM': {
       return {
@@ -63,6 +53,23 @@ const team = (state: State = initialState, action: any) => {
       return {
         ...state,
         data: action.payload.data.data,
+        isLoading: false,
+      };
+    }
+
+    case 'END_SESS_CHECK': {
+      const response = action.payload.data;
+      return {
+        ...state,
+        data: response.data.team,
+      };
+    }
+
+    // if signup is successfull capture team data
+    case 'END_UPDATE_USER_SIGNUP': {
+      return {
+        ...state,
+        data: action.payload.data.data.team,
         isLoading: false,
       };
     }
