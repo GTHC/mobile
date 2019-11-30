@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 // import Login from './Login';
+import TeamCalendar from './TeamCalendar';
 import UpcomingShifts from './UpcomingShifts';
 import { configureStore } from '../redux/utils/store';
 
@@ -14,7 +15,7 @@ export default class App extends Component<Props> {
 
     return (
       <Provider store={store}>
-        <UpcomingShifts />
+        <TeamCalendar />
       </Provider>
     );
   }
