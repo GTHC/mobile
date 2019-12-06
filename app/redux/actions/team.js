@@ -23,4 +23,4 @@ const updateTeam = (id, data) =>
     data,
   });
 
-export { getTeam, updateTeam };
+export {getTeam, updateTeam};

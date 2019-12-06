@@ -13,4 +13,4 @@ const getPosts = () =>
     url: '/posts.json',
   });
 
-export { getPosts };
+export {getPosts};

@@ -1,5 +1,5 @@
 // @flow
-import { Platform, StyleSheet } from 'react-native';
+import {Platform, StyleSheet} from 'react-native';
 
 const leftMargin = 50 - 1;
 

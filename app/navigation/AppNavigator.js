@@ -1,13 +1,20 @@
 // @flow
 
 import React from 'react';
-import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import BottomTabNavigator from './BottomTabNavigator';
+import Login from '../containers/Login';
 
-const MainStack = createSwitchNavigator({
-  App: {
-    screen: BottomTabNavigator,
-  },
-});
+import {createStackNavigator} from '@react-navigation/stack';
 
-export default MainStack;
+const Stack = createStackNavigator();
+
+function AppNavigator() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="Home" component={BottomTabNavigator} />
+      <Stack.Screen name="Login" component={Login} />
+    </Stack.Navigator>
+  );
+}
+
+export default AppNavigator;

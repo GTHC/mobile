@@ -1,23 +1,19 @@
 // @flow
 
 import React from 'react';
-import { createBottomTabNavigator } from 'react-navigation-tabs';
-import Login from '../containers/Login';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import TeamCalendar from '../containers/TeamCalendar';
 import UpcomingShifts from '../containers/UpcomingShifts';
 
-const BottomTabNavigator = createBottomTabNavigator({
-  Login: {
-    screen: Login,
-    navigationOptions: {
-      tabBarLabel: 'Login',
-    },
-  },
-  Shifts: {
-    screen: UpcomingShifts,
-    navigationOptions: {
-      tabBarLabel: 'Shifts',
-    },
-  },
-});
+const Tab = createBottomTabNavigator();
 
-export default BottomTabNavigator;
+function BottomTabs() {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen name="Calendar" component={TeamCalendar} />
+      <Tab.Screen name="Shifts" component={UpcomingShifts} />
+    </Tab.Navigator>
+  );
+}
+
+export default BottomTabs;

@@ -75,4 +75,4 @@ const dragDropUpdate = (oldShifts: any, newShift: any) => {
   };
 };
 
-export { getAllShifts, updateShift, createShift, deleteShift, addUserToShift, dragDropUpdate };
+export {getAllShifts, updateShift, createShift, deleteShift, addUserToShift, dragDropUpdate};

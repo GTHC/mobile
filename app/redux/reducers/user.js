@@ -108,7 +108,7 @@ const user = (state = initialState, action) => {
     }
 
     case 'END_UPDATE_TEAM': {
-      const { data } = state;
+      const {data} = state;
       data.team = action.payload.data.data;
       return {
         ...state,

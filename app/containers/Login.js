@@ -1,6 +1,6 @@
 // @flow
 
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
 // UI
 import LoginForm from '../components/LoginForm';

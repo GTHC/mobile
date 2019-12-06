@@ -7,8 +7,8 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react/prop-types */
 
-import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
-import React, { PureComponent } from 'react';
+import {View, Text, ScrollView, TouchableOpacity} from 'react-native';
+import React, {PureComponent} from 'react';
 import moment from 'moment';
 import _ from 'lodash';
 import populateEvents from '../utils/Packer';
@@ -28,7 +28,8 @@ export default class DayView extends PureComponent<Props> {
     this.calendarHeight = (props.end - props.start) * 100;
     const width = props.width - LEFT_MARGIN;
     const packedEvents = populateEvents(props.events, width, props.start);
-    let initPosition = _.min(_.map(packedEvents, 'top')) - this.calendarHeight / (props.end - props.start);
+    let initPosition =
+      _.min(_.map(packedEvents, 'top')) - this.calendarHeight / (props.end - props.start);
     initPosition = initPosition < 0 ? 0 : initPosition;
     this.state = {
       _scrollY: initPosition,
@@ -61,8 +62,8 @@ export default class DayView extends PureComponent<Props> {
 
   _renderRedLine() {
     const offset = 100;
-    const { format24h } = this.props;
-    const { width, styles } = this.props;
+    const {format24h} = this.props;
+    const {width, styles} = this.props;
     const timeNowHour = moment().hour();
     const timeNowMin = moment().minutes();
     return (
@@ -80,7 +81,7 @@ export default class DayView extends PureComponent<Props> {
   }
 
   _renderLines() {
-    const { format24h, start, end } = this.props;
+    const {format24h, start, end} = this.props;
     const offset = this.calendarHeight / (end - start);
 
     return range(start, end + 1).map((i, index) => {
@@ -96,30 +97,27 @@ export default class DayView extends PureComponent<Props> {
       } else {
         timeText = !format24h ? `${i - 12} PM` : i;
       }
-      const { width, styles } = this.props;
+      const {width, styles} = this.props;
       return [
-        <Text key={`timeLabel${i}`} style={[styles.timeLabel, { top: offset * index - 6 }]}>
+        <Text key={`timeLabel${i}`} style={[styles.timeLabel, {top: offset * index - 6}]}>
           {timeText}
         </Text>,
         i === start ? null : (
-          <View
-            key={`line${i}`}
-            style={[styles.line, { top: offset * index, width: width - 20 }]}
-          />
+          <View key={`line${i}`} style={[styles.line, {top: offset * index, width: width - 20}]} />
         ),
         <View
           key={`lineHalf${i}`}
-          style={[styles.line, { top: offset * (index + 0.5), width: width - 20 }]}
+          style={[styles.line, {top: offset * (index + 0.5), width: width - 20}]}
         />,
       ];
     });
   }
 
   _renderTimeLabels() {
-    const { styles, start, end } = this.props;
+    const {styles, start, end} = this.props;
     const offset = this.calendarHeight / (end - start);
     return range(start, end).map((item, i) => (
-      <View key={`line${i}`} style={[styles.line, { top: offset * i }]} />
+      <View key={`line${i}`} style={[styles.line, {top: offset * i}]} />
     ));
   }
 
@@ -128,8 +126,8 @@ export default class DayView extends PureComponent<Props> {
   }
 
   _renderEvents() {
-    const { styles } = this.props;
-    const { packedEvents } = this.state;
+    const {styles} = this.props;
+    const {packedEvents} = this.state;
     const events = packedEvents.map((event, i) => {
       const style = {
         left: event.left,
@@ -151,8 +149,7 @@ export default class DayView extends PureComponent<Props> {
           activeOpacity={0.5}
           onPress={() => this._onEventTapped(this.props.events[event.index])}
           key={i}
-          style={[styles.event, style, event.color && eventColor]}
-        >
+          style={[styles.event, style, event.color && eventColor]}>
           {this.props.renderEvent ? (
             this.props.renderEvent(event)
           ) : (
@@ -167,11 +164,7 @@ export default class DayView extends PureComponent<Props> {
               ) : null}
               {numberOfLines > 2 ? (
                 <Text style={styles.eventTimes} numberOfLines={1}>
-                  {moment(event.start).format(formatTime)}
-                  {' '}
--
-                  {' '}
-                  {moment(event.end).format(formatTime)}
+                  {moment(event.start).format(formatTime)} - {moment(event.end).format(formatTime)}
                 </Text>
               ) : null}
             </View>
@@ -182,18 +175,17 @@ export default class DayView extends PureComponent<Props> {
 
     return (
       <View>
-        <View style={{ marginLeft: LEFT_MARGIN }}>{events}</View>
+        <View style={{marginLeft: LEFT_MARGIN}}>{events}</View>
       </View>
     );
   }
 
   render() {
-    const { styles } = this.props;
+    const {styles} = this.props;
     return (
       <ScrollView
         ref={ref => (this._scrollView = ref)}
-        contentContainerStyle={[styles.contentStyle, { width: this.props.width }]}
-      >
+        contentContainerStyle={[styles.contentStyle, {width: this.props.width}]}>
         {this._renderLines()}
         {this._renderEvents()}
         {this._renderRedLine()}

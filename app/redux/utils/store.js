@@ -1,8 +1,8 @@
 // @flow
 
-import { routerReducer, routerMiddleware } from 'react-router-redux';
-import { createStore, applyMiddleware, compose } from 'redux';
-import { persistStore, persistCombineReducers } from 'redux-persist';
+import {routerReducer, routerMiddleware} from 'react-router-redux';
+import {createStore, applyMiddleware, compose} from 'redux';
+import {persistStore, persistCombineReducers} from 'redux-persist';
 import AsyncStorage from '@react-native-community/async-storage';
 import thunkMiddleware from 'redux-thunk';
 
@@ -26,7 +26,7 @@ function configureStore() {
   const store = createStore(reducers, undefined, enhancer);
   const persistor = persistStore(store);
 
-  return { store, persistor };
+  return {store, persistor};
 }
 
-export { configureStore };
+export {configureStore};

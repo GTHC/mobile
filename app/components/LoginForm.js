@@ -1,10 +1,10 @@
 // @flow
 
-import React, { PureComponent } from 'react';
-import { View, StyleSheet, Button } from 'react-native';
-import { authorize, prefetchConfiguration } from 'react-native-app-auth';
+import React, {PureComponent} from 'react';
+import {View, StyleSheet, Button} from 'react-native';
+import {authorize, prefetchConfiguration} from 'react-native-app-auth';
 import Config from 'react-native-config';
-import { storeData as session } from '../utils/Storage';
+import {storeData as session} from '../utils/Storage';
 
 const config = {
   serviceConfiguration: {
@@ -23,7 +23,7 @@ export default class LoginForm extends PureComponent {
   handleLoginPress = () => {
     console.log('rip', Config.CLIENT_ID);
     authorize(config).then(res => {
-      const { idToken } = res;
+      const {idToken} = res;
       session('auth', idToken);
     });
   };

@@ -36,13 +36,13 @@ const teams = (state = initalState, action) => {
         const color = tentType.includes('black')
           ? 'black'
           : tentType.includes('blue')
-            ? 'blue'
-            : null;
+          ? 'blue'
+          : null;
         return {
           key: team.id,
           value: team.id,
           text: `${team.name}`,
-          label: { color, empty: true, circular: true },
+          label: {color, empty: true, circular: true},
         };
       });
       return {

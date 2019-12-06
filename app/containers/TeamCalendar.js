@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import { Dimensions, View } from 'react-native';
+import React, {Component} from 'react';
+import {Dimensions, View} from 'react-native';
 
 import EventCalendar from '../components/EventCalendar';
 
-const { width } = Dimensions.get('window');
+const {width} = Dimensions.get('window');
 
 export default class TeamCalendar extends Component {
   constructor(props) {
@@ -105,7 +105,7 @@ export default class TeamCalendar extends Component {
 
   render() {
     return (
-      <View style={{ flex: 1, marginTop: 20 }}>
+      <View style={{flex: 1, marginTop: 20}}>
         <EventCalendar
           eventTapped={this._eventTapped.bind(this)}
           events={this.state.events}

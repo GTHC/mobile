@@ -38,7 +38,7 @@ const checkSession = () =>
 
 const postAvatar = data =>
   crud({
-    headers: { 'Content-Type': 'form-data' },
+    headers: {'Content-Type': 'form-data'},
     dispatch: {
       begin: 'BEGIN_POST_AVATAR',
       fail: 'FAILED_POST_AVATAR',
