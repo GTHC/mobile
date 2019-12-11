@@ -14,7 +14,7 @@ type Props = any;
 export default class App extends Component<Props> {
   constructor(properties) {
     super(properties);
-    OneSignal.init("TBD ONE_Signal_ID");
+    OneSignal.init("b290fd9a-eedf-44b0-8bfd-6a37646957b6");
 
     OneSignal.addEventListener('received', this.onReceived);
     OneSignal.addEventListener('opened', this.onOpened);
