@@ -9,6 +9,8 @@ import moment from 'moment';
 import {getAllShifts} from '../redux/actions/shifts';
 import {renderItem, renderEmptyDate, rowHasChanged} from '../components/AgendaItems';
 
+import UserSettingsModal from './UserSettingsModal';
+
 import {
   Container,
   Content,
@@ -51,12 +53,7 @@ class UserSettings extends Component<Props> {
               <Text>Phone: 5593266408</Text>
             </CardItem>
           </Card>
-          <Button
-            block
-            style={{marginTop: 40, margin: 50, backgroundColor: '#00adf5'}}
-            onPress={() => Alert.alert('Simple Button pressed')}>
-            <Text> Edit User Information </Text>
-          </Button>
+          <UserSettingsModal />
         </Content>
       </Container>
     );
@@ -75,7 +72,4 @@ const mapDispatchToProps = dispatch =>
     dispatch,
   );
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(UserSettings);
+export default connect(mapStateToProps, mapDispatchToProps)(UserSettings);

@@ -43,10 +43,6 @@ class EditTeamSettings extends Component<Props> {
     return (
       <Container>
         <Header>
-          <Button iconleft primary>
-            <Icon name="arrow-back" />
-          </Button>
-          <Left />
           <Body style={{flexDirection: 'row'}}>
             <Title>Team Settings</Title>
           </Body>
@@ -85,7 +81,4 @@ const mapDispatchToProps = dispatch =>
     dispatch,
   );
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(EditTeamSettings);
+export default connect(mapStateToProps, mapDispatchToProps)(EditTeamSettings);
