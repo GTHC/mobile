@@ -17,8 +17,11 @@
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* gthcTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* gthcTests.m */; };
+		41D6FAB98CF9B556477D4451 /* libPods-OneSignalNotificationServiceExtension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03496313C813358484FD8383 /* libPods-OneSignalNotificationServiceExtension.a */; };
 		D65935BC06D8D20A82C7AD99 /* libPods-gthcTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A4924559CDD3E4ED7DA245E /* libPods-gthcTests.a */; };
 		DA8CB43523A3133E00E370B7 /* libPods-gthc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA8CB43423A3133E00E370B7 /* libPods-gthc.a */; };
+		DA9487C423A327AE0076458B /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = DA9487C323A327AE0076458B /* NotificationService.m */; };
+		DA9487C823A327AE0076458B /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = DA9487C023A327AE0076458B /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		FD682B822808A81105935118 /* libPods-gthc-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D10EB75FED4571441DEF1E8 /* libPods-gthc-tvOS.a */; };
 /* End PBXBuildFile section */
 
@@ -37,13 +40,35 @@
 			remoteGlobalIDString = 2D02E47A1E0B4A5D006451C7;
 			remoteInfo = "gthc-tvOS";
 		};
+		DA9487C623A327AE0076458B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DA9487BF23A327AE0076458B;
+			remoteInfo = OneSignalNotificationServiceExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DA9487CC23A327AE0076458B /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				DA9487C823A327AE0076458B /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		00E356EE1AD99517003FC87E /* gthcTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = gthcTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* gthcTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = gthcTests.m; sourceTree = "<group>"; };
+		03496313C813358484FD8383 /* libPods-OneSignalNotificationServiceExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OneSignalNotificationServiceExtension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07F961A680F5B00A75B9A /* gthc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gthc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = gthc/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = gthc/AppDelegate.m; sourceTree = "<group>"; };
@@ -56,6 +81,7 @@
 		2D02E47B1E0B4A5D006451C7 /* gthc-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "gthc-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* gthc-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "gthc-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D10EB75FED4571441DEF1E8 /* libPods-gthc-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-gthc-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		34C0689C8227132A9B0EE336 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
 		3A4924559CDD3E4ED7DA245E /* libPods-gthcTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-gthcTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		53DCFB9717EC88352697C729 /* libPods-gthc.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-gthc.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D2DC3C8827D733B5FB69DA5 /* Pods-gthc-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gthc-tvOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-gthc-tvOS/Pods-gthc-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -63,7 +89,14 @@
 		67C70AA6AFCC661281404AD8 /* Pods-gthc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gthc.debug.xcconfig"; path = "Pods/Target Support Files/Pods-gthc/Pods-gthc.debug.xcconfig"; sourceTree = "<group>"; };
 		97C0469C774187B04B8AA717 /* Pods-gthc.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gthc.release.xcconfig"; path = "Pods/Target Support Files/Pods-gthc/Pods-gthc.release.xcconfig"; sourceTree = "<group>"; };
 		997154568F7B988AB8BB5184 /* libPods-gthc-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-gthc-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3EC3DA89C5C1A688A9AD182 /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		DA8CB43423A3133E00E370B7 /* libPods-gthc.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPods-gthc.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA9487BB23A3272B0076458B /* gthc.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = gthc.entitlements; path = gthc/gthc.entitlements; sourceTree = "<group>"; };
+		DA9487C023A327AE0076458B /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA9487C223A327AE0076458B /* NotificationService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationService.h; sourceTree = "<group>"; };
+		DA9487C323A327AE0076458B /* NotificationService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationService.m; sourceTree = "<group>"; };
+		DA9487C523A327AE0076458B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DA9487CD23A329BB0076458B /* OneSignalNotificationServiceExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OneSignalNotificationServiceExtension.entitlements; sourceTree = "<group>"; };
 		E1615C72E46EB483E6899396 /* Pods-gthc-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gthc-tvOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-gthc-tvOSTests/Pods-gthc-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		E94E5646B618D7C95AA99ABD /* Pods-gthcTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gthcTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-gthcTests/Pods-gthcTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -103,6 +136,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DA9487BD23A327AE0076458B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				41D6FAB98CF9B556477D4451 /* libPods-OneSignalNotificationServiceExtension.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -126,6 +167,7 @@
 		13B07FAE1A68108700A75B9A /* gthc */ = {
 			isa = PBXGroup;
 			children = (
+				DA9487BB23A3272B0076458B /* gthc.entitlements */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -147,6 +189,7 @@
 				2D10EB75FED4571441DEF1E8 /* libPods-gthc-tvOS.a */,
 				997154568F7B988AB8BB5184 /* libPods-gthc-tvOSTests.a */,
 				3A4924559CDD3E4ED7DA245E /* libPods-gthcTests.a */,
+				03496313C813358484FD8383 /* libPods-OneSignalNotificationServiceExtension.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -162,6 +205,8 @@
 				E1615C72E46EB483E6899396 /* Pods-gthc-tvOSTests.release.xcconfig */,
 				17EA2A54CC61C9E95D632D2A /* Pods-gthcTests.debug.xcconfig */,
 				E94E5646B618D7C95AA99ABD /* Pods-gthcTests.release.xcconfig */,
+				C3EC3DA89C5C1A688A9AD182 /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */,
+				34C0689C8227132A9B0EE336 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -179,6 +224,7 @@
 				13B07FAE1A68108700A75B9A /* gthc */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* gthcTests */,
+				DA9487C123A327AE0076458B /* OneSignalNotificationServiceExtension */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				549B7D616CAE53ED2FD101B9 /* Pods */,
@@ -195,8 +241,20 @@
 				00E356EE1AD99517003FC87E /* gthcTests.xctest */,
 				2D02E47B1E0B4A5D006451C7 /* gthc-tvOS.app */,
 				2D02E4901E0B4A5D006451C7 /* gthc-tvOSTests.xctest */,
+				DA9487C023A327AE0076458B /* OneSignalNotificationServiceExtension.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		DA9487C123A327AE0076458B /* OneSignalNotificationServiceExtension */ = {
+			isa = PBXGroup;
+			children = (
+				DA9487CD23A329BB0076458B /* OneSignalNotificationServiceExtension.entitlements */,
+				DA9487C223A327AE0076458B /* NotificationService.h */,
+				DA9487C323A327AE0076458B /* NotificationService.m */,
+				DA9487C523A327AE0076458B /* Info.plist */,
+			);
+			path = OneSignalNotificationServiceExtension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,10 +289,12 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				DA9487CC23A327AE0076458B /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				DA9487C723A327AE0076458B /* PBXTargetDependency */,
 			);
 			name = gthc;
 			productName = gthc;
@@ -280,6 +340,24 @@
 			productReference = 2D02E4901E0B4A5D006451C7 /* gthc-tvOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		DA9487BF23A327AE0076458B /* OneSignalNotificationServiceExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DA9487C923A327AE0076458B /* Build configuration list for PBXNativeTarget "OneSignalNotificationServiceExtension" */;
+			buildPhases = (
+				0A7EFC7A2B207B6B2EA0089B /* [CP] Check Pods Manifest.lock */,
+				DA9487BC23A327AE0076458B /* Sources */,
+				DA9487BD23A327AE0076458B /* Frameworks */,
+				DA9487BE23A327AE0076458B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OneSignalNotificationServiceExtension;
+			productName = OneSignalNotificationServiceExtension;
+			productReference = DA9487C023A327AE0076458B /* OneSignalNotificationServiceExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -306,9 +384,14 @@
 						ProvisioningStyle = Automatic;
 						TestTargetID = 2D02E47A1E0B4A5D006451C7;
 					};
+					DA9487BF23A327AE0076458B = {
+						CreatedOnToolsVersion = 11.2.1;
+						DevelopmentTeam = U66Y9525XJ;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "gthc" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "GTHC" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -326,6 +409,7 @@
 				00E356ED1AD99517003FC87E /* gthcTests */,
 				2D02E47A1E0B4A5D006451C7 /* gthc-tvOS */,
 				2D02E48F1E0B4A5D006451C7 /* gthc-tvOSTests */,
+				DA9487BF23A327AE0076458B /* OneSignalNotificationServiceExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -362,6 +446,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DA9487BE23A327AE0076458B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -378,6 +469,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+		};
+		0A7EFC7A2B207B6B2EA0089B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OneSignalNotificationServiceExtension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
 		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -556,6 +669,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DA9487BC23A327AE0076458B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA9487C423A327AE0076458B /* NotificationService.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -568,6 +689,11 @@
 			isa = PBXTargetDependency;
 			target = 2D02E47A1E0B4A5D006451C7 /* gthc-tvOS */;
 			targetProxy = 2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */;
+		};
+		DA9487C723A327AE0076458B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DA9487BF23A327AE0076458B /* OneSignalNotificationServiceExtension */;
+			targetProxy = DA9487C623A327AE0076458B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -634,6 +760,7 @@
 			baseConfigurationReference = 67C70AA6AFCC661281404AD8 /* Pods-gthc.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = gthc/gthc.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = U66Y9525XJ;
@@ -644,7 +771,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gthc.gthc;
 				PRODUCT_NAME = gthc;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -655,6 +782,7 @@
 			baseConfigurationReference = 97C0469C774187B04B8AA717 /* Pods-gthc.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = gthc/gthc.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = U66Y9525XJ;
 				INFOPLIST_FILE = gthc/Info.plist;
@@ -664,7 +792,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gthc.gthc;
 				PRODUCT_NAME = gthc;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -879,6 +1007,60 @@
 			};
 			name = Release;
 		};
+		DA9487CA23A327AE0076458B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C3EC3DA89C5C1A688A9AD182 /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = OneSignalNotificationServiceExtension/OneSignalNotificationServiceExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = U66Y9525XJ;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gthc.gthc.OneSignalNotificationServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DA9487CB23A327AE0076458B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 34C0689C8227132A9B0EE336 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = OneSignalNotificationServiceExtension/OneSignalNotificationServiceExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = U66Y9525XJ;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gthc.gthc.OneSignalNotificationServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -918,11 +1100,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "gthc" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "GTHC" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
 				83CBBA211A601CBA00E9B192 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DA9487C923A327AE0076458B /* Build configuration list for PBXNativeTarget "OneSignalNotificationServiceExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DA9487CA23A327AE0076458B /* Debug */,
+				DA9487CB23A327AE0076458B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
