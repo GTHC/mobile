@@ -18,7 +18,7 @@
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* gthcTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* gthcTests.m */; };
 		D65935BC06D8D20A82C7AD99 /* libPods-gthcTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A4924559CDD3E4ED7DA245E /* libPods-gthcTests.a */; };
-		F5775566612E9D32D2E474D2 /* libPods-gthc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 53DCFB9717EC88352697C729 /* libPods-gthc.a */; };
+		DA8CB43523A3133E00E370B7 /* libPods-gthc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA8CB43423A3133E00E370B7 /* libPods-gthc.a */; };
 		FD682B822808A81105935118 /* libPods-gthc-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D10EB75FED4571441DEF1E8 /* libPods-gthc-tvOS.a */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +63,7 @@
 		67C70AA6AFCC661281404AD8 /* Pods-gthc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gthc.debug.xcconfig"; path = "Pods/Target Support Files/Pods-gthc/Pods-gthc.debug.xcconfig"; sourceTree = "<group>"; };
 		97C0469C774187B04B8AA717 /* Pods-gthc.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gthc.release.xcconfig"; path = "Pods/Target Support Files/Pods-gthc/Pods-gthc.release.xcconfig"; sourceTree = "<group>"; };
 		997154568F7B988AB8BB5184 /* libPods-gthc-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-gthc-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA8CB43423A3133E00E370B7 /* libPods-gthc.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPods-gthc.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1615C72E46EB483E6899396 /* Pods-gthc-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gthc-tvOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-gthc-tvOSTests/Pods-gthc-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		E94E5646B618D7C95AA99ABD /* Pods-gthcTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gthcTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-gthcTests/Pods-gthcTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -82,7 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F5775566612E9D32D2E474D2 /* libPods-gthc.a in Frameworks */,
+				DA8CB43523A3133E00E370B7 /* libPods-gthc.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,6 +140,7 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DA8CB43423A3133E00E370B7 /* libPods-gthc.a */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
 				53DCFB9717EC88352697C729 /* libPods-gthc.a */,
@@ -289,7 +291,11 @@
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = U66Y9525XJ;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
+					};
+					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = U66Y9525XJ;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -307,6 +313,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -582,6 +589,7 @@
 			baseConfigurationReference = 17EA2A54CC61C9E95D632D2A /* Pods-gthcTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = U66Y9525XJ;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -606,6 +614,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = U66Y9525XJ;
 				INFOPLIST_FILE = gthcTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -627,6 +636,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
+				DEVELOPMENT_TEAM = U66Y9525XJ;
 				INFOPLIST_FILE = gthc/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -646,6 +656,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = U66Y9525XJ;
 				INFOPLIST_FILE = gthc/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
