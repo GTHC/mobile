@@ -7,7 +7,7 @@
 /* eslint-disable react/no-string-refs */
 
 import React, { Component } from 'react';
-import { VirtualizedList, View } from 'react-native';
+import { VirtualizedList, View, Dimensions } from 'react-native';
 import _ from 'lodash';
 import moment from 'moment';
 import styleConstructor from './style';
@@ -131,6 +131,23 @@ export default class EventCalendar extends Component {
     }
   };
 
+  onScrollEndDrag = event => {
+    const pageIndex = Math.round(parseFloat(event.nativeEvent.contentOffset.x / Dimensions.get('window').width));
+
+    const diff = this.state.index - pageIndex;
+
+    if (diff === 0) {
+      return;
+    }
+
+    const scrollDate = moment(this.props.initDate)
+      .subtract(diff, 'days')
+      .format('YYYY-MM-DD');
+
+    const { onPageScroll } = this.props;
+    onPageScroll(scrollDate);
+  }
+
   render() {
     const { width, virtualizedListProps, events } = this.props;
 
@@ -150,7 +167,8 @@ export default class EventCalendar extends Component {
           pagingEnabled
           renderItem={this.renderItem}
           style={{ width }}
-          scrollEnabled
+          onScrollEndDrag={this.onScrollEndDrag}
+          scrollEnabled={false}
           {...virtualizedListProps}
         />
       </View>

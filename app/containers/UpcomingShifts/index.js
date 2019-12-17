@@ -1,13 +1,14 @@
 // @flow
 
 import React, { Component } from 'react';
-import { Agenda } from 'react-native-calendars';
+import { AgendaList, ExpandableCalendar, CalendarProvider } from 'react-native-calendars';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import moment from 'moment';
-
-import { getAllShifts } from '../redux/actions/shifts';
-import { renderItem, renderEmptyDate, rowHasChanged } from '../components/AgendaItems';
+import { getTheme, leftArrow, rightArrow } from './styles';
+import { today } from './utils';
+import { getAllShifts } from '../../redux/actions/shifts';
+import { renderItem, renderEmptyDate, rowHasChanged } from '../../components/AgendaItems';
 
 type Props = {
   getAllShifts: () => void,
@@ -15,6 +16,14 @@ type Props = {
 };
 
 class UpcomingShifts extends Component<Props> {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      selectedDate: today,
+    };
+  }
+
   componentWillMount() {
     this.props.getAllShifts();
   }
@@ -58,22 +67,28 @@ class UpcomingShifts extends Component<Props> {
   };
 
   render() {
-    const today = moment(new Date()).format('YYYY-MM-DD');
-    const weekFromNow = moment(new Date())
-      .add(1, 'weeks')
-      .format('YYYY-MM-DD');
+    const { selectedDate } = this.state;
 
     return (
-      <Agenda
-        items={this.formatShifts()}
-        refreshing={this.props.shifts.isLoading}
-        rowHasChanged={rowHasChanged}
-        renderItem={renderItem}
-        renderEmptyDate={renderEmptyDate}
-        selected={today}
-        maxDate={weekFromNow}
-        futureScrollRange={3}
-      />
+      <CalendarProvider
+        date={selectedDate}
+        onDateChanged={this.onDateChanged}
+        theme={{ todayButtonTextColor: '#0059ff' }}
+        disabledOpacity={0.6}
+      >
+        <ExpandableCalendar
+          firstDay={1}
+          theme={getTheme()}
+          leftArrowImageSource={leftArrow}
+          rightArrowImageSource={rightArrow}
+        />
+
+        <AgendaList
+          sections={this.formatShifts()}
+          refreshing={this.props.shifts.isLoading}
+          renderItem={renderItem}
+        />
+      </CalendarProvider>
     );
   }
 }
