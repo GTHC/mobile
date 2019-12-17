@@ -9,7 +9,6 @@ import { width, getTheme, leftArrow, rightArrow } from './styles';
 import {
   getFutureDates,
   getPastDate,
-  onDateChanged,
   onMonthChange,
   eventTapped,
   formatTeamShifts,
@@ -36,8 +35,20 @@ const ITEMS = [
 ];
 
 class Calendar extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      selectedDate: today,
+    };
+  }
+
   componentWillMount() {
     this.props.getAllShifts();
+  }
+
+  onDateChanged = (date) => {
+    this.refs.calendar.goToDate(date);
   }
 
   render() {
@@ -46,7 +57,7 @@ class Calendar extends Component {
     return (
       <CalendarProvider
         date={ITEMS[0].title}
-        onDateChanged={onDateChanged}
+        onDateChanged={this.onDateChanged}
         onMonthChange={onMonthChange}
         theme={{ todayButtonTextColor: '#0059ff' }}
         disabledOpacity={0.6}
@@ -60,6 +71,8 @@ class Calendar extends Component {
 
         <View style={{ flex: 1 }}>
           <EventCalendar
+            ref="calendar"
+            selectedDate={this.state.selectedDate}
             eventTapped={eventTapped}
             events={events}
             width={width}

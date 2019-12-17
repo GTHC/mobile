@@ -1,3 +1,5 @@
+// @flow
+
 /* eslint-disable react/prop-types */
 /* eslint-disable react/default-props-match-prop-types */
 /* eslint-disable global-require */
@@ -148,7 +150,7 @@ export default class EventCalendar extends Component {
           pagingEnabled
           renderItem={this.renderItem}
           style={{ width }}
-          scrollEnabled={false}
+          scrollEnabled
           {...virtualizedListProps}
         />
       </View>

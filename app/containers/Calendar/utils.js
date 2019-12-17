@@ -14,11 +14,6 @@ const getFutureDates = (days) => {
 
 const getPastDate = (days) => new Date(Date.now() - (864e5 * days)).toISOString().split('T')[0];
 
-const onDateChanged = (/* date, updateSource */) => {
-  // console.warn('ExpandableCalendarScreen onDateChanged: ', date, updateSource);
-  // fetch and set data for date + week ahead
-};
-
 const onMonthChange = (/* month, updateSource */) => {
   // console.warn('ExpandableCalendarScreen onMonthChange: ', month, updateSource);
 };
@@ -50,7 +45,6 @@ const today = moment(new Date()).format('YYYY-MM-DD');
 export {
   getFutureDates,
   getPastDate,
-  onDateChanged,
   onMonthChange,
   eventTapped,
   formatTeamShifts,

@@ -34,7 +34,7 @@ class UpcomingShifts extends Component<Props> {
   };
 
   formatShifts = () => {
-    const shifts = this.groupShiftsByDate(this.props.shifts.team_shifts);
+    const shifts = this.groupShiftsByDate(this.props.shifts.user_shifts);
     const items = {};
 
     Object.keys(shifts).forEach(date => {
@@ -58,8 +58,6 @@ class UpcomingShifts extends Component<Props> {
   };
 
   render() {
-    console.log(this.props.shifts);
-
     const today = moment(new Date()).format('YYYY-MM-DD');
     const weekFromNow = moment(new Date())
       .add(1, 'weeks')

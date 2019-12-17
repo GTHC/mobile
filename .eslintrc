@@ -8,6 +8,7 @@
     "import"
   ],
   "rules": {
+    "react/no-string-refs": "off",
     "react/prop-types": "off",
     "no-plusplus": "off",
     "prefer-destructuring": "off",
