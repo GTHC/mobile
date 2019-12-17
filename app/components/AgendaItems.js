@@ -1,12 +1,12 @@
 // @flow
 
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
 const renderItem = (item: any) => (
-  <View style={[styles.item, {height: item.height}]}>
-    <Text style={{color: 'white'}}>{item.text}</Text>
-    <Text style={{color: 'white'}}>{item.time}</Text>
+  <View style={[styles.item, { height: item.height }]}>
+    <Text style={{ color: 'white' }}>{item.text}</Text>
+    <Text style={{ color: 'white' }}>{item.time}</Text>
   </View>
 );
 
@@ -31,4 +31,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export {renderItem, renderEmptyDate, rowHasChanged};
+export { renderItem, renderEmptyDate, rowHasChanged };

@@ -1,5 +1,5 @@
 // @flow
-import {Platform, StyleSheet} from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 
 const leftMargin = 50 - 1;
 
@@ -13,36 +13,6 @@ export default function styleConstructor(theme = {}, calendarHeight) {
       backgroundColor: '#ffff',
       height: calendarHeight + 10,
       ...theme.contentStyle,
-    },
-    header: {
-      paddingHorizontal: 30,
-      height: 50,
-      borderTopWidth: 1,
-      borderBottomWidth: 1,
-      borderColor: '#E6E8F0',
-      backgroundColor: '#F5F5F6',
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      alignItems: 'stretch',
-      ...theme.header,
-    },
-    headerTextContainer: {
-      justifyContent: 'center',
-    },
-    headerText: {
-      fontSize: 16,
-      ...theme.headerText,
-    },
-    arrow: {
-      width: 15,
-      height: 15,
-      resizeMode: 'contain',
-    },
-    arrowButton: {
-      width: 50,
-      alignItems: 'center',
-      justifyContent: 'center',
-      ...theme.arrowButton,
     },
     event: {
       position: 'absolute',
@@ -66,12 +36,6 @@ export default function styleConstructor(theme = {}, calendarHeight) {
       fontWeight: '600',
       minHeight: 15,
       ...theme.eventTitle,
-    },
-    eventSummary: {
-      color: 'white',
-      fontSize: 12,
-      flexWrap: 'wrap',
-      ...theme.eventSummary,
     },
     eventTimes: {
       marginTop: 3,

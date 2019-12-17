@@ -8,6 +8,8 @@
     "import"
   ],
   "rules": {
+    "react/prop-types": "off",
+    "no-plusplus": "off",
     "prefer-destructuring": "off",
     "arrow-parens": "off",
     "implicit-arrow-linebreak": "off",

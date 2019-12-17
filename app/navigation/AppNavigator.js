@@ -1,10 +1,10 @@
 // @flow
 
 import React from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
 import BottomTabNavigator from './BottomTabNavigator';
 import Login from '../containers/Login';
 
-import {createStackNavigator} from '@react-navigation/stack';
 
 const Stack = createStackNavigator();
 
