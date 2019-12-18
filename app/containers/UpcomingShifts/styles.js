@@ -22,7 +22,7 @@ const getTheme = () => {
     arrowStyle: { padding: 0 },
     // month
     monthTextColor: black,
-    textMonthFontSize: 20,
+    textMonthFontSize: 16,
     textMonthFontFamily: 'HelveticaNeue',
     textMonthFontWeight: 'bold',
     // day names
@@ -35,7 +35,7 @@ const getTheme = () => {
     todayTextColor: white,
     // dates
     dayTextColor: black,
-    textDayFontSize: 18,
+    textDayFontSize: 16,
     textDayFontFamily: 'HelveticaNeue',
     textDayFontWeight: '500',
     textDayStyle: { marginTop: Platform.OS === 'android' ? 2 : 4 },
