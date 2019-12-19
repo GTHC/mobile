@@ -86,4 +86,7 @@ const mapDispatchToProps = dispatch =>
     dispatch,
   );
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditUserSettings);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(EditUserSettings);

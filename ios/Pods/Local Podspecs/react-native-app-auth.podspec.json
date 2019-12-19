@@ -3,7 +3,9 @@
   "version": "5.0.0-rc3",
   "summary": "React Native bridge for AppAuth for supporting any OAuth 2 provider",
   "license": "MIT",
-  "authors": "kadi.kraman@formidable.com",
+  "authors": {
+    "name": "kadi.kraman@formidable.com"
+  },
   "homepage": "https://github.com/FormidableLabs/react-native-app-auth",
   "platforms": {
     "ios": "9.0"
