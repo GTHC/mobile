@@ -2,26 +2,11 @@
 
 import React, { PureComponent } from 'react';
 import { View, StyleSheet, Button } from 'react-native';
-import { authorize, prefetchConfiguration } from 'react-native-app-auth';
-import Config from 'react-native-config';
-import { storeData as session } from '../utils/Storage';
-
-const config = {
-  serviceConfiguration: {
-    authorizationEndpoint: Config.AUTH_ENDPOINT,
-    tokenEndpoint: Config.TOKEN_ENDPOINT,
-  },
-  issuer: Config.ISSUER,
-  clientId: Config.CLIENT_ID,
-  clientSecret: Config.CLIENT_SECRET,
-  redirectUrl: Config.REDIRECT_URL,
-  warmAndPrefetchChrome: true,
-};
-prefetchConfiguration(config);
+import { auth, session } from '../utils/login';
 
 export default class LoginForm extends PureComponent {
   handleLoginPress = () => {
-    authorize(config).then(res => {
+    auth().then(res => {
       const { idToken } = res;
       session('auth', idToken);
     });

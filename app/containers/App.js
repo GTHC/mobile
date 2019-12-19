@@ -6,9 +6,7 @@ import { NavigationNativeContainer } from '@react-navigation/native';
 import { configureStore } from '../redux/utils/store';
 import AppNavigator from '../navigation/AppNavigator';
 
-type Props = any;
-
-export default class App extends Component<Props> {
+export default class App extends Component {
   render() {
     const { store } = configureStore();
 

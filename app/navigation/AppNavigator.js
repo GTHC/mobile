@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import { Button } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 import { createStackNavigator } from '@react-navigation/stack';
 import BottomTabNavigator from './BottomTabNavigator';
 import Login from '../containers/Login';
@@ -17,20 +17,15 @@ function AppNavigator() {
         component={BottomTabNavigator}
         options={({ route }) => ({
           title: 'GTHC',
-          headerStyle: {
-            backgroundColor: '#f4511e',
-          },
-          headerTintColor: '#fff',
-          headerTitleStyle: {
-            fontWeight: 'bold',
-          },
           headerRight: () => (
-            <Button
-              onPress={() => route.navigation.navigate('Settings')}
-              title="Settings"
-              color="#fff"
+            <Icon.Button
+              backgroundColor={mainHeader.headerStyle.backgroundColor}
+              name="ios-settings"
+              size={24}
+              color="white"
             />
           ),
+          ...mainHeader,
         })}
       />
       <Stack.Screen name="Login" component={Login} />
@@ -38,5 +33,15 @@ function AppNavigator() {
     </Stack.Navigator>
   );
 }
+
+const mainHeader = {
+  headerStyle: {
+    backgroundColor: '#f4511e',
+  },
+  headerTintColor: '#fff',
+  headerTitleStyle: {
+    fontWeight: 'bold',
+  },
+};
 
 export default AppNavigator;

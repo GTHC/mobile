@@ -1,6 +1,6 @@
 // @flow
 
-import {AsyncStorage} from 'react-native';
+import { AsyncStorage } from 'react-native';
 
 const storeData = async (key: string, value: any) => {
   try {
@@ -23,4 +23,4 @@ const getData = async (key: string) => {
   }
 };
 
-export {storeData, getData};
+export { storeData, getData };
