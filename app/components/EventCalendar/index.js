@@ -1,3 +1,5 @@
+// @flow
+
 /* eslint-disable react/prop-types */
 /* eslint-disable react/default-props-match-prop-types */
 /* eslint-disable global-require */
@@ -5,10 +7,9 @@
 /* eslint-disable react/no-string-refs */
 
 import React, {Component} from 'react';
-import {VirtualizedList, View, TouchableOpacity, Text, Image} from 'react-native';
+import {VirtualizedList, View, Dimensions} from 'react-native';
 import _ from 'lodash';
 import moment from 'moment';
-import {Agenda} from 'react-native-calendars';
 import styleConstructor from './style';
 import DayView from '../DayView';
 
@@ -67,55 +68,29 @@ export default class EventCalendar extends Component {
       start = 0,
       end = 24,
       formatHeader,
-      upperCaseHeader = false,
+      headerStyle,
+      renderEvent,
+      eventTapped,
     } = this.props;
+
     const date = moment(initDate).add(index - this.props.size, 'days');
 
-    const leftIcon = this.props.headerIconLeft ? (
-      this.props.headerIconLeft
-    ) : (
-      <Image source={require('../../../assets/images/back.png')} style={this.styles.arrow} />
-    );
-
-    const rightIcon = this.props.headerIconRight ? (
-      this.props.headerIconRight
-    ) : (
-      <Image source={require('../../../assets/images/forward.png')} style={this.styles.arrow} />
-    );
-
-    const headerText = upperCaseHeader
-      ? date.format(formatHeader || 'DD MMMM YYYY').toUpperCase()
-      : date.format(formatHeader || 'DD MMMM YYYY');
-
     return (
-      <View style={[this.styles.container, {width}]}>
-        <View style={this.styles.header}>
-          <TouchableOpacity style={this.styles.arrowButton} onPress={this.previous}>
-            {leftIcon}
-          </TouchableOpacity>
-          <View style={this.styles.headerTextContainer}>
-            <Text style={this.styles.headerText}>{headerText}</Text>
-          </View>
-          <TouchableOpacity style={this.styles.arrowButton} onPress={this.next}>
-            {rightIcon}
-          </TouchableOpacity>
-        </View>
-        <DayView
-          date={date}
-          index={index}
-          format24h={format24h}
-          formatHeader={this.props.formatHeader}
-          headerStyle={this.props.headerStyle}
-          renderEvent={this.props.renderEvent}
-          eventTapped={this.props.eventTapped}
-          events={item}
-          width={width}
-          styles={this.styles}
-          scrollToFirst={scrollToFirst}
-          start={start}
-          end={end}
-        />
-      </View>
+      <DayView
+        date={date}
+        index={index}
+        format24h={format24h}
+        formatHeader={formatHeader}
+        headerStyle={headerStyle}
+        renderEvent={renderEvent}
+        eventTapped={eventTapped}
+        events={item}
+        width={width}
+        styles={this.styles}
+        scrollToFirst={scrollToFirst}
+        start={start}
+        end={end}
+      />
     );
   };
 
@@ -156,6 +131,25 @@ export default class EventCalendar extends Component {
     }
   };
 
+  onScrollEndDrag = event => {
+    const pageIndex = Math.round(
+      parseFloat(event.nativeEvent.contentOffset.x / Dimensions.get('window').width),
+    );
+
+    const diff = this.state.index - pageIndex;
+
+    if (diff === 0) {
+      return;
+    }
+
+    const scrollDate = moment(this.props.initDate)
+      .subtract(diff, 'days')
+      .format('YYYY-MM-DD');
+
+    const {onPageScroll} = this.props;
+    onPageScroll(scrollDate);
+  };
+
   render() {
     const {width, virtualizedListProps, events} = this.props;
 
@@ -164,7 +158,7 @@ export default class EventCalendar extends Component {
         <VirtualizedList
           ref="calendar"
           windowSize={2}
-          initialNumToRender={5}
+          initialNumToRender={1}
           initialScrollIndex={this.props.size}
           data={events}
           getItemCount={() => this.props.size * 2}
@@ -175,6 +169,7 @@ export default class EventCalendar extends Component {
           pagingEnabled
           renderItem={this.renderItem}
           style={{width}}
+          onScrollEndDrag={this.onScrollEndDrag}
           scrollEnabled={false}
           {...virtualizedListProps}
         />
