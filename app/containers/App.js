@@ -5,10 +5,9 @@ import OneSignal from 'react-native-onesignal';
 import {Provider} from 'react-redux';
 import {NavigationNativeContainer} from '@react-navigation/native';
 import {configureStore} from '../redux/utils/store';
-import UpcomingShifts from './UpcomingShifts';
-import TeamCalendar from './TeamCalendar';
 import AppNavigator from '../navigation/AppNavigator';
 
+<<<<<<< HEAD
 type Props = any;
 
 export default class App extends Component<Props> {
@@ -42,6 +41,9 @@ export default class App extends Component<Props> {
   onIds(device) {
     console.log('Device info: ', device);
   }
+=======
+export default class App extends Component {
+>>>>>>> bacd4cc4bf46ecbeaef9baeea7744745d8181494
   render() {
     const {store} = configureStore();
 

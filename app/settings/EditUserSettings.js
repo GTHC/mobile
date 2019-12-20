@@ -10,6 +10,7 @@ import moment from 'moment';
 import {getAllShifts} from '../redux/actions/shifts';
 import {renderItem, renderEmptyDate, rowHasChanged} from '../components/AgendaItems';
 
+import {Alert} from 'react-native';
 import {
   Toast,
   Button,
@@ -43,15 +44,12 @@ class EditUserSettings extends Component<Props> {
     return (
       <Container>
         <Header>
-          <Button iconleft primary>
-            <Icon name="arrow-back" />
-          </Button>
-          <Left />
           <Body style={{flexDirection: 'row'}}>
             <Title>User Settings</Title>
           </Body>
+          <Right />
         </Header>
-        <Content>
+        <Content style={styles.content}>
           <Form style={{margin: 25}}>
             <Item floatingLabel>
               <Label>Name</Label>
@@ -63,7 +61,10 @@ class EditUserSettings extends Component<Props> {
             </Item>
           </Form>
           <View style={styles.content}>
-            <Button primary block style={{marginTop: 40, margin: 75}}>
+            <Button
+              block
+              style={{marginTop: 40, margin: 50, backgroundColor: '#00adf5'}}
+              onPress={() => Alert.alert('Simple Button pressed')}>
               <Text> Change User Settings </Text>
             </Button>
           </View>

@@ -10,6 +10,8 @@ import moment from 'moment';
 import {getAllShifts} from '../redux/actions/shifts';
 import {renderItem, renderEmptyDate, rowHasChanged} from '../components/AgendaItems';
 
+import TeamSettingsModal from './TeamSettingsModal';
+
 import {
   Container,
   Icon,
@@ -49,9 +51,7 @@ class TeamSettings extends Component<Props> {
               <Text>Passcode: ADC9L</Text>
             </CardItem>
           </Card>
-          <Button block style={{marginTop: 40, margin: 50, backgroundColor: '#00adf5'}}>
-            <Text> Edit Team Settings </Text>
-          </Button>
+          <TeamSettingsModal />
         </Content>
       </Container>
     );

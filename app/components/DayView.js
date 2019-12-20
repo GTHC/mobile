@@ -157,16 +157,9 @@ export default class DayView extends PureComponent<Props> {
               <Text numberOfLines={1} style={styles.eventTitle}>
                 {event.title || 'Event'}
               </Text>
-              {numberOfLines > 1 ? (
-                <Text numberOfLines={numberOfLines - 1} style={[styles.eventSummary]}>
-                  {event.summary || ' '}
-                </Text>
-              ) : null}
-              {numberOfLines > 2 ? (
-                <Text style={styles.eventTimes} numberOfLines={1}>
-                  {moment(event.start).format(formatTime)} - {moment(event.end).format(formatTime)}
-                </Text>
-              ) : null}
+              <Text style={styles.eventTimes} numberOfLines={1}>
+                {moment(event.start).format(formatTime)} - {moment(event.end).format(formatTime)}
+              </Text>
             </View>
           )}
         </TouchableOpacity>

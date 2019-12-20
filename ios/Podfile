@@ -5,6 +5,7 @@ target 'gthc' do
   # Pods for gthc
   #Pods I added
   pod 'AppAuth', '1.2.0'
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
   # Pods I didn't add
   pod 'FBLazyVector', :path => "../node_modules/react-native/Libraries/FBLazyVector"
