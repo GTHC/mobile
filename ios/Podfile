@@ -39,6 +39,8 @@ target 'gthc' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
+  pod 'react-native-onesignal', :path => '../node_modules/react-native-onesignal'
+
   target 'gthcTests' do
     inherit! :search_paths
     # Pods for testing
@@ -46,6 +48,11 @@ target 'gthc' do
 
   use_native_modules!
 end
+
+target 'OneSignalNotificationServiceExtension' do
+  pod 'OneSignal', '>= 2.9.3', '< 3.0'
+end
+
 
 target 'gthc-tvOS' do
   # Pods for gthc-tvOS
