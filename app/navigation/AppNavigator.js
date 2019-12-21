@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import {createStackNavigator} from '@react-navigation/stack';
 import BottomTabNavigator from './BottomTabNavigator';
 import Login from '../containers/Login';
-import SettingsTabs from '../containers/SettingsTabs';
+import Settings from '../containers/Settings';
 
 const Stack = createStackNavigator();
 
@@ -29,7 +29,7 @@ function AppNavigator() {
         })}
       />
       <Stack.Screen name="Login" component={Login} />
-      <Stack.Screen name="Settings" component={SettingsTabs} />
+      <Stack.Screen name="Settings" component={Settings} />
     </Stack.Navigator>
   );
 }

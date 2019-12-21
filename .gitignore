@@ -22,6 +22,7 @@ DerivedData
 *.xcuserstate
 project.xcworkspace
 node_modules/
+ios/Pods/Target Support Files/
 
 # Android/IntelliJ
 #

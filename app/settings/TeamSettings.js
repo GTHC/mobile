@@ -1,37 +1,14 @@
 // @flow
 
 import React, {Component} from 'react';
-import {View} from 'react-native';
-import {Agenda} from 'react-native-calendars';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import moment from 'moment';
 
-import {getAllShifts} from '../redux/actions/shifts';
-import {renderItem, renderEmptyDate, rowHasChanged} from '../components/AgendaItems';
+import {Container, Content, Text, Card, CardItem} from 'native-base';
 
 import TeamSettingsModal from './TeamSettingsModal';
 
-import {
-  Container,
-  Icon,
-  Content,
-  Header,
-  Left,
-  Right,
-  Body,
-  Title,
-  Text,
-  Button,
-  Card,
-  CardItem,
-} from 'native-base';
-
-type Props = {
-  getAllShifts: () => void,
-};
-
-class TeamSettings extends Component<Props> {
+class TeamSettings extends Component {
   componentWillMount() {
     this.props.getAllShifts();
   }
@@ -62,13 +39,7 @@ const mapStateToProps = state => ({
   shifts: state.shifts,
 });
 
-const mapDispatchToProps = dispatch =>
-  bindActionCreators(
-    {
-      getAllShifts,
-    },
-    dispatch,
-  );
+const mapDispatchToProps = dispatch => bindActionCreators({}, dispatch);
 
 export default connect(
   mapStateToProps,

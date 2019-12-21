@@ -1,47 +1,23 @@
 // @flow
 
-import React, {Component} from 'react';
-import {Agenda} from 'react-native-calendars';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import moment from 'moment';
+import React, { Component } from 'react';
 
-import {getAllShifts} from '../redux/actions/shifts';
-import {renderItem, renderEmptyDate, rowHasChanged} from '../components/AgendaItems';
-
-import UserSettingsModal from './UserSettingsModal';
 
 import {
   Container,
   Content,
-  Header,
-  Left,
-  Right,
-  Body,
-  Title,
   Text,
-  Button,
   Card,
   CardItem,
 } from 'native-base';
-import {View, Alert} from 'react-native';
 
-import {NavigationNativeContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
+import UserSettingsModal from './UserSettingsModal';
 
-type Props = {
-  getAllShifts: () => void,
-};
-
-class UserSettings extends Component<Props> {
-  componentWillMount() {
-    this.props.getAllShifts();
-  }
-
+export default class UserSettings extends Component {
   render() {
     return (
       <Container>
-        <Content contentContainerStyle={{margin: 25}}>
+        <Content contentContainerStyle={{ margin: 25 }}>
           <Card>
             <CardItem>
               <Text>Name: Rikki Kendall</Text>
@@ -59,20 +35,3 @@ class UserSettings extends Component<Props> {
     );
   }
 }
-
-const mapStateToProps = state => ({
-  shifts: state.shifts,
-});
-
-const mapDispatchToProps = dispatch =>
-  bindActionCreators(
-    {
-      getAllShifts,
-    },
-    dispatch,
-  );
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(UserSettings);
