@@ -15,7 +15,7 @@ function AppNavigator() {
       <Stack.Screen
         name="Home"
         component={BottomTabNavigator}
-        options={({route}) => ({
+        options={({navigation}) => ({
           title: 'GTHC',
           headerRight: () => (
             <Icon.Button
@@ -23,6 +23,7 @@ function AppNavigator() {
               name="ios-settings"
               size={24}
               color="white"
+              onPress={() => navigation.navigate('Settings')}
             />
           ),
           ...mainHeader,

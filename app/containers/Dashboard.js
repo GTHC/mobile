@@ -4,6 +4,7 @@ import React, {Component} from 'react';
 import {StyleSheet, View, Image, Text} from 'react-native';
 import {Card, Divider} from 'react-native-elements';
 import {CalendarModal} from './CalendarModal';
+import { WeatherWidget } from 'react-native-weather';
 
 export default class Dashboard extends Component {
   constructor(props) {
@@ -55,7 +56,11 @@ export default class Dashboard extends Component {
   }
 
   render() {
-    return <CalendarModal />;
+    return <WeatherWidget
+    api={"77f7286000cc8628cc4557b024c9756b"}
+    lat={"0"}
+    lng={"0"}
+    />;
   }
 }
 
