@@ -60,5 +60,5 @@ buck-out/
 
 # Cocopods
 ios/Pods/
-Pods/
-Pods/
+Pods/ 
+Pods
