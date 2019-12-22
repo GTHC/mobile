@@ -30,7 +30,7 @@ class UserSettingsModal extends Component {
     return (
       <View style={styles.container}>
         <Modal
-          animationType={'slide'}
+          animationType={'none'}
           transparent={false}
           visible={this.state.modalVisible}
           onRequestClose={() => {
