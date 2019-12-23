@@ -1,11 +1,10 @@
 import axios from 'axios';
-import {getData} from '../../utils/Storage';
+import { getData } from '../../utils/Storage';
 
 const baseUrl = 'http://localhost:5000';
 
 const crud = request => async dispatch => {
   const idToken = await getData('auth');
-  console.log('tokem', idToken);
   dispatch({
     type: request.dispatch.begin,
   });

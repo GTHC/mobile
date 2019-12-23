@@ -1,31 +1,26 @@
-import React, {Component} from 'react';
-import {Container, Content, Tab, Tabs} from 'native-base';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+import React, { Component } from 'react';
+import { Container, Content, Tab, Tabs } from 'native-base';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import TeamSettings from '../settings/TeamSettings';
-import UserSettings from '../settings/UserSettings';
+import UserSettings from '../components/UserSettings';
 
-import {checkSession} from '../redux/actions/user';
+import { getUserFromToken } from '../redux/actions/user';
+import { getTeam } from '../redux/actions/team';
 
 class Settings extends Component {
-  componentWillMount() {
-    this.props.checkSession();
+  constructor(props) {
+    super(props);
+
+    this.props.getUserFromToken();
   }
 
   render() {
-    console.log('user', this.props.user.data);
+    const { user } = this.props;
+
     return (
       <Container>
-        <Content>
-          <Tabs>
-            <Tab style={{backgroundColor: '#00adf5'}} heading="User">
-              <UserSettings />
-            </Tab>
-            <Tab style={{backgroundColor: '#00adf5'}} heading="Team">
-              <TeamSettings />
-            </Tab>
-          </Tabs>
-        </Content>
+        <UserSettings user={user} />
       </Container>
     );
   }
@@ -38,7 +33,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      checkSession,
+      getUserFromToken,
+      getTeam,
     },
     dispatch,
   );

@@ -375,7 +375,7 @@ SPEC CHECKSUMS:
   FBReactNativeSpec: 6fda0eee5b059ee8ea0f845f4060620ff96b5b55
   Folly: 30e7936e1c45c08d884aa59369ed951a8e68cf51
   glog: 1f3da668190260b06b429bb211bfbee5cd790c28
-<<<<<<< HEAD
+  OneSignal: b2c1511c6b5db2d3b0ce1859f574dcf190dde5f3
   RCTRequired: 81db8debffc2eb932841fa02dcf5a2e911af74c1
   RCTTypeSafety: 39a7d8643abe2460aef0adeb9acbe9401b579fff
   React: 89f2294058332cf7c4feee644e17d5024da1f531
@@ -387,6 +387,7 @@ SPEC CHECKSUMS:
   React-jsinspector: 044105eea064aec81adc5e4d777a8f6589e7d094
   react-native-app-auth: 2001757db1365184706d9f74bc343504e7a90b5f
   react-native-config: 39fb6bf780040eebdd52184a4198ae95d1c2a75c
+  react-native-onesignal: 99d99223788265362bcf8df0e260677d7a221b50
   react-native-safe-area-context: 686e5d98bb021d8ca415ec5cf2a30dfc0d7d0d93
   React-RCTActionSheet: 49433f6e3659ba5d3ee650e44b9c18743ef9a7fc
   React-RCTAnimation: 12f86a4e3542032329366b03bca2cc254a7c64a9
@@ -405,39 +406,6 @@ SPEC CHECKSUMS:
   RNScreens: 354046589421edc3d83d5c6212475bf1fb9a731d
   RNVectorIcons: 66af4d5c8ff4f584c7b7cd9c4b0780920f27fce2
   Yoga: 6af72bedeaea291a3a3717772d6d41836f23a1b9
-=======
-  OneSignal: b2c1511c6b5db2d3b0ce1859f574dcf190dde5f3
-  RCTRequired: b153add4da6e7dbc44aebf93f3cf4fcae392ddf1
-  RCTTypeSafety: 9aa1b91d7f9310fc6eadc3cf95126ffe818af320
-  React: b6a59ef847b2b40bb6e0180a97d0ca716969ac78
-  React-Core: 688b451f7d616cc1134ac95295b593d1b5158a04
-  React-CoreModules: d04f8494c1a328b69ec11db9d1137d667f916dcb
-  React-cxxreact: d0f7bcafa196ae410e5300736b424455e7fb7ba7
-  React-jsi: cb2cd74d7ccf4cffb071a46833613edc79cdf8f7
-  React-jsiexecutor: d5525f9ed5f782fdbacb64b9b01a43a9323d2386
-  React-jsinspector: fa0ecc501688c3c4c34f28834a76302233e29dc0
-  react-native-app-auth: 2be2250118095b340de029553ac8b3a272b9b84d
-  react-native-config: f2c2ae45625a068c35681a16b9bfb1ca58b0adc7
-  react-native-onesignal: 9107543bd7e4bb13a2f96b33fca7e942161852b9
-  react-native-safe-area-context: 66dcc0f2792b43479bffe0450dab8eac47d3fcee
-  React-RCTActionSheet: 600b4d10e3aea0913b5a92256d2719c0cdd26d76
-  React-RCTAnimation: 791a87558389c80908ed06cc5dfc5e7920dfa360
-  React-RCTBlob: d89293cc0236d9cb0933d85e430b0bbe81ad1d72
-  React-RCTImage: 6b8e8df449eb7c814c99a92d6b52de6fe39dea4e
-  React-RCTLinking: 121bb231c7503cf9094f4d8461b96a130fabf4a5
-  React-RCTNetwork: fb353640aafcee84ca8b78957297bd395f065c9a
-  React-RCTSettings: 8db258ea2a5efee381fcf7a6d5044e2f8b68b640
-  React-RCTText: 9ccc88273e9a3aacff5094d2175a605efa854dbe
-  React-RCTVibration: a49a1f42bf8f5acf1c3e297097517c6b3af377ad
-  ReactCommon: 198c7c8d3591f975e5431bec1b0b3b581aa1c5dd
-  RNCAsyncStorage: 6b57de0f6cb0dcfd17521af1681fa39001d3efff
-  RNCMaskedView: c8b53164b85ecf94c9a44d67082df0f03c1f74cc
-  RNGestureHandler: 946a7691e41df61e2c4b1884deab41a4cdc3afff
-  RNReanimated: b2ab0b693dddd2339bd2f300e770f6302d2e960c
-  RNScreens: f28b48b8345f2f5f39ed6195518291515032a788
-  RNVectorIcons: 0bb4def82230be1333ddaeee9fcba45f0b288ed4
-  Yoga: f2a7cd4280bfe2cca5a7aed98ba0eb3d1310f18b
->>>>>>> b9f16f61ced144891c7f3df497186f454b2b6ec4
 
 PODFILE CHECKSUM: 566115ece0e5f7d53ce66b41f4c38b279a54d7c0
 
