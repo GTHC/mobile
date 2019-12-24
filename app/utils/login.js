@@ -1,6 +1,6 @@
-import {authorize, prefetchConfiguration} from 'react-native-app-auth';
+import { authorize, prefetchConfiguration } from 'react-native-app-auth';
 import Config from 'react-native-config';
-import {storeData as session} from './Storage';
+import { storeData as session } from './Storage';
 
 const config = {
   serviceConfiguration: {
@@ -17,4 +17,4 @@ prefetchConfiguration(config);
 
 const auth = () => authorize(config);
 
-export {auth, session};
+export { auth, session };

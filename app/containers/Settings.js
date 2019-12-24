@@ -1,26 +1,28 @@
 import React, { Component } from 'react';
-import { Container, Content, Tab, Tabs } from 'native-base';
+import { Container } from 'native-base';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import TeamSettings from '../settings/TeamSettings';
-import UserSettings from '../components/UserSettings';
-
-import { getUserFromToken } from '../redux/actions/user';
 import { getTeam } from '../redux/actions/team';
+
+// UI
+import UserSettings from '../components/UserSettings';
+import TeamSettings from '../components/TeamSettings';
 
 class Settings extends Component {
   constructor(props) {
     super(props);
 
-    this.props.getUserFromToken();
+    const { user } = this.props;
+    getTeam(user.data.team_id);
   }
 
   render() {
-    const { user } = this.props;
+    const { user, team } = this.props;
 
     return (
       <Container>
         <UserSettings user={user} />
+        <TeamSettings team={team} />
       </Container>
     );
   }
@@ -28,12 +30,12 @@ class Settings extends Component {
 
 const mapStateToProps = state => ({
   user: state.user,
+  team: state.team,
 });
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      getUserFromToken,
       getTeam,
     },
     dispatch,

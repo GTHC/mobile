@@ -1,14 +1,17 @@
 // @flow
 
-import React, {PureComponent} from 'react';
-import {View, StyleSheet, Button} from 'react-native';
-import {auth, session} from '../utils/login';
+import React, { Component } from 'react';
+import { View, StyleSheet, Button } from 'react-native';
+import { auth, session } from '../utils/login';
 
-export default class LoginForm extends PureComponent {
+export default class LoginForm extends Component {
   handleLoginPress = () => {
     auth().then(res => {
-      const {idToken} = res;
+      const { idToken } = res;
+      const { navigation } = this.props;
+
       session('auth', idToken);
+      navigation.navigate('Home');
     });
   };
 

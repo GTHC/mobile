@@ -8,6 +8,7 @@ import { bindActionCreators } from 'redux';
 import BottomTabNavigator from './BottomTabNavigator';
 import Login from '../containers/Login';
 import Settings from '../containers/Settings';
+import LoadingScreen from '../components/LoadingScreen';
 import { getUserFromToken } from '../redux/actions/user';
 
 
@@ -20,17 +21,15 @@ class AppNavigator extends React.Component {
     this.props.getUserFromToken();
   }
 
-  render() {
-    const { user } = this.props;
-    // const initRoute = (!user.isLoggedIn && !user.isLoading) ? 'Login' : 'Settings';
-    const initRoute = 'Home';
+  renderApp = (user) => {
+    const initRoute = !user.isLoggedIn ? 'Login' : 'Home';
 
     return (
       <Stack.Navigator initialRouteName={initRoute}>
         <Stack.Screen
           name="Home"
           component={BottomTabNavigator}
-          options={({ route }) => ({
+          options={({ navigation }) => ({
             title: 'GTHC',
             headerRight: () => (
               <Icon.Button
@@ -38,6 +37,7 @@ class AppNavigator extends React.Component {
                 name="ios-settings"
                 size={24}
                 color="white"
+                onPress={() => navigation.navigate('Settings')}
               />
             ),
             ...mainHeader,
@@ -47,6 +47,11 @@ class AppNavigator extends React.Component {
         <Stack.Screen name="Settings" component={Settings} options={{ ...mainHeader }} />
       </Stack.Navigator>
     );
+  }
+
+  render() {
+    const { user } = this.props;
+    return user.isLoading ? <LoadingScreen /> : this.renderApp(user);
   }
 }
 
