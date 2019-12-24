@@ -108,7 +108,7 @@ const user = (state = initialState, action) => {
     }
 
     case 'END_UPDATE_TEAM': {
-      const {data} = state;
+      const { data } = state;
       data.team = action.payload.data.data;
       return {
         ...state,
@@ -166,6 +166,29 @@ const user = (state = initialState, action) => {
         isLoading: false,
         isLoggedIn: response.status,
         data: response.data.user,
+      };
+    }
+
+    // GET /api/v1/user
+    case 'BEGIN_GET_USER': {
+      return beginState;
+    }
+
+    case 'FAILED_GET_USER': {
+      return {
+        ...state,
+        isLoading: false,
+        isLoggedIn: false,
+      };
+    }
+
+    case 'END_GET_USER': {
+      const response = action.payload.data;
+      return {
+        ...state,
+        isLoading: false,
+        isLoggedIn: true,
+        data: response.data,
       };
     }
 

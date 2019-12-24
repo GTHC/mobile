@@ -1,13 +1,13 @@
 // @flow
 
-import React, {Component} from 'react';
-import {Agenda} from 'react-native-calendars';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import {getTheme} from './styles';
-import {today, formatShifts} from './utils';
-import {getAllShifts} from '../../redux/actions/shifts';
-import {renderItem, renderEmptyDate, rowHasChanged} from '../../components/AgendaItems';
+import React, { Component } from 'react';
+import { Agenda } from 'react-native-calendars';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { getTheme } from './styles';
+import { today, formatShifts, renderItem, renderEmptyDate, rowHasChanged } from './utils';
+import { getAllShifts } from '../../redux/actions/shifts';
+
 
 type Props = {
   getAllShifts: () => void,

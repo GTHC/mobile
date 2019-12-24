@@ -36,9 +36,20 @@ const checkSession = () =>
     url: '/api/v1/sessions',
   });
 
+const getUserFromToken = () =>
+  crud({
+    dispatch: {
+      begin: 'BEGIN_GET_USER',
+      fail: 'FAILED_GET_USER',
+      end: 'END_GET_USER',
+    },
+    method: 'GET',
+    url: '/api/v1/user',
+  });
+
 const postAvatar = data =>
   crud({
-    headers: {'Content-Type': 'form-data'},
+    headers: { 'Content-Type': 'form-data' },
     dispatch: {
       begin: 'BEGIN_POST_AVATAR',
       fail: 'FAILED_POST_AVATAR',
@@ -107,6 +118,7 @@ export {
   signupUser,
   updateUser,
   checkSession,
+  getUserFromToken,
   postAvatar,
   putAvail,
   postAvail,

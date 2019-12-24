@@ -22,6 +22,8 @@ DerivedData
 *.xcuserstate
 project.xcworkspace
 node_modules/
+ios/Pods/
+ios/Podfile.lock
 
 # Android/IntelliJ
 #
@@ -56,3 +58,8 @@ buck-out/
 
 # Bundle artifact
 *.jsbundle
+
+# Cocopods
+ios/Pods/
+Pods/ 
+Pods

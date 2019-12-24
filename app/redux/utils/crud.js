@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {getData} from '../../utils/Storage';
+import { getData } from '../../utils/Storage';
 
 const baseUrl = 'http://localhost:5000';
 
