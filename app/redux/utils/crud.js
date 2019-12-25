@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { getData } from '../../utils/Storage';
 
-const baseUrl = 'http://localhost:5000';
+const baseUrl = 'https://staging.gthc.io';
 
 const crud = request => async dispatch => {
   const idToken = await getData('auth');
@@ -25,9 +25,6 @@ const crud = request => async dispatch => {
         type: request.dispatch.end,
         payload: res,
       });
-      if (request.push) {
-        // TODO(anesu): figure out push actions
-      }
     })
     .catch(err => {
       dispatch({

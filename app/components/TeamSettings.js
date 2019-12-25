@@ -1,10 +1,8 @@
 // @flow
 
 import React, { Component } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import {
-  Container,
-  Content,
   Text,
   List,
   ListItem,
@@ -12,6 +10,13 @@ import {
 } from 'native-base';
 
 export default class TeamSettings extends Component {
+  constructor(props) {
+    super(props);
+
+    const { getTeam, user } = this.props;
+    getTeam(user.data.team_id);
+  }
+
     renderSimpleListItem = (primary, secondary) => (
       <ListItem style={styles.listItem}>
         <Body>
@@ -25,9 +30,13 @@ export default class TeamSettings extends Component {
       const { team } = this.props;
 
       return (
-        <Container>
-          <Content />
-        </Container>
+        <View>
+          <List>
+            {this.renderSimpleListItem('Team Name', team.data.name)}
+            {this.renderSimpleListItem('Tent Type', team.data.tent_type)}
+            {this.renderSimpleListItem('Passcode', team.data.passcode)}
+          </List>
+        </View>
       );
     }
 }

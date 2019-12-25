@@ -1,10 +1,8 @@
 // @flow
 
 import React, { Component } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import {
-  Container,
-  Content,
   Text,
   List,
   ListItem,
@@ -25,15 +23,13 @@ export default class UserSettings extends Component {
     const { user } = this.props;
 
     return (
-      <Container>
-        <Content>
-          <List>
-            {this.renderSimpleListItem('Name', user.data.name)}
-            {this.renderSimpleListItem('NetId', user.data.netid)}
-            {this.renderSimpleListItem('Email', user.data.email)}
-          </List>
-        </Content>
-      </Container>
+      <View>
+        <List>
+          {this.renderSimpleListItem('Name', user.data.name)}
+          {this.renderSimpleListItem('NetId', user.data.netid)}
+          {this.renderSimpleListItem('Email', user.data.email)}
+        </List>
+      </View>
     );
   }
 }

@@ -1,8 +1,8 @@
 // @flow
 
-import {Platform, Dimensions} from 'react-native';
+import { Platform, Dimensions } from 'react-native';
 
-const {width} = Dimensions.get('window');
+const { width } = Dimensions.get('window');
 
 const leftArrow = require('../../../assets/images/previous.png');
 const rightArrow = require('../../../assets/images/next.png');
@@ -16,7 +16,7 @@ const getTheme = () => {
   return {
     // arrows
     arrowColor: black,
-    arrowStyle: {padding: 0},
+    arrowStyle: { padding: 0 },
     // month
     monthTextColor: black,
     textMonthFontSize: 20,
@@ -35,7 +35,7 @@ const getTheme = () => {
     textDayFontSize: 18,
     textDayFontFamily: 'HelveticaNeue',
     textDayFontWeight: '500',
-    textDayStyle: {marginTop: Platform.OS === 'android' ? 2 : 4},
+    textDayStyle: { marginTop: Platform.OS === 'android' ? 2 : 4 },
     // selected date
     selectedDayBackgroundColor: black,
     selectedDayTextColor: white,
@@ -45,8 +45,8 @@ const getTheme = () => {
     dotColor: themeColor,
     selectedDotColor: white,
     disabledDotColor: disabledColor,
-    dotStyle: {marginTop: -2},
+    dotStyle: { marginTop: -2 },
   };
 };
 
-export {getTheme, width, leftArrow, rightArrow};
+export { getTheme, width, leftArrow, rightArrow };
