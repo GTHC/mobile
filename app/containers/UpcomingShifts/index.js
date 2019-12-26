@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 // @flow
 
 import React, { Component } from 'react';
@@ -15,7 +16,7 @@ type Props = {
 };
 
 class UpcomingShifts extends Component<Props> {
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.props.getAllShifts();
   }
 

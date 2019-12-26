@@ -9,20 +9,17 @@ import UserSettings from '../components/UserSettings';
 import TeamSettings from '../components/TeamSettings';
 
 class Settings extends Component {
-  constructor(props) {
-    super(props);
-
-    const { user } = this.props;
-    getTeam(user.data.team_id);
-  }
-
   render() {
     const { user, team } = this.props;
 
     return (
       <Container>
         <UserSettings user={user} />
-        <TeamSettings team={team} />
+        <TeamSettings
+          user={user}
+          team={team}
+          getTeam={this.props.getTeam}
+        />
       </Container>
     );
   }

@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import TeamCalendar from '../containers/Calendar';
 import UpcomingShifts from '../containers/UpcomingShifts';
@@ -12,8 +12,8 @@ const Tab = createBottomTabNavigator();
 function BottomTabs() {
   return (
     <Tab.Navigator
-      screenOptions={({route}) => ({
-        tabBarIcon: ({color}) => {
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ color }) => {
           let iconName;
 
           if (route.name === 'Calendar') {
@@ -25,7 +25,8 @@ function BottomTabs() {
           }
           return <Ionicons name={iconName} size={25} color={color} />;
         },
-      })}>
+      })}
+    >
       <Tab.Screen name="Calendar" component={TeamCalendar} />
       <Tab.Screen name="My Shifts" component={UpcomingShifts} />
       <Tab.Screen name="Notifications" component={Notifications} />
