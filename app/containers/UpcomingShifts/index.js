@@ -6,7 +6,7 @@ import { Agenda } from 'react-native-calendars';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getTheme } from './styles';
-import { today, formatShifts, renderItem, renderEmptyDate, rowHasChanged } from './utils';
+import { today, formatShifts, renderItem, renderEmptyDate, rowHasChanged, calendarModal } from './utils';
 import { getAllShifts } from '../../redux/actions/shifts';
 
 
@@ -28,6 +28,7 @@ class UpcomingShifts extends Component<Props> {
         rowHasChanged={rowHasChanged}
         renderItem={renderItem}
         renderEmptyDate={renderEmptyDate}
+        calendarModal={calendarModal}
         selected={today}
         theme={getTheme()}
         futureScrollRange={3}

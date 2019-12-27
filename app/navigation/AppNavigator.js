@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import BottomTabNavigator from './BottomTabNavigator';
 import Login from '../containers/Login';
+import UpcomingShifts from '../containers/UpcomingShifts';
 import Settings from '../containers/Settings';
 import LoadingScreen from '../components/LoadingScreen';
 import { getUserFromToken } from '../redux/actions/user';
@@ -44,6 +45,7 @@ class AppNavigator extends React.Component {
           })}
         />
         <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="MyShifts" component={UpcomingShifts} />
         <Stack.Screen name="Settings" component={Settings} options={{ ...mainHeader }} />
       </Stack.Navigator>
     );
