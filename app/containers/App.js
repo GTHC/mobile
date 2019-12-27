@@ -26,14 +26,20 @@ export default class App extends Component {
 
   onReceived = (notification) => {
     // TODO(vinit): Implement
+    console.log("Notification received: ", notification);
   }
 
   onOpened = (openResult) => {
     // TODO(vinit): Implement
+    console.log('Message: ', openResult.notification.payload.body);
+    console.log('Data: ', openResult.notification.payload.additionalData);
+    console.log('isActive: ', openResult.notification.isAppInFocus);
+    console.log('openResult: ', openResult);
   }
 
   onIds = (device) => {
     // TODO(vinit): Implement
+    console.log('Device info: ', device);
   }
 
   render() {
