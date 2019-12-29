@@ -32,7 +32,8 @@ export default class DayView extends PureComponent {
     let initPosition = _.min(_.map(packedEvents, 'top')) - this.calendarHeight / (end - start);
 
     const today = moment(new Date());
-    if (today.isSame(date, 'day')) {
+    const isShowingToday = today.isSame(date, 'day');
+    if (isShowingToday) {
       initPosition = this.calendarHeight * (today.hour() / 24);
     } else {
       initPosition = initPosition < 0 ? 0 : initPosition;
@@ -40,6 +41,7 @@ export default class DayView extends PureComponent {
 
     this.state = {
       _scrollY: initPosition,
+      isShowingToday,
       packedEvents,
     };
   }
@@ -207,7 +209,7 @@ export default class DayView extends PureComponent {
       >
         {this._renderLines()}
         {this._renderEvents()}
-        {this._renderRedLine()}
+        {this.state.isShowingToday && this._renderRedLine()}
       </ScrollView>
     );
   }
