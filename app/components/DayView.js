@@ -22,16 +22,22 @@ function range(from, to) {
   return Array.from(Array(to), (_, i) => from + i);
 }
 
-type Props = {};
-
-export default class DayView extends PureComponent<Props> {
-  constructor(props: Props) {
+export default class DayView extends PureComponent {
+  constructor(props) {
     super(props);
-    this.calendarHeight = (props.end - props.start) * 100;
+    const { start, end, date } = props;
+    this.calendarHeight = (end - start) * 100;
     const width = props.width - LEFT_MARGIN;
     const packedEvents = populateEvents(props.events, width, props.start);
-    let initPosition = _.min(_.map(packedEvents, 'top')) - this.calendarHeight / (props.end - props.start);
-    initPosition = initPosition < 0 ? 0 : initPosition;
+    let initPosition = _.min(_.map(packedEvents, 'top')) - this.calendarHeight / (end - start);
+
+    const today = moment(new Date());
+    if (today.isSame(date, 'day')) {
+      initPosition = this.calendarHeight * (today.hour() / 24);
+    } else {
+      initPosition = initPosition < 0 ? 0 : initPosition;
+    }
+
     this.state = {
       _scrollY: initPosition,
       packedEvents,
