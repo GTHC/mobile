@@ -122,7 +122,7 @@ export default class DayView extends PureComponent<Props> {
   }
 
   _onEventTapped(event) {
-    this.props.eventTapped(event);
+    this.props.eventTapped(event.data);
   }
 
   _renderEvents() {

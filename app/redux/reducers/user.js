@@ -1,6 +1,6 @@
 const initialState = {
   data: {},
-  isLoggedIn: false,
+  isLoggedIn: null,
   isLoading: false,
   error: false,
   errorMessage: '',
@@ -175,6 +175,7 @@ const user = (state = initialState, action) => {
     }
 
     case 'FAILED_GET_USER': {
+      console.log('failed');
       return {
         ...state,
         isLoading: false,
@@ -184,6 +185,7 @@ const user = (state = initialState, action) => {
 
     case 'END_GET_USER': {
       const response = action.payload.data;
+      console.log('end get user');
       return {
         ...state,
         isLoading: false,
