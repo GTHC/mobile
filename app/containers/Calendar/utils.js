@@ -2,10 +2,6 @@
 
 import moment from 'moment';
 
-const eventTapped = shift => {
-  // TODO(rikki): route to correct page.
-};
-
 const formatTeamShifts = shifts => {
   const items = [];
 
@@ -28,4 +24,4 @@ const formatTeamShifts = shifts => {
 
 const today = moment(new Date()).format('YYYY-MM-DD');
 
-export { eventTapped, formatTeamShifts, today };
+export { formatTeamShifts, today };

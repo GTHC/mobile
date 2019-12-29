@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import moment from 'moment';
 
 const today = moment(new Date()).format('YYYY-MM-DD');
@@ -44,19 +44,6 @@ const formatShifts = teamShifts => {
   return items;
 };
 
-const onItemClicked = (shift) => {
-  // TODO(rikki): route to correct page.
-};
-
-const renderItem = (item) => (
-  <TouchableOpacity onPress={() => onItemClicked(item.data)}>
-    <View style={[styles.item, { height: item.height }]}>
-      <Text style={{ color: 'white' }}>{item.text}</Text>
-      <Text style={{ color: 'white' }}>{item.time}</Text>
-    </View>
-  </TouchableOpacity>
-);
-
 const renderEmptyDate = () => <View style={styles.emptyDate} />;
 
 const rowHasChanged = (r1, r2) => r1.name !== r2.name;
@@ -79,4 +66,4 @@ const styles = StyleSheet.create({
 });
 
 
-export { today, groupShiftsByDate, formatShifts, renderItem, renderEmptyDate, rowHasChanged };
+export { today, groupShiftsByDate, formatShifts, renderEmptyDate, rowHasChanged };

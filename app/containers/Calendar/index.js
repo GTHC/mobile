@@ -7,7 +7,7 @@ import { bindActionCreators } from 'redux';
 import EventCalendar from '../../components/EventCalendar';
 import { getAllShifts } from '../../redux/actions/shifts';
 import { width, getTheme, leftArrow, rightArrow } from './styles';
-import { eventTapped, formatTeamShifts, today } from './utils';
+import { formatTeamShifts, today } from './utils';
 
 class Calendar extends Component {
   constructor(props) {
@@ -29,6 +29,10 @@ class Calendar extends Component {
   UNSAFE_componentWillMount() {
     this.props.getAllShifts();
   }
+
+  eventTapped = shift => {
+    this.props.navigation.navigate('ShiftView', { shift });
+  };
 
   render() {
     const events = formatTeamShifts(this.props.shifts.team_shifts);
@@ -54,7 +58,7 @@ class Calendar extends Component {
             ref="calendar"
             onPageScroll={date => this.onPageScroll(date)}
             selectedDate={this.state.selectedDate}
-            eventTapped={eventTapped}
+            eventTapped={this.eventTapped}
             events={events}
             width={width}
             initDate={today}
