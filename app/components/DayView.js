@@ -8,8 +8,9 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react/prop-types */
 
-import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
 import React, { PureComponent } from 'react';
+import UserAvatar from 'react-native-user-avatar';
 import moment from 'moment';
 import _ from 'lodash';
 import populateEvents from '../utils/Packer';
@@ -21,18 +22,26 @@ function range(from, to) {
   return Array.from(Array(to), (_, i) => from + i);
 }
 
-type Props = {};
-
-export default class DayView extends PureComponent<Props> {
-  constructor(props: Props) {
+export default class DayView extends PureComponent {
+  constructor(props) {
     super(props);
-    this.calendarHeight = (props.end - props.start) * 100;
+    const { start, end, date } = props;
+    this.calendarHeight = (end - start) * 100;
     const width = props.width - LEFT_MARGIN;
     const packedEvents = populateEvents(props.events, width, props.start);
-    let initPosition = _.min(_.map(packedEvents, 'top')) - this.calendarHeight / (props.end - props.start);
-    initPosition = initPosition < 0 ? 0 : initPosition;
+    let initPosition = _.min(_.map(packedEvents, 'top')) - this.calendarHeight / (end - start);
+
+    const today = moment(new Date());
+    const isShowingToday = today.isSame(date, 'day');
+    if (isShowingToday) {
+      initPosition = this.calendarHeight * (today.hour() / 24);
+    } else {
+      initPosition = initPosition < 0 ? 0 : initPosition;
+    }
+
     this.state = {
       _scrollY: initPosition,
+      isShowingToday,
       packedEvents,
     };
   }
@@ -122,7 +131,18 @@ export default class DayView extends PureComponent<Props> {
   }
 
   _onEventTapped(event) {
-    this.props.eventTapped(event);
+    this.props.eventTapped(event.data);
+  }
+
+  renderShiftAttendees = ({ data }) => {
+    const userAvatars = data.users.map(user =>
+      <UserAvatar size="32" name={user.name} />);
+
+    return (
+      <View style={styles.attendees}>
+        {userAvatars}
+      </View>
+    );
   }
 
   _renderEvents() {
@@ -134,6 +154,7 @@ export default class DayView extends PureComponent<Props> {
         height: event.height,
         width: event.width,
         top: event.top,
+        padding: 4,
       };
 
       const eventColor = {
@@ -165,6 +186,7 @@ export default class DayView extends PureComponent<Props> {
                 {' '}
                 {moment(event.end).format(formatTime)}
               </Text>
+              {this.renderShiftAttendees(this.props.events[event.index])}
             </View>
           )}
         </TouchableOpacity>
@@ -187,8 +209,16 @@ export default class DayView extends PureComponent<Props> {
       >
         {this._renderLines()}
         {this._renderEvents()}
-        {this._renderRedLine()}
+        {this.state.isShowingToday && this._renderRedLine()}
       </ScrollView>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  attendees: {
+    flex: 1,
+    flexDirection: 'row',
+    paddingVertical: 8,
+  },
+});

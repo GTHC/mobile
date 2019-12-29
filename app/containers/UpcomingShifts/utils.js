@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import moment from 'moment';
 
 const today = moment(new Date()).format('YYYY-MM-DD');
@@ -31,6 +31,7 @@ const formatShifts = teamShifts => {
       const end = moment(shift.end);
 
       const description = {
+        data: shift,
         text: shift.title,
         time: `${start.format('hh:mm A')} - ${end.format('hh:mm A')}`,
       };
@@ -43,16 +44,22 @@ const formatShifts = teamShifts => {
   return items;
 };
 
-const renderItem = (item: any) => (
-  <View style={[styles.item, { height: item.height }]}>
-    <Text style={{ color: 'white' }}>{item.text}</Text>
-    <Text style={{ color: 'white' }}>{item.time}</Text>
-  </View>
+const onItemClicked = (shift) => {
+  // TODO(rikki): route to correct page.
+};
+
+const renderItem = (item) => (
+  <TouchableOpacity onPress={() => onItemClicked(item.data)}>
+    <View style={[styles.item, { height: item.height }]}>
+      <Text style={{ color: 'white' }}>{item.text}</Text>
+      <Text style={{ color: 'white' }}>{item.time}</Text>
+    </View>
+  </TouchableOpacity>
 );
 
 const renderEmptyDate = () => <View style={styles.emptyDate} />;
 
-const rowHasChanged = (r1: any, r2: any) => r1.name !== r2.name;
+const rowHasChanged = (r1, r2) => r1.name !== r2.name;
 
 const styles = StyleSheet.create({
   item: {

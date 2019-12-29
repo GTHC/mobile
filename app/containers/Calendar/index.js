@@ -60,7 +60,7 @@ class Calendar extends Component {
             initDate={today}
             upperCaseHeader
             uppercase
-            scrollToFirst={false}
+            scrollToFirst
           />
         </View>
       </CalendarProvider>

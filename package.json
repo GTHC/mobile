@@ -26,12 +26,14 @@
     "@react-navigation/core": "^5.0.0-alpha.25",
     "@react-navigation/native": "^5.0.0-alpha.16",
     "@react-navigation/stack": "^5.0.0-alpha.39",
+    "add": "^2.0.6",
     "axios": "^0.18.0",
     "history": "^4.10.1",
     "jetifier": "^1.6.5",
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
     "native-base": "^2.8.0",
+    "or": "^0.2.0",
     "react": "16.9.0",
     "react-native": "0.61.5",
     "react-native-app-auth": "^5.0.0-rc3",
@@ -42,6 +44,7 @@
     "react-native-reanimated": "^1.4.0",
     "react-native-safe-area-context": "^0.6.1",
     "react-native-screens": "^1.0.0-alpha.23",
+    "react-native-user-avatar": "^1.0.4",
     "react-native-vector-icons": "^6.6.0",
     "react-redux": "^6.0.1",
     "react-router-redux": "^4.0.8",
@@ -49,7 +52,8 @@
     "redux-devtools": "^3.5.0",
     "redux-persist": "^6.0.0",
     "redux-promise": "^0.6.0",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "yarn": "^1.21.1"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",

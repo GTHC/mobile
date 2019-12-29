@@ -9,13 +9,7 @@ import { getTheme } from './styles';
 import { today, formatShifts, renderItem, renderEmptyDate, rowHasChanged } from './utils';
 import { getAllShifts } from '../../redux/actions/shifts';
 
-
-type Props = {
-  getAllShifts: () => void,
-  shifts: any,
-};
-
-class UpcomingShifts extends Component<Props> {
+class UpcomingShifts extends Component {
   UNSAFE_componentWillMount() {
     this.props.getAllShifts();
   }
@@ -23,7 +17,7 @@ class UpcomingShifts extends Component<Props> {
   render() {
     return (
       <Agenda
-        items={formatShifts(this.props.shifts.team_shifts)}
+        items={formatShifts(this.props.shifts.user_shifts)}
         refreshing={this.props.shifts.isLoading}
         rowHasChanged={rowHasChanged}
         renderItem={renderItem}

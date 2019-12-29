@@ -31,6 +31,7 @@ class AppNavigator extends React.Component {
           component={BottomTabNavigator}
           options={({ navigation }) => ({
             title: 'GTHC',
+            headerLeft: null,
             headerRight: () => (
               <Icon.Button
                 backgroundColor={mainHeader.headerStyle.backgroundColor}
