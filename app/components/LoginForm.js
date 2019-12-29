@@ -11,7 +11,7 @@ export default class LoginForm extends Component {
       const { navigation } = this.props;
 
       session('auth', idToken);
-      navigation.navigate('Home');
+      navigation.replace('Home');
     });
   };
 
