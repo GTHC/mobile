@@ -8,8 +8,9 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react/prop-types */
 
-import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
 import React, { PureComponent } from 'react';
+import UserAvatar from 'react-native-user-avatar';
 import moment from 'moment';
 import _ from 'lodash';
 import populateEvents from '../utils/Packer';
@@ -125,6 +126,17 @@ export default class DayView extends PureComponent<Props> {
     this.props.eventTapped(event.data);
   }
 
+  renderShiftAttendees = ({ data }) => {
+    const userAvatars = data.users.map(user =>
+      <UserAvatar size="32" name={user.name} />);
+
+    return (
+      <View style={styles.attendees}>
+        {userAvatars}
+      </View>
+    );
+  }
+
   _renderEvents() {
     const { styles } = this.props;
     const { packedEvents } = this.state;
@@ -134,6 +146,7 @@ export default class DayView extends PureComponent<Props> {
         height: event.height,
         width: event.width,
         top: event.top,
+        padding: 4,
       };
 
       const eventColor = {
@@ -165,6 +178,7 @@ export default class DayView extends PureComponent<Props> {
                 {' '}
                 {moment(event.end).format(formatTime)}
               </Text>
+              {this.renderShiftAttendees(this.props.events[event.index])}
             </View>
           )}
         </TouchableOpacity>
@@ -192,3 +206,11 @@ export default class DayView extends PureComponent<Props> {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  attendees: {
+    flex: 1,
+    flexDirection: 'row',
+    paddingVertical: 8,
+  },
+});

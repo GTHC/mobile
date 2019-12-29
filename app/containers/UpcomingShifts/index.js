@@ -17,7 +17,7 @@ class UpcomingShifts extends Component {
   render() {
     return (
       <Agenda
-        items={formatShifts(this.props.shifts.team_shifts)}
+        items={formatShifts(this.props.shifts.user_shifts)}
         refreshing={this.props.shifts.isLoading}
         rowHasChanged={rowHasChanged}
         renderItem={renderItem}

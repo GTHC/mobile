@@ -19,8 +19,6 @@ const crud = request => async dispatch => {
     options.headers = request.headers;
   }
 
-  console.log('url', options.url);
-
   axios(options)
     .then(res => {
       dispatch({
