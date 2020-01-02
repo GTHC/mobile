@@ -28,11 +28,11 @@ import {
   Text,
 } from 'native-base';
 import { today, formatShifts, renderItem, renderEmptyDate, rowHasChanged, calendarModal } from '../containers/UpcomingShifts/utils';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 class ShiftView extends Component {
   constructor(props) {
     super(props);
-    console.log(props);
     this.state = {
     };
   }
@@ -52,12 +52,18 @@ class ShiftView extends Component {
     const formatTime = this.props.format24h ? 'HH:mm' : 'hh:mm A';
     return (
       <View style={styles.container}>
-              <Title>
+              <Title numberOfLines={2} style={styles.title}>
                 {this.props.route.params.shift.title}
               </Title>
-              <Title>
-                Time
+              <Title style={styles.subTitle}>
+              <Ionicons name={'ios-clock'} size={25} color={'black'} /> 
+              {'   '}
+                Timings
               </Title>
+              {/* <Ionicons name={'ios-calendar'} size={25} color={'black'} /> */}
+              <Text style={styles.eventTimes}>
+                {moment(this.props.route.params.shift.start).format('MMMM Do YYYY')}
+              </Text>
               <Text style={styles.eventTimes}>
                 {moment(this.props.route.params.shift.start).format(formatTime)}
                 {' '}
@@ -65,17 +71,31 @@ class ShiftView extends Component {
                 {' '}
                 {moment(this.props.route.params.shift.end).format(formatTime)}
               </Text>
-              <Title>
+              <Text style={styles.eventTimes}>
+              {moment(this.props.route.params.shift.end).fromNow()}
+              </Text>
+              <Title style={styles.subTitle}>
+              <Ionicons name={'ios-paper'} size={25} color={'black'} /> 
+              
+              {'   '}
                 Notes
               </Title>
-              <Text>
+              <Text style={styles.text}>
+                
                 {this.props.route.params.shift.note}
+                
               </Text>
-              <Title>
+              <Title style={styles.subTitle}>
+              <Ionicons name={'ios-person'} size={25} color={'black'} /> 
+              
+              {'   '}
                 Users
               </Title>
               <View style={styles.attendees}>
-                { this.props.route.params.shift.users.map(user => <UserAvatar size="32" name={user.name} />) }
+                  { this.props.route.params.shift.users.map(user => <UserAvatar size="48" name={user.name}/> ) }
+                  <Text>
+                  {/* { this.props.route.params.shift.users.map(user => user.name) } */}
+                </Text>
               </View>
       </View>
     );
@@ -85,18 +105,35 @@ export default ShiftView;
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    marginLeft: 20,
+    marginRight: 20,
+    alignItems: 'flex-start',
+  },
+  title: {
+    fontSize: 25,
+    marginBottom: 5,
+    marginTop: 10
   },
   text: {
-    color: '#3f2949',
-    marginTop: 10,
+    color: '#767676',
+    marginLeft: 38,
+    fontWeight: '300',
+    
   },
   attendees: {
-    flex: 1,
     flexDirection: 'row',
-    paddingVertical: 8,
+    flexWrap: 'wrap',
+    marginLeft: 38,
   },
+  eventTimes: {
+    color: '#767676',
+    marginLeft: 38,
+    fontWeight: '300',
+  },
+  subTitle: {
+    marginBottom: 5,
+    marginTop: 10
+  }
 });
 
 export {ShiftView};
