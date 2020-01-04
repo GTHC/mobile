@@ -1,79 +1,146 @@
-import React, { Component } from 'react';
-import { View, StyleSheet } from 'react-native';
-import UserAvatar from 'react-native-user-avatar';
-import moment from 'moment';
-import { Title, Text } from 'native-base';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import React, {Component} from 'react';
+import {
+  Modal,
+  DatePickerIOS,
+  TouchableHighlight,
+  TouchableOpacity,
+  View,
+  StyleSheet,
+} from 'react-native';
+import {
+  Toast,
+  Button,
+  Icon,
+  Body,
+  Left,
+  Right,
+  Title,
+  Container,
+  Header,
+  Content,
+  Form,
+  Item,
+  Input,
+  Label,
+  Text,
+} from 'native-base';
+import { today, formatShifts, renderItem, renderEmptyDate, rowHasChanged, calendarModal } from '../containers/UpcomingShifts/utils';
 
 class ShiftView extends Component {
   constructor(props) {
     super(props);
+    console.log(props);
     this.state = {
+      modalVisible: false,
+      startVisible: false,
+      StartDate: new Date(),
+      EndDate: new Date(),
     };
+    this.setStartDate = this.setStartDate.bind(this);
+    this.setEndDate = this.setEndDate.bind(this);
   }
-
-  renderShiftAttendees = (users) => {
-    const userAvatars = users.map(user => (
-      <View style={styles.avatarContainer}>
-        <UserAvatar size="32" name={user.name} />
-        <Text style={styles.avatarName}>{user.name}</Text>
-      </View>
-    ));
-
-    return (
-      <View style={styles.attendees}>
-        {userAvatars}
-      </View>
-    );
+  setStartDate(newDate) {
+    this.setState({StartDate: newDate});
   }
-
+  setEndDate(newDate) {
+    this.setState({EndDate: newDate});
+  }
+  toggleModal(visible) {
+    this.setState({modalVisible: visible});
+  }
+  toggleStart(visible) {
+    this.setState({startVisible: visible});
+  }
   render() {
-    const { title, start, end, note, users } = this.props.route.params.shift;
-    const formatTime = this.props.format24h ? 'HH:mm' : 'hh:mm A';
     return (
       <View style={styles.container}>
-        <Title numberOfLines={2} style={styles.title}>
-          {title}
-        </Title>
+        <Modal
+          animationType={'none'}
+          transparent={true}
+          visible={this.state.modalVisible}
+          onRequestClose={() => {
+            console.log('Modal has been closed.');
+          }}>
+          <View style={styles.modal}>
+            <Container>
+              <Header>
+                <Body style={{flexDirection: 'row'}}>
+                  <Title>Edit Shift</Title>
+                </Body>
+                <Right />
+              </Header>
+              <Content style={styles.content}>
+                <Form>
+                  <Body style={{marginTop: 10, flexDirection: 'row-reverse'}}>
+                    <Title>Start</Title>
+                  </Body>
 
-        <Title style={styles.subTitle}>
-          <Ionicons name="ios-clock" size={25} color="black" />
-          {'   '}
-                Time
-        </Title>
+                  {!this.state.startVisible && (
+                    <Button
+                      block
+                      style={{marginTop: 10, margin: 20, backgroundColor: '#00adf5'}}
+                      onPress={() => {
+                        this.toggleStart(!this.state.startVisible);
+                      }}>
+                      <Text>Time: {this.props.StartDate}</Text>
+                    </Button>
+                  )}
+                  {this.state.startVisible && (
+                    <DatePickerIOS
+                      date={this.state.StartDate}
+                      onDateChange={this.setStartDate}
+                      visible={this.state.startVisible}
+                    />
+                  )}
+                  {this.state.startVisible && (
+                    <Button
+                      block
+                      style={{marginTop: 0, margin: 20, backgroundColor: '#00adf5'}}
+                      onPress={() => {
+                        this.toggleStart(false);
+                      }}>
+                      <Text>Save</Text>
+                    </Button>
+                  )}
+                  <Title> End </Title>
+                  <DatePickerIOS date={this.state.EndDate} onDateChange={this.setEndDate} />
+                  <Item floatingLabel>
+                    <Label>Title</Label>
+                    <Input />
+                  </Item>
+                  <Item floatingLabel last>
+                    <Label>Description</Label>
+                    <Input />
+                  </Item>
+                </Form>
+                <View style={styles.content}>
+                  <Button
+                    block
+                    style={{marginTop: 20, margin: 100, backgroundColor: '#00adf5'}}
+                    onPress={() => {
+                      this.toggleModal(!this.state.modalVisible);
+                    }}>
+                    <Text>Edit Shift</Text>
+                  </Button>
+                </View>
+              </Content>
+            </Container>
+            {/* <TouchableHighlight onPress = {() => {
+                     this.toggleModal(!this.state.modalVisible)}}>
+                     
+                     <Text style = {styles.text}>Close Modal</Text>
+                  </TouchableHighlight> */}
+          </View>
+        </Modal>
 
-        <Text style={styles.eventTimes}>
-          {moment(start).format('MMMM Do YYYY')}
-        </Text>
-
-        <Text style={styles.eventTimes}>
-          {`${moment(start).format(formatTime)} - ${moment(end).format(formatTime)}`}
-        </Text>
-
-        <Text style={styles.eventTimes}>
-          {moment(end).fromNow()}
-        </Text>
-
-        <Title style={styles.subTitle}>
-          <Ionicons name="ios-paper" size={25} color="black" />
-          {'   '}
-           Notes
-        </Title>
-
-        <Text style={styles.text}>
-          {note}
-        </Text>
-
-        <Title style={styles.subTitle}>
-          <Ionicons name="ios-person" size={25} color="black" />
-
-          {'   '}
-           Users
-        </Title>
-
-        <View style={styles.attendees}>
-          { this.renderShiftAttendees(users)}
-        </View>
+        <Button
+          block
+          style={{marginTop: 0, margin: 0, backgroundColor: '#00adf5'}}
+          onPress={() => {
+            this.toggleModal(true);
+          }}>
+          <Text>Edit Shift</Text>
+        </Button>
       </View>
     );
   }
@@ -82,43 +149,25 @@ export default ShiftView;
 
 const styles = StyleSheet.create({
   container: {
-    marginLeft: 20,
-    marginRight: 20,
-    alignItems: 'flex-start',
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  title: {
-    fontSize: 25,
-    fontWeight: '400',
-    marginBottom: 5,
-    marginTop: 10,
+  modal: {
+    justifyContent: 'center',
+    flex: 1,
+    alignItems: 'center',
+    width: '85%',
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: '#fff',
+    marginTop: 70,
+    marginLeft: 40,
   },
   text: {
-    color: '#767676',
-    marginLeft: 38,
-    fontWeight: '300',
-
-  },
-  eventTimes: {
-    color: '#767676',
-    marginLeft: 38,
-    fontWeight: '300',
-  },
-  subTitle: {
-    marginBottom: 5,
+    color: '#3f2949',
     marginTop: 10,
-    fontWeight: '300',
-    fontSize: 22,
-  },
-  avatarContainer: {
-    flexDirection: 'row',
-  },
-  attendees: {
-    marginLeft: 20,
-  },
-  avatarName: {
-    alignSelf: 'center',
-    marginLeft: 4,
   },
 });
 
-export { ShiftView };
+export {ShiftView};

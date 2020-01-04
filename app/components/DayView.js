@@ -39,8 +39,6 @@ export default class DayView extends PureComponent {
       initPosition = initPosition < 0 ? 0 : initPosition;
     }
 
-    console.log(props);
-
     this.state = {
       _scrollY: initPosition,
       isShowingToday,

@@ -28,7 +28,6 @@ export default class TeamSettings extends Component {
 
     render() {
       const { team } = this.props;
-      console.log('yeet', team);
 
       return (
         <View>
