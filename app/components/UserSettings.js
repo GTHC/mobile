@@ -2,6 +2,7 @@
 
 import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
+import OneSignal from 'react-native-onesignal';
 import {
   Text,
   List,
@@ -21,6 +22,10 @@ export default class UserSettings extends Component {
 
   render() {
     const { user } = this.props;
+
+    // This sets the external OneSignal user ID to the current user's netID
+    OneSignal.setExternalUserId(user.data.netid);
+    // TODO: Above code does not fit in here, needs to find a better home
 
     return (
       <View>
