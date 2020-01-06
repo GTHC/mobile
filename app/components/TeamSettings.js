@@ -1,7 +1,7 @@
 // @flow
 
 import React, { Component } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Linking } from 'react-native';
 import {
   Text,
   List,
@@ -36,6 +36,7 @@ export default class TeamSettings extends Component {
             {this.renderSimpleListItem('Team Name', team.data.name)}
             {this.renderSimpleListItem('Tent Type', team.data.tent_type)}
             {this.renderSimpleListItem('Passcode', team.data.passcode)}
+            {this.renderSimpleListItem('Notification Settings', 'To adjust Notifications preferences, please go to web application at https://gthc.io/')}       
           </List>
         </View>
       );
