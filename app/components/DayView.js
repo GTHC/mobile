@@ -135,8 +135,22 @@ export default class DayView extends PureComponent {
   }
 
   renderShiftAttendees = ({ data }) => {
-    const userAvatars = data.users.map(user =>
-      <UserAvatar size="32" name={user.name} />);
+    const { start, end } = data;
+
+    const endTime = moment(end);
+    const startTime = moment(start);
+    const duration = moment.duration(endTime.diff(moment(startTime)));
+    const diff = duration.asHours();
+
+    console.log(diff);
+    const diffLessThanOne = diff > 0.5;
+    const userAvatars = data.users.map(user => (
+      diffLessThanOne && (
+      <View style={{ paddingRight: 4 }}>
+        <UserAvatar size="32" name={user.name} />
+      </View>
+      )
+    ));
 
     return (
       <View style={styles.attendees}>

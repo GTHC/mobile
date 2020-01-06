@@ -24,8 +24,8 @@ class AppNavigator extends React.Component {
   }
 
   renderApp = (user) => {
-    // const initRoute = !user.isLoggedIn ? 'Login' : 'Home';
-    const initRoute = 'Signup';
+    const loggedInInitialRoute = user.data.team_id == null ? 'Signup' : 'Home';
+    const initRoute = !user.isLoggedIn ? 'Login' : loggedInInitialRoute;
 
     return (
       <Stack.Navigator initialRouteName={initRoute}>

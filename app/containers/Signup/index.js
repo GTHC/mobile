@@ -10,10 +10,12 @@ import {
   StyleSheet,
   Image,
 } from 'react-native';
+import { Input } from 'native-base';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Logo } from '../../utils/images';
 import { getAllTeams } from '../../redux/actions/teams';
+import { signupUser } from '../../redux/actions/user';
 
 class Signup extends Component {
   constructor(props) {
@@ -23,6 +25,7 @@ class Signup extends Component {
       name: this.props.user.data.name ?? '',
       phone: '',
       passcode: '',
+      passcodeError: false,
     };
 
     this.props.getAllTeams();
@@ -33,6 +36,39 @@ class Signup extends Component {
         {'Register'.toUpperCase()}
       </Text>
     )
+
+    onRegisterPressed = () => {
+      const team = this.findTeamWithPasscode();
+      this.setState({ passcodeError: team === undefined });
+
+      if (team === undefined) {
+        return;
+      }
+
+      // eslint-disable-next-line camelcase
+      const { id, name, tent_type, passcode } = team;
+      const updatedUserData = {
+        type: tent_type,
+        name: this.state.name,
+        phone: this.state.phone,
+        teamData: {
+          name,
+          teamID: id,
+          tentType: tent_type,
+          isCaptain: false,
+          passcode,
+        },
+      };
+
+      this.props.signupUser(this.props.user.data.id, updatedUserData);
+    }
+
+    findTeamWithPasscode = () => {
+      const { passcode } = this.state;
+      const teams = this.props.teams.all;
+      const match = teams.find(team => team.passcode.toLowerCase() === passcode.toLowerCase());
+      return match;
+    }
 
     render() {
       return (
@@ -65,7 +101,6 @@ class Signup extends Component {
                   <TextInput
                     style={styles.textInput}
                     autoCorrect={false}
-                    underlineColorAndroid="#D2D2D3"
                     value={this.state.name}
                     placeholder="Tre Jones"
                     onChangeText={name => this.setState({ name })}
@@ -77,7 +112,6 @@ class Signup extends Component {
                   <TextInput
                     style={styles.textInput}
                     autoCorrect={false}
-                    underlineColorAndroid="#D2D2D3"
                     placeholder="(555) 555-5555"
                     value={this.state.phone}
                     onChangeText={phone => this.setState({ phone })}
@@ -86,19 +120,22 @@ class Signup extends Component {
 
                 <View style={styles.textField}>
                   <Text style={styles.textLabel}>Team Passcode</Text>
-                  <TextInput
+                  <Input
                     style={styles.textInput}
                     autoCorrect={false}
-                    underlineColorAndroid="#D2D2D3"
                     placeholder="######"
                     value={this.state.passcode}
                     onChangeText={passcode => this.setState({ passcode })}
                   />
+                  {this.state.passcodeError && <Text style={styles.invalidPasscodeText}>Invalid passcode</Text>}
                 </View>
 
                 <View style={styles.signinField}>
-                  <TouchableHighlight underlayColor="white">
-                    <View style={styles.signinButton}>
+                  <TouchableHighlight
+                    underlayColor="white"
+                    onPress={() => this.onRegisterPressed()}
+                  >
+                    <View style={styles.registerButton}>
                       {this.renderButton()}
                     </View>
                   </TouchableHighlight>
@@ -121,6 +158,7 @@ const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
       getAllTeams,
+      signupUser,
     },
     dispatch,
   );
@@ -162,7 +200,11 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     marginTop: 35,
   },
+  invalidPasscodeText: {
+    color: 'red',
+  },
   textField: {
+    marginTop: 16,
     flexDirection: 'column',
     marginLeft: 35,
     marginRight: 35,
@@ -173,6 +215,9 @@ const styles = StyleSheet.create({
     color: '#AAAAAA',
   },
   textInput: {
+    paddingHorizontal: 8,
+    borderWidth: 1,
+    borderColor: '#D2D2D3',
     fontSize: 16,
     height: 50,
   },
@@ -181,9 +226,9 @@ const styles = StyleSheet.create({
     marginLeft: 35,
     marginRight: 35,
   },
-  signinButton: {
+  registerButton: {
     alignItems: 'center',
-    borderRadius: 45,
+    borderRadius: 0,
     backgroundColor: '#f4511e',
   },
   buttonText: {
