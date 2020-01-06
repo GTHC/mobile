@@ -10,6 +10,7 @@ import Login from '../containers/Login';
 import Settings from '../containers/Settings';
 import LoadingScreen from '../components/LoadingScreen';
 import ShiftView from '../components/ShiftView';
+import Signup from '../containers/Signup';
 import { getUserFromToken } from '../redux/actions/user';
 
 
@@ -23,7 +24,8 @@ class AppNavigator extends React.Component {
   }
 
   renderApp = (user) => {
-    const initRoute = !user.isLoggedIn ? 'Login' : 'Home';
+    // const initRoute = !user.isLoggedIn ? 'Login' : 'Home';
+    const initRoute = 'Signup';
 
     return (
       <Stack.Navigator initialRouteName={initRoute}>
@@ -45,15 +47,17 @@ class AppNavigator extends React.Component {
             ...mainHeader,
           })}
         />
-        <Stack.Screen 
-          name="ShiftView" 
-          component={ShiftView} 
+        <Stack.Screen
+          name="ShiftView"
+          component={ShiftView}
           options={{
             title: 'Shift',
             ...mainHeader,
-          }}/>
+          }}
+        />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Settings" component={Settings} options={{ ...mainHeader }} />
+        <Stack.Screen name="Signup" component={Signup} options={{ title: 'Register' }} />
       </Stack.Navigator>
     );
   }

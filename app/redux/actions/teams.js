@@ -11,4 +11,4 @@ const getAllTeams = () =>
     url: '/api/v1/teams',
   });
 
-export {getAllTeams};
+export { getAllTeams };
