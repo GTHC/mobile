@@ -24,6 +24,7 @@ class UpcomingShifts extends Component {
     </TouchableOpacity>
   );
 
+  
   onItemClicked = (shift) => {
     this.props.navigation.navigate('ShiftView', { shift });
   };
