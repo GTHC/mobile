@@ -32,8 +32,7 @@ class Notifications extends Component {
     return (
       <View style={styles.notesContainer}>
         <FlatList
-          data={this.props.notifications.notifications}
-          
+          data={this.props.notifications.announcements}
           renderItem={({ item }) => <Text style={styles.item}>{item.body}</Text>  
         }
       />
