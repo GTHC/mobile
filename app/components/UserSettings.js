@@ -44,8 +44,10 @@ const styles = StyleSheet.create({
     paddingVertical: 4,
   },
   primaryText: {
+    fontSize: 25,
+    fontWeight: '400',
   },
   secondaryText: {
-    color: '#808080',
+    color: '#767676',
   },
 });
