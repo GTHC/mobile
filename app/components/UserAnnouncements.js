@@ -13,6 +13,7 @@ import {
   ListItem,
   Body,
 } from 'native-base';
+import ViewMoreText from 'react-native-view-more-text';
 
 const NOTIFICATIONS = [{"status":"SUCCESS",
  "message":"Notifications for user with netid ssh50 found.",
@@ -25,6 +26,8 @@ const NOTIFICATIONS = [{"status":"SUCCESS",
  }];
 
  const ANNOUNCEMENTS = NOTIFICATIONS[0].data.announcements;
+
+ 
 
 class UserAnnouncements extends Component {
   constructor(props) {
@@ -48,18 +51,35 @@ class UserAnnouncements extends Component {
       <Body>
       <Text style={styles.time}>{moment(time).format('MMM Do YYYY, h:mm a')}</Text>
         <Text style={styles.title}>{primary}</Text>
+        <ViewMoreText numberOfLines={3}
+          renderViewMore={this.renderViewMore}
+          renderViewLess={this.renderViewLess} textStyle={{textAlign: 'left', paddingLeft: 10}}>
         <Text style={styles.message}>{secondary}</Text>
+        </ViewMoreText>
       </Body>
     </ListItem>
   )
+
+  renderViewMore(onPress){
+    return(
+      <Text style={styles.toggleTextView} onPress={onPress}>View more</Text>
+    )
+  }
+  renderViewLess(onPress){
+    return(
+      <Text style={styles.toggleTextView} onPress={onPress}>View less</Text>
+    )
+  }
+
+
 
 
   render() {
     return (
       <View style={styles.notesContainer}>
         <FlatList
-          data={this.props.notifications.announcements}
-          // data={ANNOUNCEMENTS}
+        //   data={this.props.notifications.announcements}
+          data={ANNOUNCEMENTS}
           renderItem={({ item }) => (
             this.renderSimpleListItem(item.title, item.body, item.created_at)
           )}
@@ -91,6 +111,11 @@ const styles = StyleSheet.create({
     
     // textAlign:'right'
   },
+  toggleTextView: {
+      fontSize: 12,
+      color:'blue',
+      paddingTop: 10,
+  }
 });
 
 
