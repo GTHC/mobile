@@ -15,6 +15,7 @@ import {
 } from 'native-base';
 import ViewMoreText from 'react-native-view-more-text';
 
+// Fake data for testing
 const NOTIFICATIONS = [{"status":"SUCCESS",
  "message":"Notifications for user with netid ssh50 found.",
  "data":{
@@ -24,7 +25,6 @@ const NOTIFICATIONS = [{"status":"SUCCESS",
  		{"id":1,"title":"Line Monitor Announcement","body":"This is a line monitor announcement. This is a line monitor announcement. This is a line monitor announcement. This is a line monitor announcement. This is a line monitor announcement. This is a line monitor announcement. This is a line monitor announcement. This is a line monitor announcement. This is a line monitor announcement. This is a line monitor announcement. This is a line monitor announcement. This is a line monitor announcement. This is a line monitor announcement. This is a line monitor announcement. This is a line monitor announcement.  ","created_at":"2020-01-06T03:44:57.029Z","updated_at":"2020-01-06T03:44:57.029Z"}, {"id":2,"title":"Line Monitor Announcement","body":"This is a line monitor announcement. ","created_at":"2020-01-06T03:44:57.029Z","updated_at":"2020-01-06T03:44:57.029Z"}, {"id":3,"title":"Line Monitor Announcement","body":"This is a line monitor announcement. ","created_at":"2020-01-06T03:44:57.029Z","updated_at":"2020-01-06T03:44:57.029Z"}, {"id":4,"title":"Line Monitor Announcement","body":"This is a line monitor announcement. ","created_at":"2020-01-06T03:44:57.029Z","updated_at":"2020-01-06T03:44:57.029Z"}]
  	}
  }];
-
  const ANNOUNCEMENTS = NOTIFICATIONS[0].data.announcements;
 
  
@@ -78,8 +78,8 @@ class UserAnnouncements extends Component {
     return (
       <View style={styles.notesContainer}>
         <FlatList
-        //   data={this.props.notifications.announcements}
-          data={ANNOUNCEMENTS}
+          data={this.props.notifications.announcements}
+        //   data={ANNOUNCEMENTS}
           renderItem={({ item }) => (
             this.renderSimpleListItem(item.title, item.body, item.created_at)
           )}
