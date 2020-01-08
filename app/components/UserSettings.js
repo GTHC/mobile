@@ -24,7 +24,7 @@ export default class UserSettings extends Component {
     const { user } = this.props;
         // This sets the external OneSignal user ID to the current user's netID
         OneSignal.setExternalUserId(user.data.netid);
-        // TODO: Above code does not fit in here, needs to find a better home
+        // TODO: Above code does not fit in here, needs to find a better home like in App.js but idk how to do that
    
 
     return (
