@@ -11,7 +11,11 @@ const crud = request => async dispatch => {
   const options = {
     method: request.method,
     url: `${baseUrl}${request.url}?token=${idToken}&mobile=true`,
-    data: request.data ? request.data : null,
+    data: request.data === undefined ? null : {
+      ...request.data,
+      token: idToken,
+      mobile: true,
+    },
   };
 
   // added options

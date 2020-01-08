@@ -8,10 +8,11 @@ export default class LoginForm extends Component {
   handleLoginPress = () => {
     auth().then(res => {
       const { idToken } = res;
-      const { navigation } = this.props;
+      const { navigation, getUserFromToken } = this.props;
 
       session('auth', idToken);
-      navigation.replace('Home');
+      getUserFromToken();
+      // navigation.replace('Home');
     });
   };
 

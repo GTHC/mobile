@@ -39,6 +39,7 @@
     "react-native-app-auth": "^5.0.0-rc3",
     "react-native-calendars": "^1.20.0",
     "react-native-config": "^0.12.0",
+    "react-native-dropdown-autocomplete": "^1.0.18",
     "react-native-gesture-handler": "^1.5.2",
     "react-native-onesignal": "^3.6.0",
     "react-native-reanimated": "^1.4.0",

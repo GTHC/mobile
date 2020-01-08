@@ -175,7 +175,6 @@ const user = (state = initialState, action) => {
     }
 
     case 'FAILED_GET_USER': {
-  
       return {
         ...state,
         isLoading: false,
@@ -185,9 +184,9 @@ const user = (state = initialState, action) => {
 
     case 'END_GET_USER': {
       const response = action.payload.data;
-
       return {
         ...state,
+        errorMessage: '',
         isLoading: false,
         isLoggedIn: true,
         data: response.data,
