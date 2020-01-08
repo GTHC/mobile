@@ -23,12 +23,12 @@ export default class Notifications extends Component {
       <Container>
         <Content>
           <Tabs>
-            <Tab heading="Line Monitor">
+            <Tab heading="Line Monitor Notifications">
               <UserAnnouncements />
             </Tab>
-            <Tab heading="User">
+            {/* <Tab heading="User">
               <UserNotifications />
-            </Tab>
+            </Tab> */}
           </Tabs>
         </Content>
       </Container>

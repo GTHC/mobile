@@ -35,17 +35,6 @@ class UserAnnouncements extends Component {
     this.props.getNotifications();
   }
 
-  // Ansh to Vinit: I don't know what this code does so I commented it out.
-  // item = ({ title }) => {
-  //   return (
-  //     <View style={styles.item}>
-  //       <Text style={styles.title}>{title}</Text>
-  //     </View>
-  //   );  
-  // }
-
-  
-
   renderSimpleListItem = (primary, secondary, time) => (
     <ListItem style={styles.listItem}>
       <Body>
@@ -78,7 +67,7 @@ class UserAnnouncements extends Component {
     return (
       <View style={styles.notesContainer}>
         <FlatList
-          data={this.props.notifications.announcements}
+          data={this.props.notifications.announcements.reverse()}
         //   data={ANNOUNCEMENTS}
           renderItem={({ item }) => (
             this.renderSimpleListItem(item.title, item.body, item.created_at)
