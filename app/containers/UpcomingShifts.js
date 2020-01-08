@@ -15,7 +15,8 @@ type Props = {
 };
 
 class UpcomingShifts extends Component<Props> {
-  componentWillMount() {
+  constructor(props) {
+    super(props);
     this.props.getAllShifts();
   }
 
@@ -58,6 +59,7 @@ class UpcomingShifts extends Component<Props> {
   };
 
   render() {
+    const items = this.formatShifts();
     const today = moment(new Date()).format('YYYY-MM-DD');
     const weekFromNow = moment(new Date())
       .add(1, 'weeks')
@@ -65,7 +67,7 @@ class UpcomingShifts extends Component<Props> {
 
     return (
       <Agenda
-        items={this.formatShifts()}
+        items={items}
         refreshing={this.props.shifts.isLoading}
         rowHasChanged={rowHasChanged}
         renderItem={renderItem}

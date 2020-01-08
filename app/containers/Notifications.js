@@ -1,41 +1,42 @@
 // @flow
 
 import React, { Component } from 'react';
-import {
-  Button,
-  Icon,
-  Title,
-  Right,
-  Left,
-  Container,
-  Header,
-  Content,
-  Tab,
-  Tabs,
-  Body,
-} from 'native-base';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { getNotifications } from '../redux/actions/notifications';
 import UserAnnouncements from '../components/UserAnnouncements';
-import UserNotifications from '../components/UserNotifications';
 
-export default class Notifications extends Component {
+class Notifications extends Component {
+  constructor(props) {
+    super(props);
+    this.props.getNotifications();
+  }
+
   render() {
+    const { user, notifications } = this.props;
     return (
-      <Container>
-        <Content>
-          <Tabs>
-            <Tab heading="Line Monitor Notifications">
-              <UserAnnouncements />
-            </Tab>
-            {/* <Tab heading="User">
-              <UserNotifications />
-            </Tab> */}
-          </Tabs>
-        </Content>
-      </Container>
+      <UserAnnouncements
+        user={user}
+        notifications={notifications}
+      />
     );
   }
 }
 
+const mapStateToProps = state => ({
+  user: state.user,
+  notifications: state.notifications,
+});
 
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      getNotifications,
+    },
+    dispatch,
+  );
 
-
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Notifications);

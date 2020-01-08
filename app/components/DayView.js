@@ -145,7 +145,7 @@ export default class DayView extends PureComponent {
     const diffLessThanOne = diff > 0.5;
     const userAvatars = data.users.map(user => (
       diffLessThanOne && (
-      <View style={{ paddingRight: 4 }}>
+      <View style={{ paddingRight: 4, paddingTop: 4 }}>
         <UserAvatar size="32" name={user.name} />
       </View>
       )
@@ -190,14 +190,10 @@ export default class DayView extends PureComponent {
           ) : (
             <View>
               <Text numberOfLines={1} style={styles.eventTitle}>
-                {event.title || 'Event'}
+                {`${moment(event.start).format(formatTime)} - ${moment(event.start).format(formatTime)}`}
               </Text>
-              <Text style={styles.eventTimes} numberOfLines={1}>
-                {moment(event.start).format(formatTime)}
-                {' '}
--
-                {' '}
-                {moment(event.end).format(formatTime)}
+              <Text style={styles.eventTitle} numberOfLines={1}>
+                {event.title || 'Shift'}
               </Text>
               {this.renderShiftAttendees(this.props.events[event.index])}
             </View>
@@ -231,6 +227,7 @@ export default class DayView extends PureComponent {
 const styles = StyleSheet.create({
   attendees: {
     flex: 1,
+    flexWrap: 'wrap',
     flexDirection: 'row',
     paddingVertical: 8,
   },

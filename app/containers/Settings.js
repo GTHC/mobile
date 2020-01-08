@@ -3,6 +3,7 @@ import { Container } from 'native-base';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getTeam } from '../redux/actions/team';
+import { updateUser } from '../redux/actions/user';
 
 // UI
 import UserSettings from '../components/UserSettings';
@@ -14,7 +15,10 @@ class Settings extends Component {
 
     return (
       <Container>
-        <UserSettings user={user} />
+        <UserSettings
+          user={user}
+          updateUser={this.props.updateUser}
+        />
         <TeamSettings
           user={user}
           team={team}
@@ -34,6 +38,7 @@ const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
       getTeam,
+      updateUser,
     },
     dispatch,
   );

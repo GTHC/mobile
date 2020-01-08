@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unused-state */
 // @flow
 
 import React, { Component } from 'react';
@@ -7,6 +8,8 @@ import {
   List,
   ListItem,
   Body,
+  Right,
+  Switch,
 } from 'native-base';
 import OneSignal from 'react-native-onesignal';
 
@@ -20,12 +23,35 @@ export default class UserSettings extends Component {
     </ListItem>
   )
 
+  renderSwitchItem = (primary, secondary, label) => (
+    <ListItem style={styles.listItem}>
+      <Body>
+        <Text style={styles.primaryText}>{primary}</Text>
+        <Text style={styles.secondaryText}>{secondary}</Text>
+      </Body>
+      <Right>
+        <Switch
+          value={this.props.user.data[label]}
+          onValueChange={val => this.onSwitchChange(label, val)}
+        />
+      </Right>
+    </ListItem>
+  )
+
+  onSwitchChange = (label, value) => {
+    const { user, updateUser } = this.props;
+    const updatedUserData = {};
+    updatedUserData[label] = value;
+
+    updateUser(user.data.id, updatedUserData);
+  }
+
   render() {
     const { user } = this.props;
-        // This sets the external OneSignal user ID to the current user's netID
-        OneSignal.setExternalUserId(user.data.netid);
-        // TODO: Above code does not fit in here, needs to find a better home like in App.js but idk how to do that
-   
+    // This sets the external OneSignal user ID to the current user's netID
+    OneSignal.setExternalUserId(user.data.netid);
+    // TODO: Above code does not fit in here, needs to find a better home like in App.js but idk how to do that
+
 
     return (
       <View>
@@ -34,6 +60,12 @@ export default class UserSettings extends Component {
           {this.renderSimpleListItem('NetId', user.data.netid)}
           {this.renderSimpleListItem('Email', user.data.email)}
           {this.renderSimpleListItem('Phone number', user.data.phone)}
+          {this.renderSwitchItem('Line monitor notifications',
+            'Get alerts from line monitors about events and news',
+            'enable_announcement_notifications')}
+          {this.renderSwitchItem('Upcoming shifts notifications',
+            'Get alerts when your shifts are coming up',
+            'enable_shift_notifications')}
         </List>
       </View>
     );

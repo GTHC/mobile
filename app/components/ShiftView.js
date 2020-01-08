@@ -3,7 +3,6 @@ import { View, StyleSheet } from 'react-native';
 import UserAvatar from 'react-native-user-avatar';
 import moment from 'moment';
 import { Title, Text } from 'native-base';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 
 class ShiftView extends Component {
   constructor(props) {
@@ -36,12 +35,7 @@ class ShiftView extends Component {
           {title}
         </Title>
 
-        <Title style={styles.subTitle}>
-          <Ionicons name="ios-clock" size={25} color="black" />
-          {'   '}
-                Time
-        </Title>
-
+        <Title style={styles.subTitle}>Time</Title>
         <Text style={styles.eventTimes}>
           {moment(start).format('MMMM Do YYYY')}
         </Text>
@@ -54,23 +48,12 @@ class ShiftView extends Component {
           {moment(end).fromNow()}
         </Text>
 
-        <Title style={styles.subTitle}>
-          <Ionicons name="ios-paper" size={25} color="black" />
-          {'   '}
-           Notes
-        </Title>
-
+        <Title style={styles.subTitle}>Notes</Title>
         <Text style={styles.text}>
           {note}
         </Text>
 
-        <Title style={styles.subTitle}>
-          <Ionicons name="ios-person" size={25} color="black" />
-
-          {'   '}
-           Users
-        </Title>
-
+        <Title style={styles.subTitle}>Users</Title>
         <View style={styles.attendees}>
           { this.renderShiftAttendees(users)}
         </View>
@@ -88,32 +71,31 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 25,
-    fontWeight: '400',
+    fontWeight: 'bold',
     marginBottom: 5,
     marginTop: 10,
   },
   text: {
+    marginLeft: 4,
     color: '#767676',
-    marginLeft: 38,
     fontWeight: '300',
 
   },
   eventTimes: {
+    marginLeft: 4,
     color: '#767676',
-    marginLeft: 38,
     fontWeight: '300',
   },
   subTitle: {
     marginBottom: 5,
     marginTop: 10,
-    fontWeight: '300',
+    fontWeight: '500',
     fontSize: 22,
   },
   avatarContainer: {
+    marginLeft: 4,
+    marginBottom: 4,
     flexDirection: 'row',
-  },
-  attendees: {
-    marginLeft: 20,
   },
   avatarName: {
     alignSelf: 'center',

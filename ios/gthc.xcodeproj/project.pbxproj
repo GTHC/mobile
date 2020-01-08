@@ -513,7 +513,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-gthc/Pods-gthc-resources.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-gthc/Pods-gthc-resources.sh",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
@@ -552,7 +552,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-gthc/Pods-gthc-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-gthc/Pods-gthc-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		7A6BDD4A147D844B0C9B12D8 /* [CP] Check Pods Manifest.lock */ = {
