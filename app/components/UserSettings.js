@@ -28,6 +28,7 @@ export default class UserSettings extends Component {
           {this.renderSimpleListItem('Name', user.data.name)}
           {this.renderSimpleListItem('NetId', user.data.netid)}
           {this.renderSimpleListItem('Email', user.data.email)}
+          {this.renderSimpleListItem('Phone number', user.data.phone)}
         </List>
       </View>
     );

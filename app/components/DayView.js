@@ -142,7 +142,6 @@ export default class DayView extends PureComponent {
     const duration = moment.duration(endTime.diff(moment(startTime)));
     const diff = duration.asHours();
 
-    console.log(diff);
     const diffLessThanOne = diff > 0.5;
     const userAvatars = data.users.map(user => (
       diffLessThanOne && (

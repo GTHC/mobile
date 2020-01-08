@@ -48,7 +48,7 @@ class Signup extends Component {
       // eslint-disable-next-line camelcase
       const { id, name, tent_type, passcode } = team;
       const updatedUserData = {
-        type: tent_type,
+        type: 'join',
         name: this.state.name,
         phone: this.state.phone,
         teamData: {
@@ -108,7 +108,7 @@ class Signup extends Component {
                 </View>
 
                 <View style={styles.textField}>
-                  <Text style={styles.textLabel}>Phone Number (optional)</Text>
+                  <Text style={styles.textLabel}>Phone Number</Text>
                   <TextInput
                     style={styles.textInput}
                     autoCorrect={false}
@@ -123,7 +123,7 @@ class Signup extends Component {
                   <Input
                     style={styles.textInput}
                     autoCorrect={false}
-                    placeholder="######"
+                    placeholder="*****"
                     value={this.state.passcode}
                     onChangeText={passcode => this.setState({ passcode })}
                   />

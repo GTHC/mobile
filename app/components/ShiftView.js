@@ -29,7 +29,6 @@ import { today, formatShifts, renderItem, renderEmptyDate, rowHasChanged, calend
 class ShiftView extends Component {
   constructor(props) {
     super(props);
-    console.log(props);
     this.state = {
       modalVisible: false,
       startVisible: false,
@@ -59,7 +58,6 @@ class ShiftView extends Component {
           transparent={true}
           visible={this.state.modalVisible}
           onRequestClose={() => {
-            console.log('Modal has been closed.');
           }}>
           <View style={styles.modal}>
             <Container>
