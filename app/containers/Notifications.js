@@ -1,10 +1,41 @@
 // @flow
 
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import {
+  Button,
+  Icon,
+  Title,
+  Right,
+  Left,
+  Container,
+  Header,
+  Content,
+  Tab,
+  Tabs,
+  Body,
+} from 'native-base';
+import UserAnnouncements from '../components/UserAnnouncements';
+import UserNotifications from '../components/UserNotifications';
 
 export default class Notifications extends Component {
   render() {
-    return <View />;
+    return (
+      <Container>
+        <Content>
+          <Tabs>
+            <Tab heading="Line Monitor Notifications">
+              <UserAnnouncements />
+            </Tab>
+            {/* <Tab heading="User">
+              <UserNotifications />
+            </Tab> */}
+          </Tabs>
+        </Content>
+      </Container>
+    );
   }
 }
+
+
+
+

@@ -69,7 +69,7 @@
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* gthcTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = gthcTests.m; sourceTree = "<group>"; };
 		03496313C813358484FD8383 /* libPods-OneSignalNotificationServiceExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OneSignalNotificationServiceExtension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07F961A680F5B00A75B9A /* gthc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gthc.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07F961A680F5B00A75B9A /* GTHC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GTHC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = gthc/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = gthc/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -237,7 +237,7 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* gthc.app */,
+				13B07F961A680F5B00A75B9A /* GTHC.app */,
 				00E356EE1AD99517003FC87E /* gthcTests.xctest */,
 				2D02E47B1E0B4A5D006451C7 /* gthc-tvOS.app */,
 				2D02E4901E0B4A5D006451C7 /* gthc-tvOSTests.xctest */,
@@ -299,7 +299,7 @@
 			);
 			name = gthc;
 			productName = gthc;
-			productReference = 13B07F961A680F5B00A75B9A /* gthc.app */;
+			productReference = 13B07F961A680F5B00A75B9A /* GTHC.app */;
 			productType = "com.apple.product-type.application";
 		};
 		2D02E47A1E0B4A5D006451C7 /* gthc-tvOS */ = {
@@ -513,7 +513,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-gthc/Pods-gthc-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-gthc/Pods-gthc-resources.sh",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
@@ -552,7 +552,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-gthc/Pods-gthc-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-gthc/Pods-gthc-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		7A6BDD4A147D844B0C9B12D8 /* [CP] Check Pods Manifest.lock */ = {
@@ -822,7 +822,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.gthc.gthc;
-				PRODUCT_NAME = gthc;
+				PRODUCT_NAME = GTHC;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -844,7 +844,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.gthc.gthc;
-				PRODUCT_NAME = gthc;
+				PRODUCT_NAME = GTHC;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;

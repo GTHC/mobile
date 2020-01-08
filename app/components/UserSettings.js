@@ -8,6 +8,7 @@ import {
   ListItem,
   Body,
 } from 'native-base';
+import OneSignal from 'react-native-onesignal';
 
 export default class UserSettings extends Component {
   renderSimpleListItem = (primary, secondary) => (
@@ -21,6 +22,10 @@ export default class UserSettings extends Component {
 
   render() {
     const { user } = this.props;
+        // This sets the external OneSignal user ID to the current user's netID
+        OneSignal.setExternalUserId(user.data.netid);
+        // TODO: Above code does not fit in here, needs to find a better home like in App.js but idk how to do that
+   
 
     return (
       <View>
@@ -42,6 +47,6 @@ const styles = StyleSheet.create({
   primaryText: {
   },
   secondaryText: {
-    color: '#808080',
+    color: '#767676',
   },
 });
