@@ -12,6 +12,7 @@ import LoadingScreen from '../components/LoadingScreen';
 import ShiftView from '../components/ShiftView';
 import Signup from '../containers/Signup';
 import { getUserFromToken } from '../redux/actions/user';
+import OneSignal from 'react-native-onesignal';
 
 
 const Stack = createStackNavigator();
@@ -26,6 +27,8 @@ class AppNavigator extends React.Component {
   renderApp = (user) => {
     const loggedInInitialRoute = user.data.team_id == null ? 'Signup' : 'Home';
     const initRoute = !user.isLoggedIn ? 'Login' : loggedInInitialRoute;
+
+    OneSignal.setExternalUserId(user.data.netid);
 
     return (
       <Stack.Navigator initialRouteName={initRoute}>
