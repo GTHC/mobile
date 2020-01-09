@@ -10,41 +10,45 @@ import {
   StyleSheet,
 } from 'react-native';
 import { Picker, Form, Icon } from 'native-base';
+import GenerateRandomCode from 'react-random-code-generator';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 export default class CreateTeam extends Component {
   constructor(props) {
     super(props);
 
+    const { name, phone } = this.props.route.params;
     this.state = {
-      name: '',
-      phone: '',
+      name: name ?? '',
+      phone: phone ?? '',
       teamName: '',
       tentType: 'black',
-      teamPasscode: 'DM9H7',
+      teamPasscode: GenerateRandomCode.TextNumCode(3, 2).toUpperCase(),
     };
   }
 
     renderButton = () => (
       <Text style={styles.buttonText}>
-        {'Register'.toUpperCase()}
+        {'Create team'.toUpperCase()}
       </Text>
     )
 
-    onRegisterPressed = () => {
-      // eslint-disable-next-line camelcase
+    onCreateTeamPressed = () => {
+      const { name, phone, teamName, tentType, teamPasscode } = this.state;
+      const updatedUserData = {
+        type: 'create',
+        name,
+        phone,
+        teamData: {
+          name: teamName,
+          tentType,
+          isCaptain: true,
+          passcode: teamPasscode,
+        },
+      };
 
-    //   const updatedUserData = {
-    //     type: 'create',
-    //     name: this.state.name,
-    //     phone: this.state.phone,
-    //     teamData: {
-    //       name,
-    //       tentType: tent_type,
-    //       isCaptain: true,
-    //       passcode,
-    //     },
-    //   };
+      const { id, signupUser } = this.props.route.params;
+      signupUser(id, updatedUserData);
     }
 
     render() {
@@ -124,7 +128,7 @@ export default class CreateTeam extends Component {
                 <View style={styles.signinField}>
                   <TouchableHighlight
                     underlayColor="white"
-                    onPress={() => this.onRegisterPressed()}
+                    onPress={() => this.onCreateTeamPressed()}
                   >
                     <View style={styles.registerButton}>
                       {this.renderButton()}

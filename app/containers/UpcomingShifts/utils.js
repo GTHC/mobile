@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import moment from 'moment';
 
 const today = moment(new Date()).format('YYYY-MM-DD');
@@ -34,6 +34,7 @@ const formatShifts = teamShifts => {
         data: shift,
         text: shift.title,
         time: `${start.format('hh:mm A')} - ${end.format('hh:mm A')}`,
+        when: start.fromNow(),
       };
       shiftsForDay.push(description);
     });

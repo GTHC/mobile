@@ -9,7 +9,6 @@ import { configureStore } from '../redux/utils/store';
 import AppNavigator from '../navigation/AppNavigator';
 
 export default class App extends Component {
-
   constructor(properties) {
     super(properties);
     OneSignal.init(Config.ONE_SIGNAL_TOKEN, { kOSSettingsKeyAutoPrompt: true });
@@ -36,7 +35,7 @@ export default class App extends Component {
   onIds = (device) => {
     // TODO(vinit): Implement
   }
-  
+
   render() {
     const { store } = configureStore();
 

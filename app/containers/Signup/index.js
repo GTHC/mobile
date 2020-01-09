@@ -8,13 +8,11 @@ import {
   TouchableHighlight,
   ScrollView,
   StyleSheet,
-  Image,
 } from 'react-native';
 import { Input } from 'native-base';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { Logo } from '../../utils/images';
 import { getAllTeams } from '../../redux/actions/teams';
 import { signupUser } from '../../redux/actions/user';
 
@@ -34,7 +32,7 @@ class Signup extends Component {
 
     renderButton = () => (
       <Text style={styles.buttonText}>
-        {'Register'.toUpperCase()}
+        {'Join'.toUpperCase()}
       </Text>
     )
 
@@ -71,96 +69,84 @@ class Signup extends Component {
       return match;
     }
 
-    onCreateTeamPressed = () => {
-      this.props.navigation.navigate('CreateTeam');
-    }
+  onCreateTeamPressed = () => {
+    const { name, phone } = this.state;
+    const { user } = this.props;
+    this.props.navigation.navigate('CreateTeam',
+      { name, phone, id: user.data.id, signupUser: this.props.signupUser });
+  }
 
-    render() {
-      return (
-        <KeyboardAwareScrollView
-          style={styles.container}
-          resetScrollToCoords={{ x: 0, y: 0 }}
-        >
-          <View>
-            <ScrollView
-              showsVerticalScrollIndicator={false}
-              contentContainerStyle={{ flexGrow: 1 }}
-            >
-
-              <View style={styles.welcomeContainer}>
-                <View style={styles.logoWrapper}>
-                  <Image source={Logo} style={{ width: 160, height: 160 }} />
-                </View>
-
-                <View style={styles.welcomeTitleWrapper}>
-                  <Text style={styles.welcomeText}>Welcome to GTHC</Text>
-                </View>
-
-                <View style={styles.welcomeSubTitleWrapper}>
-                  <Text style={styles.welcomeSubTitleText}>Tenting made easy</Text>
-                </View>
+  render() {
+    return (
+      <KeyboardAwareScrollView
+        style={styles.container}
+        resetScrollToCoords={{ x: 0, y: 0 }}
+      >
+        <View>
+          <ScrollView
+            showsVerticalScrollIndicator={false}
+            contentContainerStyle={{ flexGrow: 1 }}
+          >
+            <View style={styles.loginContainer}>
+              <View style={styles.textField}>
+                <Text style={styles.textLabel}>Name</Text>
+                <TextInput
+                  style={styles.textInput}
+                  autoCorrect={false}
+                  value={this.state.name}
+                  placeholder="Tre Jones"
+                  onChangeText={name => this.setState({ name })}
+                />
               </View>
 
-
-              <View style={styles.loginContainer}>
-                <View style={styles.textField}>
-                  <Text style={styles.textLabel}>Name</Text>
-                  <TextInput
-                    style={styles.textInput}
-                    autoCorrect={false}
-                    value={this.state.name}
-                    placeholder="Tre Jones"
-                    onChangeText={name => this.setState({ name })}
-                  />
-                </View>
-
-                <View style={styles.textField}>
-                  <Text style={styles.textLabel}>Phone Number</Text>
-                  <TextInput
-                    style={styles.textInput}
-                    autoCorrect={false}
-                    placeholder="(555) 555-5555"
-                    value={this.state.phone}
-                    onChangeText={phone => this.setState({ phone })}
-                  />
-                </View>
-
-                <View style={styles.textField}>
-                  <Text style={styles.textLabel}>Team Passcode</Text>
-                  <Input
-                    style={styles.textInput}
-                    autoCorrect={false}
-                    placeholder="*****"
-                    value={this.state.passcode}
-                    onChangeText={passcode => this.setState({ passcode })}
-                  />
-                  {this.state.passcodeError && <Text style={styles.invalidPasscodeText}>Invalid passcode</Text>}
-                </View>
-
-                <View style={styles.signinField}>
-                  <TouchableHighlight
-                    underlayColor="white"
-                    onPress={() => this.onRegisterPressed()}
-                  >
-                    <View style={styles.registerButton}>
-                      {this.renderButton()}
-                    </View>
-                  </TouchableHighlight>
-                </View>
+              <View style={styles.textField}>
+                <Text style={styles.textLabel}>Phone Number</Text>
+                <TextInput
+                  style={styles.textInput}
+                  autoCorrect={false}
+                  placeholder="(555) 555-5555"
+                  value={this.state.phone}
+                  onChangeText={phone => this.setState({ phone })}
+                />
               </View>
 
-              <View style={styles.signupContainer}>
-                <TouchableHighlight onPress={this.onCreateTeamPressed} underlayColor="white">
-                  <Text style={styles.signupLabel}>Don't have a team? Create one!</Text>
+              <View style={styles.textField}>
+                <Text style={styles.textLabel}>Team Passcode</Text>
+                <Input
+                  style={styles.textInput}
+                  autoCorrect={false}
+                  placeholder="*****"
+                  value={this.state.passcode}
+                  onChangeText={passcode => this.setState({ passcode })}
+                />
+                {this.state.passcodeError
+                    && <Text style={styles.invalidPasscodeText}>Invalid passcode</Text>}
+              </View>
+
+              <View style={styles.signinField}>
+                <TouchableHighlight
+                  underlayColor="white"
+                  onPress={() => this.onRegisterPressed()}
+                >
+                  <View style={styles.registerButton}>
+                    {this.renderButton()}
+                  </View>
                 </TouchableHighlight>
-
               </View>
+            </View>
 
-            </ScrollView>
-          </View>
-        </KeyboardAwareScrollView>
-      );
-    }
+            <View style={styles.signupContainer}>
+              <TouchableHighlight onPress={this.onCreateTeamPressed} underlayColor="white">
+                <Text style={styles.signupLabel}>{'Don\'t have a team? Create one!'}</Text>
+              </TouchableHighlight>
+
+            </View>
+
+          </ScrollView>
+        </View>
+      </KeyboardAwareScrollView>
+    );
+  }
 }
 
 const mapStateToProps = state => ({
@@ -187,28 +173,6 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     backgroundColor: 'white',
-  },
-  welcomeContainer: {
-    flexDirection: 'column',
-  },
-  logoWrapper: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-  },
-  welcomeTitleWrapper: {
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  welcomeSubTitleWrapper: {
-    alignItems: 'center',
-  },
-  welcomeText: {
-    fontSize: 22,
-    color: '#f4511e',
-  },
-  welcomeSubTitleText: {
-    color: '#AAAAAA',
-    fontSize: 15,
   },
   loginContainer: {
     flexDirection: 'column',

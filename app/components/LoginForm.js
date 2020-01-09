@@ -17,7 +17,7 @@ export default class LoginForm extends Component {
     <Image
       source={SignIn}
       resizeMode="contain"
-      style={{ width: '100%', height: 100 }}
+      style={{ width: '100%', height: 70 }}
     />
   )
 

@@ -1,7 +1,7 @@
 // @flow
 
 import React, { Component } from 'react';
-import { StyleSheet, View, Linking } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import {
   Text,
   List,

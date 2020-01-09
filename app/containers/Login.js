@@ -12,7 +12,13 @@ import LoginForm from '../components/LoginForm';
 class Login extends Component {
   render() {
     const { navigation, user } = this.props;
-    return user.isLoading ? <LoadingScreen /> : <LoginForm navigation={navigation} getUserFromToken={this.props.getUserFromToken} />;
+    return user.isLoading
+      ? <LoadingScreen /> : (
+        <LoginForm
+          navigation={navigation}
+          getUserFromToken={this.props.getUserFromToken}
+        />
+      );
   }
 }
 

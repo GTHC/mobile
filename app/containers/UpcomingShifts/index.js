@@ -19,8 +19,9 @@ class UpcomingShifts extends Component {
   renderItem = (item) => (
     <TouchableOpacity onPress={() => this.onItemClicked(item.data)}>
       <View style={[styles.item, { height: item.height }]}>
-        <Text style={{ color: 'white' }}>{item.text}</Text>
         <Text style={{ color: 'white' }}>{item.time}</Text>
+        <Text style={{ color: 'white' }}>{item.text}</Text>
+        <Text style={{ color: 'white', paddingTop: 8 }}>{item.when}</Text>
       </View>
     </TouchableOpacity>
   );
@@ -54,10 +55,10 @@ const styles = StyleSheet.create({
   item: {
     backgroundColor: '#00adf5',
     flex: 1,
-    borderRadius: 5,
+    borderRadius: 8,
     padding: 10,
     marginRight: 10,
-    marginTop: 17,
+    marginTop: 8,
     color: 'white',
   },
   emptyDate: {

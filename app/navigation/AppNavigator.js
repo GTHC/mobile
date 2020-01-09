@@ -62,7 +62,7 @@ class AppNavigator extends React.Component {
         />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Settings" component={Settings} options={{ ...mainHeader }} />
-        <Stack.Screen name="Signup" component={Signup} options={{ title: 'Register' }} />
+        <Stack.Screen name="Signup" component={Signup} options={{ title: 'Join Team' }} />
         <Stack.Screen name="CreateTeam" component={CreateTeam} options={{ title: 'Create Team' }} />
       </Stack.Navigator>
     );
