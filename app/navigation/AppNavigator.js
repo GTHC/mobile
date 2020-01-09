@@ -5,14 +5,15 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { createStackNavigator } from '@react-navigation/stack';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import OneSignal from 'react-native-onesignal';
 import BottomTabNavigator from './BottomTabNavigator';
 import Login from '../containers/Login';
 import Settings from '../containers/Settings';
 import LoadingScreen from '../components/LoadingScreen';
 import ShiftView from '../components/ShiftView';
 import Signup from '../containers/Signup';
+import CreateTeam from '../components/CreateTeam';
 import { getUserFromToken } from '../redux/actions/user';
-import OneSignal from 'react-native-onesignal';
 
 
 const Stack = createStackNavigator();
@@ -27,6 +28,7 @@ class AppNavigator extends React.Component {
   renderApp = (user) => {
     const loggedInInitialRoute = user.data.team_id == null ? 'Signup' : 'Home';
     const initRoute = !user.isLoggedIn ? 'Login' : loggedInInitialRoute;
+    // const initRoute = 'Signup';
 
     OneSignal.setExternalUserId(user.data.netid);
 
@@ -61,6 +63,7 @@ class AppNavigator extends React.Component {
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Settings" component={Settings} options={{ ...mainHeader }} />
         <Stack.Screen name="Signup" component={Signup} options={{ title: 'Register' }} />
+        <Stack.Screen name="CreateTeam" component={CreateTeam} options={{ title: 'Create Team' }} />
       </Stack.Navigator>
     );
   }

@@ -38,7 +38,7 @@ export default class UserAnnouncements extends Component {
 
   render() {
     return (
-      <View style={styles.notesContainer}>
+      <View style={styles.container}>
         <FlatList
           data={this.props.notifications.announcements.reverse()}
           renderItem={({ item }) => (
@@ -53,7 +53,6 @@ export default class UserAnnouncements extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginHorizontal: 16,
   },
   title: {
     fontSize: 18,

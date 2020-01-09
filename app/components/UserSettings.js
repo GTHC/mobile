@@ -50,20 +50,19 @@ export default class UserSettings extends Component {
     const { user } = this.props;
 
 
-
     return (
       <View>
         <List>
           {this.renderSimpleListItem('Name', user.data.name)}
-          {this.renderSimpleListItem('NetId', user.data.netid)}
+          {this.renderSimpleListItem('NetID', user.data.netid)}
           {this.renderSimpleListItem('Email', user.data.email)}
           {this.renderSimpleListItem('Phone number', user.data.phone)}
-          {this.renderSwitchItem('Line monitor notifications',
+          {/* {this.renderSwitchItem('Line monitor notifications',
             'Get alerts from line monitors about events and news',
             'enable_announcement_notifications')}
           {this.renderSwitchItem('Upcoming shifts notifications',
             'Get alerts when your shifts are coming up',
-            'enable_shift_notifications')}
+            'enable_shift_notifications')} */}
         </List>
       </View>
     );

@@ -11,7 +11,8 @@ import { today, formatShifts, renderEmptyDate, rowHasChanged } from './utils';
 import { getAllShifts } from '../../redux/actions/shifts';
 
 class UpcomingShifts extends Component {
-  UNSAFE_componentWillMount() {
+  constructor(props) {
+    super(props);
     this.props.getAllShifts();
   }
 
@@ -24,10 +25,13 @@ class UpcomingShifts extends Component {
     </TouchableOpacity>
   );
 
-  
   onItemClicked = (shift) => {
     this.props.navigation.navigate('ShiftView', { shift });
   };
+
+  onRefresh = () => {
+    this.props.getAllShifts();
+  }
 
   render() {
     return (
@@ -40,6 +44,7 @@ class UpcomingShifts extends Component {
         selected={today}
         theme={getTheme()}
         futureScrollRange={3}
+        onRefresh={this.onRefresh}
       />
     );
   }

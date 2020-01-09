@@ -1,6 +1,7 @@
 // @flow
 
 import React, { Component } from 'react';
+import { ScrollView, RefreshControl } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getNotifications } from '../redux/actions/notifications';
@@ -12,13 +13,23 @@ class Notifications extends Component {
     this.props.getNotifications();
   }
 
+  onRefresh = () => {
+    this.props.getNotifications();
+  }
+
   render() {
     const { user, notifications } = this.props;
     return (
-      <UserAnnouncements
-        user={user}
-        notifications={notifications}
-      />
+      <ScrollView
+        style={{ flex: 1, backgroundColor: 'white' }}
+        refreshControl={
+          <RefreshControl refreshing={notifications.isLoading} onRefresh={this.onRefresh} />}
+      >
+        <UserAnnouncements
+          user={user}
+          notifications={notifications}
+        />
+      </ScrollView>
     );
   }
 }

@@ -1,5 +1,7 @@
+// @flow
+
 import React, { Component } from 'react';
-import { Container } from 'native-base';
+import { ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getTeam } from '../redux/actions/team';
@@ -14,7 +16,7 @@ class Settings extends Component {
     const { user, team } = this.props;
 
     return (
-      <Container>
+      <ScrollView style={{ flex: 1, backgroundColor: 'white' }}>
         <UserSettings
           user={user}
           updateUser={this.props.updateUser}
@@ -24,7 +26,7 @@ class Settings extends Component {
           team={team}
           getTeam={this.props.getTeam}
         />
-      </Container>
+      </ScrollView>
     );
   }
 }

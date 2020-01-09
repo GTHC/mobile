@@ -13,6 +13,7 @@ import {
 import { Input } from 'native-base';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { Logo } from '../../utils/images';
 import { getAllTeams } from '../../redux/actions/teams';
 import { signupUser } from '../../redux/actions/user';
@@ -70,11 +71,17 @@ class Signup extends Component {
       return match;
     }
 
+    onCreateTeamPressed = () => {
+      this.props.navigation.navigate('CreateTeam');
+    }
+
     render() {
       return (
-        <View style={{ flex: 1 }}>
-          <View style={styles.container}>
-
+        <KeyboardAwareScrollView
+          style={styles.container}
+          resetScrollToCoords={{ x: 0, y: 0 }}
+        >
+          <View>
             <ScrollView
               showsVerticalScrollIndicator={false}
               contentContainerStyle={{ flexGrow: 1 }}
@@ -142,9 +149,16 @@ class Signup extends Component {
                 </View>
               </View>
 
+              <View style={styles.signupContainer}>
+                <TouchableHighlight onPress={this.onCreateTeamPressed} underlayColor="white">
+                  <Text style={styles.signupLabel}>Don't have a team? Create one!</Text>
+                </TouchableHighlight>
+
+              </View>
+
             </ScrollView>
           </View>
-        </View>
+        </KeyboardAwareScrollView>
       );
     }
 }
@@ -172,7 +186,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-    backgroundColor: '#FCFCFC',
+    backgroundColor: 'white',
   },
   welcomeContainer: {
     flexDirection: 'column',
@@ -220,6 +234,7 @@ const styles = StyleSheet.create({
     borderColor: '#D2D2D3',
     fontSize: 16,
     height: 50,
+    color: 'black',
   },
   signinField: {
     marginTop: 15,
@@ -228,12 +243,25 @@ const styles = StyleSheet.create({
   },
   registerButton: {
     alignItems: 'center',
-    borderRadius: 0,
     backgroundColor: '#f4511e',
   },
   buttonText: {
     fontSize: 16,
     padding: 15,
     color: 'white',
+  },
+  signupContainer: {
+    flex: 0.3,
+    flexDirection: 'row',
+    marginTop: 15,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  signupLabel: {
+    padding: 10,
+    fontSize: 16,
+    fontWeight: 'bold',
+    alignItems: 'center',
+    color: '#00adf5',
   },
 });

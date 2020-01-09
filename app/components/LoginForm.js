@@ -10,13 +10,15 @@ import {
   Image,
 } from 'react-native';
 import { auth, session } from '../utils/login';
-import { Logo } from '../utils/images';
+import { Logo, SignIn } from '../utils/images';
 
 export default class LoginForm extends Component {
   renderButton = () => (
-    <Text style={styles.buttonText}>
-      {'Login'.toUpperCase()}
-    </Text>
+    <Image
+      source={SignIn}
+      resizeMode="contain"
+      style={{ width: '100%', height: 100 }}
+    />
   )
 
   handleLoginPress = () => {
@@ -60,9 +62,7 @@ export default class LoginForm extends Component {
                   underlayColor="white"
                   onPress={this.handleLoginPress}
                 >
-                  <View style={styles.loginButton}>
-                    {this.renderButton()}
-                  </View>
+                  {this.renderButton()}
                 </TouchableHighlight>
               </View>
             </View>
@@ -77,6 +77,7 @@ export default class LoginForm extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    padding: 24,
     flexDirection: 'column',
     backgroundColor: '#FCFCFC',
   },
@@ -105,12 +106,6 @@ const styles = StyleSheet.create({
   loginContainer: {
     flexDirection: 'column',
     marginTop: 35,
-  },
-  loginButton: {
-    marginHorizontal: 16,
-    alignItems: 'center',
-    borderRadius: 0,
-    backgroundColor: '#f4511e',
   },
   buttonText: {
     fontSize: 16,

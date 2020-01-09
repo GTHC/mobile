@@ -10,7 +10,7 @@ export default function styleConstructor(theme = {}, calendarHeight) {
       ...theme.container,
     },
     contentStyle: {
-      backgroundColor: '#ffff',
+      backgroundColor: 'white',
       height: calendarHeight + 10,
       ...theme.contentStyle,
     },

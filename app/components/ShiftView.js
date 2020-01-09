@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, ScrollView } from 'react-native';
 import UserAvatar from 'react-native-user-avatar';
 import moment from 'moment';
-import { Title, Text } from 'native-base';
+import { Text } from 'native-base';
 
-class ShiftView extends Component {
+export default class ShiftView extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -26,16 +26,23 @@ class ShiftView extends Component {
     );
   }
 
+  isEmpty = (str) => (!str || str.length === 0)
+
   render() {
     const { title, start, end, note, users } = this.props.route.params.shift;
     const formatTime = this.props.format24h ? 'HH:mm' : 'hh:mm A';
     return (
-      <View style={styles.container}>
-        <Title numberOfLines={2} style={styles.title}>
+      <ScrollView
+        style={styles.container}
+        contentContainerStyle={{
+          alignItems: 'flex-start',
+        }}
+      >
+        <Text numberOfLines={2} style={styles.title}>
           {title}
-        </Title>
+        </Text>
 
-        <Title style={styles.subTitle}>Time</Title>
+        <Text style={styles.subTitle}>Time</Text>
         <Text style={styles.eventTimes}>
           {moment(start).format('MMMM Do YYYY')}
         </Text>
@@ -48,26 +55,28 @@ class ShiftView extends Component {
           {moment(end).fromNow()}
         </Text>
 
-        <Title style={styles.subTitle}>Notes</Title>
-        <Text style={styles.text}>
-          {note}
-        </Text>
+        {!this.isEmpty(note) && (
+          <Text style={styles.subTitle}>Notes</Text>
+        )}
+        {!this.isEmpty(note) && (
+          <Text style={styles.text}>
+            {note}
+          </Text>
+        )}
 
-        <Title style={styles.subTitle}>Users</Title>
+        <Text style={styles.subTitle}>Tenters Assigned</Text>
         <View style={styles.attendees}>
           { this.renderShiftAttendees(users)}
         </View>
-      </View>
+      </ScrollView>
     );
   }
 }
-export default ShiftView;
 
 const styles = StyleSheet.create({
   container: {
-    marginLeft: 20,
-    marginRight: 20,
-    alignItems: 'flex-start',
+    backgroundColor: 'white',
+    paddingHorizontal: 20,
   },
   title: {
     fontSize: 25,
@@ -102,5 +111,3 @@ const styles = StyleSheet.create({
     marginLeft: 4,
   },
 });
-
-export { ShiftView };

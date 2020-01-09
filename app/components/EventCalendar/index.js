@@ -78,6 +78,8 @@ export default class EventCalendar extends Component {
     return (
       <DayView
         date={date}
+        getAllShifts={this.props.getAllShifts}
+        shifts={this.props.shifts}
         index={index}
         format24h={format24h}
         formatHeader={formatHeader}

@@ -16,6 +16,8 @@ class Calendar extends Component {
     this.state = {
       selectedDate: today,
     };
+
+    this.props.getAllShifts();
   }
 
   onDateChanged = date => {
@@ -26,16 +28,13 @@ class Calendar extends Component {
     this.setState({ selectedDate: date });
   };
 
-  UNSAFE_componentWillMount() {
-    this.props.getAllShifts();
-  }
-
   eventTapped = shift => {
     this.props.navigation.navigate('ShiftView', { shift });
   };
 
   render() {
-    const events = formatTeamShifts(this.props.shifts.team_shifts);
+    const { user } = this.props;
+    const events = formatTeamShifts(this.props.shifts.team_shifts, user.data.id);
     const { selectedDate } = this.state;
 
     return (
@@ -56,6 +55,8 @@ class Calendar extends Component {
         <View style={{ flex: 1 }}>
           <EventCalendar
             ref="calendar"
+            getAllShifts={this.props.getAllShifts}
+            shifts={this.props.shifts}
             onPageScroll={date => this.onPageScroll(date)}
             selectedDate={this.state.selectedDate}
             eventTapped={this.eventTapped}
@@ -73,6 +74,7 @@ class Calendar extends Component {
 }
 
 const mapStateToProps = state => ({
+  user: state.user,
   shifts: state.shifts,
 });
 

@@ -8,7 +8,7 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react/prop-types */
 
-import { View, Text, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity, StyleSheet, RefreshControl } from 'react-native';
 import React, { PureComponent } from 'react';
 import UserAvatar from 'react-native-user-avatar';
 import moment from 'moment';
@@ -145,7 +145,7 @@ export default class DayView extends PureComponent {
     const diffLessThanOne = diff > 0.5;
     const userAvatars = data.users.map(user => (
       diffLessThanOne && (
-      <View style={{ paddingRight: 4, paddingTop: 4 }}>
+      <View style={{ paddingRight: 4 }}>
         <UserAvatar size="32" name={user.name} />
       </View>
       )
@@ -159,7 +159,6 @@ export default class DayView extends PureComponent {
   }
 
   _renderEvents() {
-    const { styles } = this.props;
     const { packedEvents } = this.state;
     const events = packedEvents.map((event, i) => {
       const style = {
@@ -168,10 +167,11 @@ export default class DayView extends PureComponent {
         width: event.width,
         top: event.top,
         padding: 4,
+        backgroundColor: event.backgroundColor,
       };
 
-      const eventColor = {
-        backgroundColor: event.color,
+      const textStyle = {
+        color: event.textColor,
       };
 
       // Fixing the number of lines for the event title makes this calculation easier.
@@ -183,16 +183,16 @@ export default class DayView extends PureComponent {
           activeOpacity={0.5}
           onPress={() => this._onEventTapped(this.props.events[event.index])}
           key={i}
-          style={[styles.event, style, event.color && eventColor]}
+          style={[styles.eventContainer, style]}
         >
           {this.props.renderEvent ? (
             this.props.renderEvent(event)
           ) : (
-            <View>
-              <Text numberOfLines={1} style={styles.eventTitle}>
-                {`${moment(event.start).format(formatTime)} - ${moment(event.start).format(formatTime)}`}
+            <View style={styles.event}>
+              <Text numberOfLines={1} style={[styles.eventTitle, textStyle]}>
+                {`${moment(event.start).format(formatTime)} - ${moment(event.end).format(formatTime)}`}
               </Text>
-              <Text style={styles.eventTitle} numberOfLines={1}>
+              <Text style={[styles.eventTitle, textStyle]} numberOfLines={1}>
                 {event.title || 'Shift'}
               </Text>
               {this.renderShiftAttendees(this.props.events[event.index])}
@@ -209,11 +209,17 @@ export default class DayView extends PureComponent {
     );
   }
 
+  onRefresh = () => {
+    this.props.getAllShifts();
+  }
+
   render() {
-    const { styles } = this.props;
+    const { styles, shifts } = this.props;
     return (
       <ScrollView
         ref={ref => (this._scrollView = ref)}
+        refreshControl={
+          <RefreshControl refreshing={shifts.isLoading} onRefresh={this.onRefresh} />}
         contentContainerStyle={[styles.contentStyle, { width: this.props.width }]}
       >
         {this._renderLines()}
@@ -230,5 +236,15 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     flexDirection: 'row',
     paddingVertical: 8,
+  },
+  eventTitle: {
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  eventContainer: {
+    borderRadius: 12,
+  },
+  event: {
+    padding: 4,
   },
 });
