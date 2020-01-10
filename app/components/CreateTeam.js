@@ -118,10 +118,10 @@ export default class CreateTeam extends Component {
                     selectedValue={this.state.tentType}
                     onValueChange={(val) => this.setState({ tentType: val })}
                   >
-                    <Picker.Item label="Black" value="black" />
-                    <Picker.Item label="Blue" value="blue" />
-                    <Picker.Item label="White" value="white" />
-                    <Picker.Item label="Flex" value="flex" />
+                    <Picker.Item label="Black" value="Black" />
+                    <Picker.Item label="Blue" value="Blue" />
+                    <Picker.Item label="White" value="White" />
+                    <Picker.Item label="Flex" value="Flex" />
                   </Picker>
                 </Form>
 
