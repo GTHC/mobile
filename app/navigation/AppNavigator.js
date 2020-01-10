@@ -60,10 +60,10 @@ class AppNavigator extends React.Component {
             ...mainHeader,
           }}
         />
-        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Login" component={Login} options={{ ...mainHeader }} />
         <Stack.Screen name="Settings" component={Settings} options={{ ...mainHeader }} />
-        <Stack.Screen name="Signup" component={Signup} options={{ title: 'Join Team' }} />
-        <Stack.Screen name="CreateTeam" component={CreateTeam} options={{ title: 'Create Team' }} />
+        <Stack.Screen name="Signup" component={Signup} options={{ title: 'Join Team', ...mainHeader }} />
+        <Stack.Screen name="CreateTeam" component={CreateTeam} options={{ title: 'Create Team', ...mainHeader }} />
       </Stack.Navigator>
     );
   }
@@ -76,7 +76,7 @@ class AppNavigator extends React.Component {
 
 const mainHeader = {
   headerStyle: {
-    backgroundColor: '#f4511e',
+    backgroundColor: '#0577B1',
   },
   headerTintColor: '#fff',
   headerTitleStyle: {

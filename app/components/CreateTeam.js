@@ -22,7 +22,7 @@ export default class CreateTeam extends Component {
       name: name ?? '',
       phone: phone ?? '',
       teamName: '',
-      tentType: 'black',
+      tentType: 'Black',
       teamPasscode: GenerateRandomCode.TextNumCode(3, 2).toUpperCase(),
     };
   }
@@ -36,6 +36,8 @@ export default class CreateTeam extends Component {
     onCreateTeamPressed = () => {
       const { name, phone, teamName, tentType, teamPasscode } = this.state;
       const updatedUserData = {
+        enable_shift_notifications: true,
+        enable_announcement_notifications: true,
         type: 'create',
         name,
         phone,
@@ -180,7 +182,7 @@ const styles = StyleSheet.create({
   },
   registerButton: {
     alignItems: 'center',
-    backgroundColor: '#f4511e',
+    backgroundColor: '#0577B1',
   },
   buttonText: {
     fontSize: 16,

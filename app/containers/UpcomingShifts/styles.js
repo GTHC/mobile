@@ -8,7 +8,7 @@ const leftArrow = require('../../../assets/images/previous.png');
 const rightArrow = require('../../../assets/images/next.png');
 
 const getTheme = () => {
-  const themeColor = '#00adf5';
+  const themeColor = '#0577B1';
   const disabledColor = '#a6acb1';
   const black = '#20303c';
   const white = '#ffffff';

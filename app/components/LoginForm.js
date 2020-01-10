@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
   },
   welcomeText: {
     fontSize: 22,
-    color: '#f4511e',
+    color: '#0577B1',
   },
   welcomeSubTitleText: {
     color: '#AAAAAA',

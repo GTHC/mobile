@@ -33,8 +33,8 @@ class Calendar extends Component {
   };
 
   render() {
-    const { user } = this.props;
-    const events = formatTeamShifts(this.props.shifts.team_shifts, user.data.id);
+    const { user, shifts } = this.props;
+    const events = formatTeamShifts(shifts.team_shifts, user.data.id);
     const { selectedDate } = this.state;
 
     return (

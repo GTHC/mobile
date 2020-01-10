@@ -51,7 +51,7 @@ const rowHasChanged = (r1, r2) => r1.name !== r2.name;
 
 const styles = StyleSheet.create({
   item: {
-    backgroundColor: '#00adf5',
+    backgroundColor: '#0577B1',
     flex: 1,
     borderRadius: 5,
     padding: 10,

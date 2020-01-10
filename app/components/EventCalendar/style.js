@@ -16,7 +16,7 @@ export default function styleConstructor(theme = {}, calendarHeight) {
     },
     event: {
       position: 'absolute',
-      backgroundColor: '#00adf5',
+      backgroundColor: '#0577B1',
       opacity: 1.0,
       borderColor: '#DDE5FD',
       borderWidth: 1,

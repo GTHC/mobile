@@ -66,7 +66,7 @@ function populateEvents(events, screenWidth, dayStart) {
   const calculatedEvents = [];
 
   events = events
-    .map((ev, index) => ({...ev, index}))
+    .map((ev, index) => ({ ...ev, index }))
     .sort((a, b) => {
       if (a.start < b.start) return -1;
       if (a.start > b.start) return 1;

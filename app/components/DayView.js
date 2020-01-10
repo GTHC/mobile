@@ -162,10 +162,11 @@ export default class DayView extends PureComponent {
     const { packedEvents } = this.state;
     const events = packedEvents.map((event, i) => {
       const style = {
+        position: 'absolute',
         left: event.left,
-        height: event.height,
+        height: event.height - 2,
         width: event.width,
-        top: event.top,
+        top: event.top + 1,
         padding: 4,
         backgroundColor: event.backgroundColor,
       };
@@ -183,7 +184,7 @@ export default class DayView extends PureComponent {
           activeOpacity={0.5}
           onPress={() => this._onEventTapped(this.props.events[event.index])}
           key={i}
-          style={[styles.eventContainer, style]}
+          style={[styles.eventContainer, styles.event, style, event.color]}
         >
           {this.props.renderEvent ? (
             this.props.renderEvent(event)
@@ -192,10 +193,12 @@ export default class DayView extends PureComponent {
               <Text numberOfLines={1} style={[styles.eventTitle, textStyle]}>
                 {`${moment(event.start).format(formatTime)} - ${moment(event.end).format(formatTime)}`}
               </Text>
+
               <Text style={[styles.eventTitle, textStyle]} numberOfLines={1}>
                 {event.title || 'Shift'}
               </Text>
               {this.renderShiftAttendees(this.props.events[event.index])}
+
             </View>
           )}
         </TouchableOpacity>
@@ -218,9 +221,12 @@ export default class DayView extends PureComponent {
     return (
       <ScrollView
         ref={ref => (this._scrollView = ref)}
+        contentContainerStyle={[
+          styles.contentStyle,
+          { width: this.props.width },
+        ]}
         refreshControl={
           <RefreshControl refreshing={shifts.isLoading} onRefresh={this.onRefresh} />}
-        contentContainerStyle={[styles.contentStyle, { width: this.props.width }]}
       >
         {this._renderLines()}
         {this._renderEvents()}

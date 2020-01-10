@@ -11,7 +11,7 @@ export default class LoadingScreen extends PureComponent {
   render() {
     return (
       <View style={[styles.container, styles.horizontal]}>
-        <ActivityIndicator size="large" color="#f4511e" />
+        <ActivityIndicator size="large" color="#0577B1" />
       </View>
     );
   }

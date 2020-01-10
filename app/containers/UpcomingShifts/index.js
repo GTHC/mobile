@@ -26,6 +26,7 @@ class UpcomingShifts extends Component {
     </TouchableOpacity>
   );
 
+
   onItemClicked = (shift) => {
     this.props.navigation.navigate('ShiftView', { shift });
   };
@@ -33,6 +34,7 @@ class UpcomingShifts extends Component {
   onRefresh = () => {
     this.props.getAllShifts();
   }
+
 
   render() {
     return (
@@ -53,7 +55,7 @@ class UpcomingShifts extends Component {
 
 const styles = StyleSheet.create({
   item: {
-    backgroundColor: '#00adf5',
+    backgroundColor: '#0577B1',
     flex: 1,
     borderRadius: 8,
     padding: 10,

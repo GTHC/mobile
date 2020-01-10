@@ -48,6 +48,8 @@ class Signup extends Component {
       const { id, name, tent_type, passcode } = team;
       const updatedUserData = {
         type: 'join',
+        enable_shift_notifications: true,
+        enable_announcement_notifications: true,
         name: this.state.name,
         phone: this.state.phone,
         teamData: {
@@ -207,7 +209,7 @@ const styles = StyleSheet.create({
   },
   registerButton: {
     alignItems: 'center',
-    backgroundColor: '#f4511e',
+    backgroundColor: '#0577B1',
   },
   buttonText: {
     fontSize: 16,
@@ -226,6 +228,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     alignItems: 'center',
-    color: '#00adf5',
+    color: '#0577B1',
   },
 });

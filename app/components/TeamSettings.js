@@ -35,6 +35,7 @@ export default class TeamSettings extends Component {
             {this.renderSimpleListItem('Team Name', team.data.name)}
             {this.renderSimpleListItem('Tent Type', team.data.tent_type)}
             {this.renderSimpleListItem('Team passcode', team.data.passcode)}
+            {this.renderSimpleListItem('Announcements/Notifications', 'To adjust these preferences, please navigate to User Profile on web to make your changes.')}
           </List>
         </View>
       );

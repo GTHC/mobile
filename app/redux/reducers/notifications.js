@@ -17,7 +17,6 @@ const initalState = {
       }
   
       case 'FAILED_GET_NOTIFICATIONS': {
-        console.log("Failed", action.payload);
 
         return {
           ...state,
@@ -29,7 +28,6 @@ const initalState = {
   
       case 'END_GET_NOTIFICATIONS': {
        
-        console.log("End",action.payload.data);
 
         return {
           ...state,
