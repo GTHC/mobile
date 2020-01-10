@@ -8,6 +8,8 @@ import {
   TouchableHighlight,
   ScrollView,
   StyleSheet,
+  Button,
+  Clipboard
 } from 'react-native';
 import { Picker, Form, Icon } from 'native-base';
 import GenerateRandomCode from 'react-random-code-generator';
@@ -24,8 +26,15 @@ export default class CreateTeam extends Component {
       teamName: '',
       tentType: 'Black',
       teamPasscode: GenerateRandomCode.TextNumCode(3, 2).toUpperCase(),
+      clipboardContent: null,
     };
   }
+
+    writeToClipboard = async () => {
+      await Clipboard.setString(this.state.teamPasscode);
+      clipboardContent = await Clipboard.getString();   
+      alert('Copied Team Passcode to Clipboard!');
+    };
 
     renderButton = () => (
       <Text style={styles.buttonText}>
@@ -105,6 +114,10 @@ export default class CreateTeam extends Component {
                     editable={false}
                     style={styles.textInput}
                     value={this.state.teamPasscode}
+                  />
+                  <Button
+                    onPress={this.writeToClipboard}
+                    title="Copy to Clipboard"
                   />
                 </View>
 
