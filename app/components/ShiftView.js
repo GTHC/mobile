@@ -29,7 +29,7 @@ export default class ShiftView extends Component {
   isEmpty = (str) => (!str || str.length === 0)
 
   render() {
-    const { title, start, end, note, users, peopleNeeded } = this.props.route.params.shift;
+    const { title, start, end, note, users } = this.props.route.params.shift;
     const formatTime = this.props.format24h ? 'HH:mm' : 'hh:mm A';
     return (
       <ScrollView
@@ -41,12 +41,6 @@ export default class ShiftView extends Component {
         <Text numberOfLines={2} style={styles.title}>
           {title}
         </Text>
-
-        {(peopleNeeded > 0) && (
-          <Text style={[styles.eventTitle, { color: '#ffae42' }]} numberOfLines={1}>
-            {`${peopleNeeded} people needed for shift`}
-          </Text>
-        )}
 
         <Text style={styles.subTitle}>Time</Text>
         <Text style={styles.eventTimes}>

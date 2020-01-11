@@ -9,7 +9,7 @@ import {
   ScrollView,
   StyleSheet,
   Button,
-  Clipboard
+  Clipboard,
 } from 'react-native';
 import { Picker, Form, Icon } from 'native-base';
 import GenerateRandomCode from 'react-random-code-generator';
@@ -32,7 +32,7 @@ export default class CreateTeam extends Component {
 
     writeToClipboard = async () => {
       await Clipboard.setString(this.state.teamPasscode);
-      clipboardContent = await Clipboard.getString();   
+      clipboardContent = await Clipboard.getString();
       alert('Copied Team Passcode to Clipboard!');
     };
 

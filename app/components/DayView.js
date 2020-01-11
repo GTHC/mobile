@@ -134,8 +134,8 @@ export default class DayView extends PureComponent {
     this.props.eventTapped(event.data);
   }
 
-  renderShiftAttendees = ({ data }) => {
-    const { start, end } = data;
+  renderShiftAttendees = (event) => {
+    const { start, end, data } = event;
 
     const endTime = moment(end);
     const startTime = moment(start);
@@ -191,7 +191,7 @@ export default class DayView extends PureComponent {
           ) : (
             <View style={styles.event}>
               <Text numberOfLines={1} style={[styles.eventTitle, textStyle]}>
-                {`${moment(event.start).format(formatTime)} - ${moment(event.end).format(formatTime)}`}
+                {`${moment(event.data.start).format(formatTime)} - ${moment(event.data.end).format(formatTime)}`}
               </Text>
 
               <Text style={[styles.eventTitle, textStyle]} numberOfLines={1}>
