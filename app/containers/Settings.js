@@ -53,9 +53,8 @@ class Settings extends Component {
 
 const styles = StyleSheet.create({
   logoutField: {
-    marginTop: 15,
-    marginLeft: 35,
-    marginRight: 35,
+    marginVertical: 15,
+    marginHorizontal: 35,
   },
   logoutButton: {
     alignItems: 'center',
