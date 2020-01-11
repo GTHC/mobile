@@ -26,13 +26,11 @@ export default class CreateTeam extends Component {
       teamName: '',
       tentType: 'Black',
       teamPasscode: GenerateRandomCode.TextNumCode(3, 2).toUpperCase(),
-      clipboardContent: null,
     };
   }
 
     writeToClipboard = async () => {
       await Clipboard.setString(this.state.teamPasscode);
-      clipboardContent = await Clipboard.getString();
       alert('Copied Team Passcode to Clipboard!');
     };
 
