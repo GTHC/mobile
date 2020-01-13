@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { getData } from '../../utils/Storage';
 
-const baseUrl = 'https://staging.gthc.io';
+const baseUrl = 'https://www.gthc.io';
 
 const crud = request => async dispatch => {
   const idToken = await getData('auth');

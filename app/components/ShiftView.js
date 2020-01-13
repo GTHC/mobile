@@ -52,7 +52,7 @@ export default class ShiftView extends Component {
         </Text>
 
         <Text style={styles.eventTimes}>
-          {moment(end).fromNow()}
+          {moment(start).fromNow()}
         </Text>
 
         {!this.isEmpty(note) && (
