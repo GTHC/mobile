@@ -50,6 +50,8 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Need location to send notifications accurately</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
 	<key>OneSignal_app_groups_key</key>

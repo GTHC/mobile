@@ -11,6 +11,12 @@ import moment from 'moment';
 import ViewMoreText from 'react-native-view-more-text';
 
 export default class UserAnnouncements extends Component {
+  constructor(props){
+    super(props);
+
+    this.ANNOUNCEMENTS = props.notifications.announcements.reverse();
+  }
+
   renderSimpleListItem = (primary, secondary, time) => (
     <ListItem style={styles.listItem}>
       <Body>
@@ -40,7 +46,7 @@ export default class UserAnnouncements extends Component {
     return (
       <View style={styles.container}>
         <FlatList
-          data={this.props.notifications.announcements.reverse()}
+          data={this.ANNOUNCEMENTS}
           renderItem={({ item }) => (
             this.renderSimpleListItem(item.title, item.body, item.created_at)
           )}
