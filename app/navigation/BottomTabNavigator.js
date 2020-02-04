@@ -6,10 +6,12 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import TeamCalendar from '../containers/Calendar';
 import UpcomingShifts from '../containers/UpcomingShifts/';
 import Notifications from '../containers/Notifications';
+import {storeData} from '../utils/Storage';
 
 const Tab = createBottomTabNavigator();
 
 function BottomTabs() {
+  storeData('isFirstTimeLogin', true);
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({

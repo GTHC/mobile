@@ -13,7 +13,9 @@ import LoadingScreen from '../components/LoadingScreen';
 import ShiftView from '../components/ShiftView';
 import Signup from '../containers/Signup';
 import CreateTeam from '../components/CreateTeam';
+import AppIntro from '../components/AppIntro';
 import { getUserFromToken } from '../redux/actions/user';
+import { getData } from '../utils/Storage';
 
 
 const Stack = createStackNavigator();
@@ -26,7 +28,11 @@ class AppNavigator extends React.Component {
   }
 
   renderApp = (user) => {
-    const loggedInInitialRoute = user.data.team_id == null ? 'Signup' : 'Home';
+    let firstScreen = 'Home';
+    if (getData('isFirstTimeLogin')) {
+      firstScreen = 'AppIntro';
+    }
+    const loggedInInitialRoute = user.data.team_id == null ? 'Signup' : firstScreen;
     const initRoute = !user.isLoggedIn ? 'Login' : loggedInInitialRoute;
     // const initRoute = 'Signup';
 
@@ -64,6 +70,7 @@ class AppNavigator extends React.Component {
         <Stack.Screen name="Settings" component={Settings} options={{ ...mainHeader }} />
         <Stack.Screen name="Signup" component={Signup} options={{ title: 'Join Team', ...mainHeader }} />
         <Stack.Screen name="CreateTeam" component={CreateTeam} options={{ title: 'Create Team', ...mainHeader }} />
+        <Stack.Screen name="AppIntro" component={AppIntro} options={{ title: 'App Intro', ...mainHeader }} />
       </Stack.Navigator>
     );
   }
