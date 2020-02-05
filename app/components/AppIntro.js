@@ -2,7 +2,7 @@
 
 
 import React, { Component } from 'react';
-import { View, TouchableHighlight, StyleSheet, Image } from 'react-native';
+import { View, TouchableHighlight, StyleSheet, Image, ScrollView, SafeAreaView, StatusBar } from 'react-native';
 import {
   Text,
 } from 'native-base';
@@ -10,50 +10,56 @@ import { AppIntroPic } from '../utils/images';
 
 
 export default class AppIntro extends Component {
-
   exit = () => {
     this.props.navigation.navigate('Home');
   }
 
   render() {
     return (
-      <View style={styles.body}>
-
-        <View>
-          <Text style={styles.titleText}>
+      <SafeAreaView style={styles.container}>
+        <ScrollView style={styles.scrollView}>
+          <View style={styles.body}>
+            <View>
+              <Text style={styles.titleText}>
               Please Read The Following Info
-          </Text>
-          <Text style={styles.subTitle}>Especially if this is your first time using GTHC</Text>
-          <Image source={AppIntroPic} resizeMode="contain" style={{ width: '100%', height: '50%' }} />
-          <Text style={styles.text}>
+              </Text>
+              <Text style={styles.subTitle}>Especially if this is your first time using GTHC</Text>
+              <Image source={AppIntroPic} resizeMode="contain" style={{ width: '100%', height: '50%' }} />
+              <Text style={styles.text}>
 Some of the features such as filling out your availibility and schedule automation
  are only availible on the web version of GTHC.
-          </Text>
-          <Text style={styles.text}>
+              </Text>
+              <Text style={styles.text}>
               The purpose of this mobile app
         is for shift reminder notifications, line monitor announcements
         , and a read-only view of all your teams shifts.
-          </Text>
-          <Text style={styles.text}>
+              </Text>
+              <Text style={styles.text}>
               Please logon to the web version at https://gthc.io/ to fully utilize all the features built into GTHC.
-          </Text>
-          <View>
-            <TouchableHighlight
-              onPress={this.exit}
-              style={styles.button}
-            >
-              <View>
+              </Text>
+              <TouchableHighlight
+                onPress={this.exit}
+                style={styles.button}
+              >
                 <Text style={styles.buttonText}>Continue</Text>
-              </View>
-            </TouchableHighlight>
+              </TouchableHighlight>
+            </View>
           </View>
-        </View>
-      </View>
+        </ScrollView>
+      </SafeAreaView>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginTop: StatusBar.currentHeight,
+  },
+  scrollView: {
+    backgroundColor: 'pink',
+    marginHorizontal: 20,
+  },
   titleText: {
     fontSize: 24,
     fontWeight: '600',
