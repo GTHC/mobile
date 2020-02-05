@@ -7,6 +7,7 @@ import { NavigationNativeContainer } from '@react-navigation/native';
 import Config from 'react-native-config';
 import { configureStore } from '../redux/utils/store';
 import AppNavigator from '../navigation/AppNavigator';
+import { storeData } from '../utils/Storage';
 
 export default class App extends Component {
   constructor(properties) {
@@ -16,6 +17,7 @@ export default class App extends Component {
     OneSignal.addEventListener('received', this.onReceived);
     OneSignal.addEventListener('opened', this.onOpened);
     OneSignal.addEventListener('ids', this.onIds);
+    storeData('isFirstTimeLogin', 'true');
   }
 
   componentWillUnmount() {

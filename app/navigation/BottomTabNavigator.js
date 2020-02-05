@@ -11,7 +11,7 @@ import {storeData} from '../utils/Storage';
 const Tab = createBottomTabNavigator();
 
 function BottomTabs() {
-  storeData('isFirstTimeLogin', true);
+  storeData('isFirstTimeLogin', 'false');
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({

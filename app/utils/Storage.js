@@ -23,4 +23,4 @@ const getData = async (key: string) => {
   }
 };
 
-export {storeData, getData};
+export { storeData, getData };

@@ -45,7 +45,16 @@ class AppNavigator extends React.Component {
           component={BottomTabNavigator}
           options={({ navigation }) => ({
             title: 'GTHC',
-            headerLeft: null,
+            headerLeft: () => (
+              <Icon.Button
+                backgroundColor={mainHeader.headerStyle.backgroundColor}
+                name="ios-information-circle"
+                size={24}
+                color="white"
+                style={{ marginLeft: 10 }}
+                onPress={() => navigation.navigate('AppIntro')}
+              />
+            ),
             headerRight: () => (
               <Icon.Button
                 backgroundColor={mainHeader.headerStyle.backgroundColor}
@@ -67,10 +76,24 @@ class AppNavigator extends React.Component {
           }}
         />
         <Stack.Screen name="Login" component={Login} options={{ ...mainHeader }} />
-        <Stack.Screen name="Settings" component={Settings} options={{ ...mainHeader }} />
+        <Stack.Screen
+          name="Settings"
+          component={Settings}
+          options={({ navigation }) => ({
+            headerRight: () => (
+              <Icon.Button
+                backgroundColor={mainHeader.headerStyle.backgroundColor}
+                name="ios-information-circle-outline"
+                size={24}
+                color="white"
+                onPress={() => navigation.navigate('AppIntro')}
+              />
+            ),
+            ...mainHeader })}
+        />
         <Stack.Screen name="Signup" component={Signup} options={{ title: 'Join Team', ...mainHeader }} />
         <Stack.Screen name="CreateTeam" component={CreateTeam} options={{ title: 'Create Team', ...mainHeader }} />
-        <Stack.Screen name="AppIntro" component={AppIntro} options={{ title: 'App Intro', ...mainHeader }} />
+        <Stack.Screen name="AppIntro" component={AppIntro} options={{ title: 'How to use this app?', ...mainHeader }} />
       </Stack.Navigator>
     );
   }
