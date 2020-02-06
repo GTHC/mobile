@@ -2,7 +2,7 @@
 
 
 import React, { Component } from 'react';
-import { View, TouchableHighlight, StyleSheet, Image, ScrollView, SafeAreaView, StatusBar } from 'react-native';
+import { TouchableHighlight, StyleSheet, Image, ScrollView, SafeAreaView, StatusBar } from 'react-native';
 import {
   Text,
 } from 'native-base';
@@ -39,7 +39,7 @@ Some of the features such as filling out your availibility and schedule automati
             onPress={this.exit}
             style={styles.button}
           >
-            <Text style={styles.buttonText}>Continue</Text>
+            <Text style={styles.buttonText}>CONTINUE</Text>
           </TouchableHighlight>
         </ScrollView>
       </SafeAreaView>
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
   },
   subTitle: {
     fontWeight: '300',
-    fontSize: 10,
+    fontSize: 13,
     textAlign: 'center',
   },
   body: {
@@ -83,6 +83,6 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   text: {
-    paddingBottom: 10,
+    paddingVertical: 10,
   },
 });

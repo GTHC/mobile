@@ -4,14 +4,14 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import TeamCalendar from '../containers/Calendar';
-import UpcomingShifts from '../containers/UpcomingShifts/';
+import UpcomingShifts from '../containers/UpcomingShifts';
 import Notifications from '../containers/Notifications';
-import {storeData} from '../utils/Storage';
+import { storeData } from '../utils/Storage';
 
 const Tab = createBottomTabNavigator();
 
 function BottomTabs() {
-  storeData('isFirstTimeLogin', 'false');
+  storeData('isFirstTimeLogin', 'NO');
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({

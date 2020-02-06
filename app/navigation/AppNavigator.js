@@ -25,11 +25,22 @@ class AppNavigator extends React.Component {
     super(props);
 
     this.props.getUserFromToken();
+    this.state = {
+      isFirstTimeLogin: '',
+    };
+    this.getIsFirstTimeLogin('isFirstTimeLogin');
   }
 
-  renderApp = (user) => {
+  getIsFirstTimeLogin = key => {
+    getData(key).then(val => {
+      this.setState({ isFirstTimeLogin: val });
+    });
+  }
+
+  renderApp = user => {
     let firstScreen = 'Home';
-    if (getData('isFirstTimeLogin')) {
+    const { isFirstTimeLogin } = this.state;
+    if (isFirstTimeLogin === undefined) {
       firstScreen = 'AppIntro';
     }
     const loggedInInitialRoute = user.data.team_id == null ? 'Signup' : firstScreen;
@@ -93,7 +104,7 @@ class AppNavigator extends React.Component {
         />
         <Stack.Screen name="Signup" component={Signup} options={{ title: 'Join Team', ...mainHeader }} />
         <Stack.Screen name="CreateTeam" component={CreateTeam} options={{ title: 'Create Team', ...mainHeader }} />
-        <Stack.Screen name="AppIntro" component={AppIntro} options={{ title: 'How to use this app?', ...mainHeader }} />
+        <Stack.Screen name="AppIntro" component={AppIntro} options={{ title: 'About GTHC Mobile', ...mainHeader }} />
       </Stack.Navigator>
     );
   }
