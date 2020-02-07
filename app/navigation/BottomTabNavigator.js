@@ -8,10 +8,12 @@ import UpcomingShifts from '../containers/UpcomingShifts';
 import Notifications from '../containers/Notifications';
 import { storeData } from '../utils/Storage';
 
+
 const Tab = createBottomTabNavigator();
 
+
 function BottomTabs() {
-  storeData('isFirstTimeLogin', 'NO');
+  storeData('isFirstTimeLogin', 'false');
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({

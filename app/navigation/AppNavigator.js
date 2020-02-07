@@ -6,6 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import OneSignal from 'react-native-onesignal';
+import moment from 'moment';
 import BottomTabNavigator from './BottomTabNavigator';
 import Login from '../containers/Login';
 import Settings from '../containers/Settings';
@@ -15,7 +16,6 @@ import Signup from '../containers/Signup';
 import CreateTeam from '../components/CreateTeam';
 import AppIntro from '../components/AppIntro';
 import { getUserFromToken } from '../redux/actions/user';
-import { getData } from '../utils/Storage';
 
 
 const Stack = createStackNavigator();
@@ -25,22 +25,15 @@ class AppNavigator extends React.Component {
     super(props);
 
     this.props.getUserFromToken();
-    this.state = {
-      isFirstTimeLogin: '',
-    };
-    this.getIsFirstTimeLogin('isFirstTimeLogin');
-  }
-
-  getIsFirstTimeLogin = key => {
-    getData(key).then(val => {
-      this.setState({ isFirstTimeLogin: val });
-    });
   }
 
   renderApp = user => {
     let firstScreen = 'Home';
-    const { isFirstTimeLogin } = this.state;
-    if (isFirstTimeLogin === undefined) {
+
+    const createdAt = moment(this.props.user.data.created_at);
+    const daysSinceCreate = createdAt.diff(moment.now(), 'day');
+    console.log(daysSinceCreate);
+    if (daysSinceCreate > -2) {
       firstScreen = 'AppIntro';
     }
     const loggedInInitialRoute = user.data.team_id == null ? 'Signup' : firstScreen;
@@ -127,6 +120,7 @@ const mainHeader = {
 
 const mapStateToProps = state => ({
   user: state.user,
+  shifts: state.shifts,
 });
 
 const mapDispatchToProps = dispatch =>
